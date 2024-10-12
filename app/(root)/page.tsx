@@ -1,13 +1,24 @@
-import Link from "next/link";
+"use client";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
-const Home = () => {
-    return <div>
-        <ul>
-            <li><Link href={"/en/"}>en</Link></li>
-            <li><Link href={"/de/"}>de</Link></li>
-            <li><Link href={"/ja/"}>ja</Link></li>
-        </ul>
-    </div>
+const timeZoneToLocaleMap: { [key: string]: string } = {
+  // Iran Time Zone
+  "Asia/Tehran": "fa",
+  // Italy Time Zone
+  "Europe/Rome": "it",
+  // Default to 'en' for other time zones
+};
+
+export default function RootPage() {
+  const router = useRouter();
+  console.log("Hello , What you looking for? :D");
+
+  useEffect(() => {
+    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const locale = timeZoneToLocaleMap[timeZone] || "en"; // Fallback to 'en'
+    router.replace(`/${locale}`);
+  }, [router]);
+
+  return null;
 }
-
-export default Home;

@@ -1,5 +1,121 @@
 {
+  "HomePage": {
+    "title": "Hello world!",
+    "test": "This is a test"
+  },
   "Index": {
-    "title": "Hello world!"
+    "title": "title"
+  },
+  "NotFoundPage": {
+    "title": "Error: Redacted",
+    "Description": "This page could not be found. It either doesn’t exist or was deleted.           Or perhaps you don’t exist."
+  },
+  "AboutMe": {
+    "jobTitle": "Software Developer",
+    "MyName": "Seyed Hossein Hosseini",
+    "des_about_me": "a passionate software developer with over five years of               experience, fueled by a passion for creating impactful technology.",
+    "introduction": "Hello <br /> I&apos;m <span class='text-secondary'>Seyed Hossein Hosseini</span>"
+  },
+  "Nav": {
+    "home": "home",
+    "aboutme": "about me",
+    "services": "services",
+    "projects": "projects",
+    "contact": "contact"
+  },
+  "LocaleSwitcher": {
+    "label": "Change language",
+    "locale": "{locale, select, fa {🇮🇷 Farsi} en {🇺🇸 English} it {🇮🇹 Italian} other {Unknown}}"
+  },
+  "Manifest": {
+    "name": "Seyed Hossein Hosseini Portfoilo"
+  },
+  "stats": {
+    "experience": "years of experience",
+    "project": "contribute project",
+    "awards": "Awards",
+    "open-source": "open source project"
+  },
+  "services": {
+    "WebDev": "Website Development",
+    "WebDevDec": "Building tailored web applications using modern technologies like Django, React.js, Flask, and Node.js. Whether it's an eCommerce platform or a simple business website, I ensure efficient and scalable solutions that meet your business needs.",
+    "fullstack": "Full-Stack & Mobile Application Development",
+    "FullstackDec": "Providing end-to-end development for both web and mobile applications. From back-end logic with Python and Django/Flask to responsive front-end interfaces using React.js, Angular, or Next.js. Additionally, offering mobile app development with React Native to ensure a seamless experience across both platforms.",
+    "ai": "AI-Powered Solutions",
+    "AIDec": "Integrating AI models into your applications to enhance user experiences or automate processes. This includes natural language processing, content generation, or custom AI-based tools.",
+    "mentoring": "Mentoring for EveryOne",
+    "mentoringDec": "Offering personalized mentoring for aspiring developers or teams looking to improve their skills in full-stack development, AI integration, or DevOps. With over 5 years of real-world experience, I can help guide you through coding best practices, project management (Agile/Scrum), and effective software development workflows."
+  },
+  "contact": {
+    "Email": "Email",
+    "Phone": "Phone",
+    "Description": " I’d love to help you bring your ideas to life! Whether you need                 high-performance software solutions or support for your                 open-source project, feel free to send a request. Let’s work                 together to create something amazing.",
+    "Last Name": "Last Name",
+    "First Name": "First Name",
+    "Send message": "Send message",
+    "TextAreaPlaceholder": "Tell me a bit about your business, website domain, or repository, and what you'd like to achieve. The more details you provide, the better I can assist you!",
+    "FirstName": "First Name",
+    "LastName": "Last Name",
+    "SelectService": "Select a Service",
+    "Send": "Send message"
+  },
+  "Home": {
+    "Services": "Services",
+    "Contact": "Contact",
+    "Projects": "Projects",
+    "Resume": "Resume"
+  },
+  "Resume": {
+    "AboutMe": "About Me",
+    "about": {
+      "title": "About Me",
+      "description": "About Me Description",
+      "info": {
+        "name": "Name",
+        "experience": "Experience",
+        "experience_value": "5 years",
+        "freelance": "Freelance",
+        "freelance_value": "Availble",
+        "email": "Email",
+        "language": "Language",
+        "languages": "Persian , English , Italian",
+        "my_name": "Seyed Hossein Hosseini"
+      }
+    },
+    "experience": {
+      "title": "Experience",
+      "description": "Experience Description",
+      "company1": "Farabi Financial Group.",
+      "position1": "FullStack Developer"
+    },
+    "certificates": {
+      "title": "Certificates",
+      "description": "Certificates Description"
+    },
+    "education": {
+      "title": "Education and certificates",
+      "description": "Education description",
+      "degree1": "Computer Science Bachelor ",
+      "duration1": "From 2020 to 2026"
+    },
+    "skills": {
+      "title": "My Skills",
+      "description": "Skills Description"
+    },
+    "tabs": {
+      "aboutme": "About Me",
+      "experience": "Experience",
+      "education": "Educations",
+      "skills": "Skills"
+    }
+  },
+  "title": "Seyed Hossein Hosseini blog and portfolio",
+  "SEO": {
+    "author": "Seyed Hossein Hosseini",
+    "ogTitle": "portfolio of Seyed Hossein Hosseini",
+    "siteName": "Seyed Hossein Hosseini's Personal Website",
+    "twitterCard": "Seyed Hossein Hosseini's Personal Website",
+    "twitterDescription": "Multidisciplinary Product Developer",
+    "twitterTitle": "portfolio of Seyed Hossein Hosseini"
   }
 }

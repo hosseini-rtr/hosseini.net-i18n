@@ -1,0 +1,12 @@
+{
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#113234",
+        "titleBar.activeBackground": "#184649",
+        "titleBar.activeForeground": "#F4FBFB"
+    },
+    "i18n-ally.localesPaths": [
+        "messages"
+    ],
+    "i18n-ally.keystyle": "nested",
+    "i18next.i18nPaths": "/Users/selector/Documents/hosseini.net-i18n/out/locales,/Users/selector/Documents/hosseini.net-i18n/public/locales"
+}

@@ -1,0 +1,107 @@
+{
+  "HomePage": {
+    "title": "Hello world!",
+    "test": "Questa è una prova"
+  },
+  "Index": {
+    "title": "title"
+  },
+  "NotFoundPage": {
+    "title": "Errore: redatto",
+    "Description": "Impossibile trovare questa pagina. \nO non esiste o è stato cancellato.           \nO forse non esisti."
+  },
+  "AboutMe": {
+    "jobTitle": "Sviluppatore di software",
+    "introduction": "Ciao <br /> Sono <span class='text-secondary'>Seyed Hossein Hosseini</span>",
+    "des_about_me": "uno sviluppatore di software appassionato con oltre cinque anni di esperienza, alimentato dalla passione per la creazione di tecnologie di grande impatto."
+  },
+  "Nav": {
+    "home": "casa",
+    "aboutme": "su di me",
+    "services": "servizi",
+    "projects": "progetti",
+    "contact": "contatto"
+  },
+  "LocaleSwitcher": {
+    "label": "Cambia lingua",
+    "locale": "{locale, select, fa {🇮🇷 Farsi} en {🇺🇸 English} it {🇮🇹 Italian} other {Unknown}}"
+  },
+  "Manifest": {
+    "name": "Seyed Hossein Hosseini Portfoilo"
+  },
+  "stats": {
+    "experience": "anni di esperienza",
+    "project": "contribuire al progetto",
+    "awards": "Premi",
+    "open-source": "progetto open source"
+  },
+  "services": {
+    "fullstack": "Sviluppo Full-Stack e Applicazioni Mobile",
+    "FullstackDec": "Offro sviluppo completo per applicazioni web e mobile. Dal back-end con logica in Python e Django/Flask a interfacce front-end reattive utilizzando React.js, Angular o Next.js. Inoltre, sviluppo di app mobile con React Native per garantire un'esperienza fluida su entrambe le piattaforme.",
+    "AIDec": "Integrazione di modelli di intelligenza artificiale nelle tue applicazioni per migliorare l'esperienza degli utenti o automatizzare i processi. \nCiò include l’elaborazione del linguaggio naturale, la generazione di contenuti o strumenti personalizzati basati sull’intelligenza artificiale.",
+    "mentoring": "Mentoring per tutti",
+    "mentoringDec": "Offre tutoraggio personalizzato per aspiranti sviluppatori o team che desiderano migliorare le proprie competenze nello sviluppo full-stack, nell'integrazione dell'intelligenza artificiale o nel DevOps. \nCon oltre 5 anni di esperienza nel mondo reale, posso aiutarti a guidarti attraverso le migliori pratiche di codifica, la gestione dei progetti (Agile/Scrum) e flussi di lavoro di sviluppo software efficaci.",
+    "ai": "Soluzioni basate sull'intelligenza artificiale",
+    "WebDev": "Sviluppo del sito web",
+    "WebDevDec": "Creazione di applicazioni Web su misura utilizzando tecnologie moderne come Django, React.js, Flask e Node.js. \nChe si tratti di una piattaforma eCommerce o di un semplice sito web aziendale, garantisco soluzioni efficienti e scalabili che soddisfano le tue esigenze aziendali."
+  },
+  "contact": {
+    "Phone": "Telefono",
+    "Email": "E-mail",
+    "FirstName": "Nome di battesimo",
+    "LastName": "Cognome",
+    "SelectService": "Seleziona un servizio",
+    "Send message": "Invia messaggio",
+    "TextAreaPlaceholder": "Raccontami qualcosa della tua attività, del dominio del tuo sito web o del repository e di cosa vorresti ottenere. \nPiù dettagli fornisci, meglio posso aiutarti!",
+    "Send": "Invia messaggio",
+    "Description": "Mi piacerebbe aiutarti a dare vita alle tue idee! \nSe hai bisogno di soluzioni software ad alte prestazioni o di supporto per il tuo progetto open source, non esitare a inviare una richiesta. \nLavoriamo insieme per creare qualcosa di straordinario."
+  },
+  "Home": {
+    "Services": "Servizi",
+    "Projects": "Progetti",
+    "Contact": "Contatto",
+    "Resume": "Riprendere"
+  },
+  "Resume": {
+    "AboutMe": "Su di me",
+    "about": {
+      "title": "Su di me",
+      "description": "Chi sono Descrizione",
+      "info": {
+        "name": "Nome",
+        "experience": "Esperienza",
+        "experience_value": "5 anni",
+        "email": "E-mail",
+        "freelance": "Libero professionista",
+        "language": "Lingua",
+        "languages": "Persiano, inglese, italiano",
+        "my_name": "Seyed Hossein Hosseini",
+        "freelance_value": "Disponibile"
+      }
+    },
+    "experience": {
+      "title": "Esperienza",
+      "description": "Descrizione dell'esperienza"
+    },
+    "education": {
+      "title": "Titolo di studio",
+      "description": "Descrizione dell'istruzione",
+      "duration1": "Dal 2020 al 2026",
+      "degree1": "Laurea triennale in informatica"
+    },
+    "skills": {
+      "title": "Le mie abilità",
+      "description": "Descrizione delle competenze"
+    },
+    "tabs": {
+      "aboutme": "Su di me",
+      "experience": "Esperienza",
+      "education": "Educazioni",
+      "skills": "Competenze"
+    },
+    "certificates": {
+      "description": "Descrizione dei certificati",
+      "title": "Certificati"
+    }
+  }
+}
