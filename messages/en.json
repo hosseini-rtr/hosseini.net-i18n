@@ -108,11 +108,10 @@
       "skills": "Skills"
     }
   },
-  "title": "Seyed Hossein Hosseini blog and portfolio",
   "SEO": {
+    "title": "Seyed Hossein Hosseini Website and portfolio",
     "breadcrumbHome": "Home",
     "jobTitle": "Software Developer - Full Stack Developer",
-    "title": "Seyed Hossein Hosseini | Full Stack Developer and Software Engineer",
     "description": "Seyed Hossein Hosseini's Website showcases expertise in full-stack development, offering innovative solutions for businesses and startups in web and mobile application development.",
     "siteName": "Hossein Hosseini's Website",
     "openGraph": {
@@ -136,9 +135,8 @@
       "appleTouchIcon": "/icon-256.png",
       "icon": "/favicon.svg"
     },
-    "manifest": "/manifest.json"
-  },
-  "worksFor": "Farabi Financial Group",
-  "jobTitle": "FullStack Developer",
-  "author": "Seyed Hossein Hosseini"
+    "manifest": "/manifest.json",
+    "worksFor": "Farabi Financial Group",
+    "author": "Seyed Hossein Hosseini"
+  }
 }

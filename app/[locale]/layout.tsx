@@ -10,6 +10,7 @@ import "../globals.css";
 // Fetch translations without using hooks
 export async function generateMetadata({ params: { locale } }: any) {
   const t = await getTranslations({ locale, namespace: "SEO" });
+  const canonicalUrl = `https://hosseinhosseini.net/${locale}`;
 
   // JSON-LD structured data (BreadcrumbList and Person)
   const breadcrumbSchema = {
@@ -45,25 +46,41 @@ export async function generateMetadata({ params: { locale } }: any) {
     },
   };
 
+  const keywords = [
+    "Full Stack Developer",
+    "Software Developer",
+    "Web Developer",
+    "Mobile App Developer",
+    "React Developer",
+    "Python Developer",
+    "Next.js",
+    "Freelance Developer",
+    "Hossein Hosseini Portfolio",
+    "AI Solutions",
+    "Business Solutions",
+  ];
+
   return {
+    metadataBase: new URL("https://hosseinhosseini.net"), // Set metadataBase
     title: t("title"),
     description: t("description"),
-    author: t("author"),
+    keywords: keywords.join(", "),
+    author: "Seyed Hossein Hosseini",
+    publisher: t("author"),
     openGraph: {
       title: t("twitter.title"),
       description: t("twitter.description"),
       images: "/social-image.png",
-      url: "https://hosseinhosseini.net",
+      url: canonicalUrl,
       type: "website",
       site_name: t("siteName"),
     },
     twitter: {
       card: "summary_large_image",
-      title: t("twitterTitle"),
-      description: t("twitterDescription"),
+      title: t("twitter.title"),
+      description: t("twitter.description"),
       image: "/social-image.png",
     },
-    themeColor: "#111111",
     robots: "index, follow",
     icons: {
       shortcut: "/favicon.svg",
@@ -82,6 +99,9 @@ export async function generateMetadata({ params: { locale } }: any) {
           innerHTML: JSON.stringify(personSchema),
         },
       ],
+    },
+    alternates: {
+      canonical: canonicalUrl, // Include the canonical URL here
     },
   };
 }
