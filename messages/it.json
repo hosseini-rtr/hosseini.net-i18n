@@ -1,7 +1,6 @@
 {
   "HomePage": {
-    "title": "Hello world!",
-    "test": "Questa è una prova"
+    "title": "Hello world!"
   },
   "Index": {
     "title": "title"
@@ -103,5 +102,41 @@
       "description": "Descrizione dei certificati",
       "title": "Certificati"
     }
-  }
+  },
+  "SEO": {
+    "breadcrumbHome": "Home",
+    "jobTitle": "Sviluppatore Software - Sviluppatore Full Stack",
+    "ogTitle": "Seyed Hossein Hosseini | Sviluppatore Software",
+    "ogDescription": "Scopri il Website di Seyed Hossein Hosseini, uno sviluppatore software e full-stack specializzato nella creazione di applicazioni web e mobili ad alte prestazioni.",
+    "siteName": "Website di Hossein Hosseini",
+    "twitterTitle": "Seyed Hossein Hosseini | Sviluppatore Full Stack",
+    "twitterDescription": "Visita il mio Website e scopri i miei progetti, dove costruisco applicazioni web e mobili con tecnologie moderne.",
+    "title": "Seyed Hossein Hosseini | Sviluppatore Full Stack e Ingegnere del Software",
+    "description": "Scopri il Website di Seyed Hossein Hosseini, uno sviluppatore Full Stack specializzato nello sviluppo di app web e mobile. Soluzioni all'avanguardia per aziende e startup.",
+    "openGraph": {
+      "title": "Seyed Hossein Hosseini | Sviluppatore Full Stack e Ingegnere del Software",
+      "description": "Scopri le soluzioni innovative di sviluppo software di Seyed Hossein Hosseini, uno sviluppatore Full Stack con esperienza sia nel frontend che nel backend.",
+      "images": "/social-image.png",
+      "url": "https://hosseinhosseini.net",
+      "type": "website",
+      "site_name": "Seyed Hossein Hosseini"
+    },
+    "twitter": {
+      "card": "summary_large_image",
+      "title": "Seyed Hossein Hosseini | Sviluppatore Full Stack e Ingegnere del Software",
+      "description": "Il Website di Seyed Hossein Hosseini, che mostra competenze nello sviluppo full stack, nelle app mobili e nelle soluzioni basate su AI.",
+      "image": "/social-image.png"
+    },
+    "themeColor": "#111111",
+    "robots": "index, follow",
+    "icons": {
+      "shortcut": "/favicon.svg",
+      "appleTouchIcon": "/icon-256.png",
+      "icon": "/favicon.svg"
+    },
+    "manifest": "/manifest.json"
+  },
+  "worksFor": "Gruppo finanziario Farabi",
+  "jobTitle": "Sviluppatore FullStack",
+  "author": "Seyed Hossein Hosseini"
 }

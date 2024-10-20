@@ -1,7 +1,6 @@
 {
   "HomePage": {
-    "title": "Hello world!",
-    "test": "This is a test"
+    "title": "Hello world!"
   },
   "Index": {
     "title": "title"
@@ -111,11 +110,35 @@
   },
   "title": "Seyed Hossein Hosseini blog and portfolio",
   "SEO": {
-    "author": "Seyed Hossein Hosseini",
-    "ogTitle": "portfolio of Seyed Hossein Hosseini",
-    "siteName": "Seyed Hossein Hosseini's Personal Website",
-    "twitterCard": "Seyed Hossein Hosseini's Personal Website",
-    "twitterDescription": "Multidisciplinary Product Developer",
-    "twitterTitle": "portfolio of Seyed Hossein Hosseini"
-  }
+    "breadcrumbHome": "Home",
+    "jobTitle": "Software Developer - Full Stack Developer",
+    "title": "Seyed Hossein Hosseini | Full Stack Developer and Software Engineer",
+    "description": "Seyed Hossein Hosseini's Website showcases expertise in full-stack development, offering innovative solutions for businesses and startups in web and mobile application development.",
+    "siteName": "Hossein Hosseini's Website",
+    "openGraph": {
+      "description": "Explore the Website of Seyed Hossein Hosseini, a full-stack developer specializing in innovative web and mobile application solutions.",
+      "title": "Seyed Hossein Hosseini | Full Stack Developer",
+      "images": "/social-image.png",
+      "url": "https://hosseinhosseini.net",
+      "type": "website",
+      "site_name": "Hossein Hosseini's Website"
+    },
+    "twitter": {
+      "description": "Visit my Website to see my projects and how I leverage modern technologies to build web and mobile applications.",
+      "card": "summary_large_image",
+      "title": "Seyed Hossein Hosseini | Full Stack Developer",
+      "image": "/social-image.png"
+    },
+    "themeColor": "#111111",
+    "robots": "index, follow",
+    "icons": {
+      "shortcut": "/favicon.svg",
+      "appleTouchIcon": "/icon-256.png",
+      "icon": "/favicon.svg"
+    },
+    "manifest": "/manifest.json"
+  },
+  "worksFor": "Farabi Financial Group",
+  "jobTitle": "FullStack Developer",
+  "author": "Seyed Hossein Hosseini"
 }
