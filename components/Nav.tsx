@@ -7,11 +7,11 @@ import { usePathname } from "next/navigation";
 export default function Nav() {
   const t = useTranslations("Nav");
   const links = [
-    { name: t("home"), path: "/" },
-    { name: t("aboutme"), path: "/about_me" },
-    { name: t("services"), path: "/services" },
-    { name: t("projects"), path: "/project" },
-    { name: t("contact"), path: "/contact" },
+    { name: t("home"), path: "" },
+    { name: t("aboutme"), path: "about_me" },
+    { name: t("services"), path: "services" },
+    { name: t("projects"), path: "project" },
+    { name: t("contact"), path: "contact" },
   ];
   const pathName = usePathname();
   const locale = useLocale();

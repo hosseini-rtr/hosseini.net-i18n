@@ -1,4 +1,5 @@
 "use client";
+import ProjectSliderBtns from "@/components/ProjectSliderBtns";
 import { Separator } from "@/components/ui/separator";
 import {
   Tooltip,
@@ -6,17 +7,47 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import ProjectSliderBtns from "@/components/ProjectSliderBtns";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-import { BsArrowUpRight, BsGithub } from "react-icons/bs";
-import { SiDjango, SiReact, SiSocketdotio } from "react-icons/si";
+import { useEffect, useState } from "react";
+import {
+  BsArrowUpRight,
+  BsFillMenuButtonWideFill,
+  BsGithub,
+} from "react-icons/bs";
+import { FcScatterPlot } from "react-icons/fc";
+import {
+  SiDjango,
+  SiKeras,
+  SiOpencv,
+  SiPythonanywhere,
+  SiReact,
+  SiSocketdotio,
+  SiTensorflow,
+} from "react-icons/si";
+import { TbMathFunctionY } from "react-icons/tb";
 import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 export default function Projects() {
+  const [blogs, setBlogs] = useState([]);
+
+  // Fetch data client-side
+  useEffect(() => {
+    async function fetchBlogs() {
+      try {
+        const response = await fetch("http://localhost:3001/api/posts");
+        const data = await response.json();
+        setBlogs(data);
+      } catch (error) {
+        console.error("Error fetching blogs:", error);
+      }
+    }
+    fetchBlogs();
+  }, []);
+
+  console.log(blogs);
   const projects = [
     {
       num: "01",
@@ -36,28 +67,31 @@ export default function Projects() {
     {
       num: "02",
       category: "FullStack",
-      title: "Hober OS",
+      title: "Cyan-Todo, AI manage your Tasks",
       description:
         "Consequat id occaecat occaecat magna ullamco deserunt nulla amet mollit qui et.",
       stacks: [
-        { name: "Socket IO", icon: <SiSocketdotio /> },
         { name: "Django Rest API", icon: <SiDjango /> },
-        { name: "ReactNative", icon: <SiReact /> },
+        { name: "React & ReactNative", icon: <SiReact /> },
+        {
+          name: "Large Language Model LLM",
+          icon: <BsFillMenuButtonWideFill />,
+        },
       ],
       image: "/assets/work/hober.png",
-      github: "https://github.com/hosseinirtr/hober-chat-fullstack",
+      github: "https://github.com/hosseinirtr/Cyan-Todo",
       liveUrl: "",
     },
     {
       num: "03",
-      category: "FullStack",
-      title: "Hober Coin",
+      category: "Data analyst",
+      title: " Green Space Design Company Team Assignment",
       description:
         "Consequat id occaecat occaecat magna ullamco deserunt nulla amet mollit qui et.",
       stacks: [
-        { name: "Socket IO", icon: <SiSocketdotio /> },
-        { name: "Django Rest API", icon: <SiDjango /> },
-        { name: "ReactNative", icon: <SiReact /> },
+        { name: "Python", icon: <SiPythonanywhere /> },
+        { name: "Matplotlib", icon: <FcScatterPlot /> },
+        { name: "Math and Algorithm", icon: <TbMathFunctionY /> },
       ],
       image: "/assets/work/hober.png",
       github: "https://github.com/hosseinirtr/hober-chat-fullstack",
@@ -66,13 +100,17 @@ export default function Projects() {
     {
       num: "04",
       category: "FullStack",
-      title: "Hober Connect",
+      title: "Image Classifier",
       description:
         "Consequat id occaecat occaecat magna ullamco deserunt nulla amet mollit qui et.",
       stacks: [
-        { name: "Socket IO", icon: <SiSocketdotio /> },
+        { name: "React ", icon: <SiReact /> },
+        { name: "Python", icon: <SiPythonanywhere /> },
         { name: "Django Rest API", icon: <SiDjango /> },
-        { name: "ReactNative", icon: <SiReact /> },
+        { name: "Keras", icon: <SiKeras /> },
+        { name: "Tensorflow", icon: <SiTensorflow /> },
+        { name: "OpenCV", icon: <SiOpencv /> },
+        { name: "Math and Algorithm", icon: <TbMathFunctionY /> },
       ],
       image: "/assets/work/hober.png",
       github: "https://github.com/hosseinirtr/hober-chat-fullstack",
@@ -84,6 +122,7 @@ export default function Projects() {
     const currentIndex = sw.activeIndex;
     setProject(projects[currentIndex]);
   };
+
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -93,18 +132,21 @@ export default function Projects() {
       }}
       className="min-h-[80vh] flex flex-col xl:flex-row xl:gap-[30px]"
     >
-      <div className="container mx-auto ">
-        <div className="flex flex-col xl:flex-row xl:gap-[30px]">
+      <div className="container mx-auto" dir="ltr">
+        <div className="flex flex-col-reverse xl:flex-row xl:gap-[30px]">
           <div className="w-full xl:w-[50%] xl:h-[460px] flex flex-col xl:justify-between order-2 xl:order-none">
             <div className="flex flex-col gap-[30px] h-1/2 ">
               {/* outline num */}
-              <div className="text-8xl leading-none font-extrabold text-transparent text-outline">
+              <p className="text-8xl leading-none font-extrabold text-transparent text-outline">
                 {project.num}
-              </div>
-              <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
+              </p>
+              <p className="text-2xl leading-none font-extrabold">
                 {project.category} project
+              </p>
+              <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
+                {project.title}
               </h2>
-              <p className="text-white/70">{project.description}</p>
+              <p className="text-white/70">{project.description ? "" : ""}</p>
               {/* Stacks */}
               <ul className="flex gap-4">
                 {project.stacks.map((item, index) => (

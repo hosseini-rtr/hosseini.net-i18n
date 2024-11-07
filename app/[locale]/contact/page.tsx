@@ -87,13 +87,13 @@ export default function Contact() {
               </div>
               <Select>
                 <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Select a service" />
+                  <SelectValue placeholder={t("SelectService")} />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
                     <SelectLabel>{t("SelectService")}</SelectLabel>
                     <SelectItem value="backend">
-                      Mentoring for Developers
+                      Mentoring To be a Developers
                     </SelectItem>
                     <SelectItem value="fullstack">
                       Full-Stack & Mobile Application Development
