@@ -50,18 +50,13 @@ export default function Resume() {
         fieldValue: t("about.info.experience_value"),
       },
       {
-        fieldName: "Skype",
-        fieldValue: "Link to",
-        link: true,
-      },
-      {
         fieldName: "Telegram",
-        fieldValue: "Link to",
+        fieldValue: "@hosseini-rtr",
         link: true,
       },
       {
         fieldName: t("about.info.email"),
-        fieldValue: "Link to",
+        fieldValue: "h.hosseini@gmail.com",
         link: true,
       },
       {
@@ -122,6 +117,10 @@ export default function Resume() {
     description: t("certificates.description"),
     items: [
       {
+        institution: "MITx - (MOOC) program at Massachusetts Institute of Technology",
+        field: "6.86x: Machine Learning with Python-From Linear Models to Deep Learning",
+        link: "https://courses.edx.org/certificates/fb42b262d2fb44cd860f0bb72840140f"
+      }, {
         institution: "IBM - Coursera",
         field: "AI Engineering Professional Certificate",
       },
@@ -180,9 +179,8 @@ export default function Resume() {
       <div className="container mx-auto" dir={direction}>
         <Tabs
           defaultValue="about_me"
-          className={`${
-            direction == "rtl" ? "md:flex-row-reverse" : "md:flex-row"
-          } flex flex-col  gap-[60px]`}
+          className={`${direction == "rtl" ? "md:flex-row-reverse" : "md:flex-row"
+            } flex flex-col  gap-[60px]`}
         >
           <TabsList
             dir={direction}
@@ -191,6 +189,7 @@ export default function Resume() {
             <TabsTrigger value="about_me">{about.title}</TabsTrigger>
             <TabsTrigger value="experience"> {experiences.title}</TabsTrigger>
             <TabsTrigger value="education">{educations.title}</TabsTrigger>
+            <TabsTrigger value="certificates">{certificates.title}</TabsTrigger>
             <TabsTrigger value="skills"> {skills.title}</TabsTrigger>
           </TabsList>
 
@@ -201,16 +200,14 @@ export default function Resume() {
               className="w-full text-center md:text-left"
             >
               <h3
-                className={`text-4xl font-bold ${
-                  direction == "rtl" ? "text-right" : ""
-                }`}
+                className={`text-4xl font-bold ${direction == "rtl" ? "text-right" : ""
+                  }`}
               >
                 {about.title}
               </h3>
               <p
-                className={`max-w-xl text-white/60 mx-auto xl:mx-0 my-5 ${
-                  direction == "rtl" ? "text-right" : ""
-                }`}
+                className={`max-w-xl text-white/60 mx-auto xl:mx-0 my-5 ${direction == "rtl" ? "text-right" : ""
+                  }`}
               >
                 {about.description}
               </p>
@@ -297,23 +294,52 @@ export default function Resume() {
                         </div>
                       </li>
                     ))}
+
+                  </ul>
+                </ScrollArea>
+              </div>
+            </TabsContent>
+
+            {/* certificates */}
+            <TabsContent value="certificates" className="w-full">
+              <div className="flex flex-col gap-8 text-center md:text-left">
+                <h3 className="text-4xl text-start font-bold">
+                  {certificates.title}
+                </h3>
+                <p className="max-w-xl text-start text-white/60 mx-auto md:mx-0">
+                  {certificates.description}
+                </p>
+                <ScrollArea className="h-[600px]">
+                  <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
                     {certificates.items.map((certificate, index) => (
-                      <li
+                      <div
                         key={index}
-                        className="bg-gray-900 h-44 py-6 px-6 rounded-xl flex flex-col justify-center items-center md:items-start gap-1"
+                        className="bg-gray-900 p-6 rounded-xl flex flex-col gap-4 hover:bg-gray-800 transition-colors"
                       >
-                        <h3 className="flex flex-row gap-2 items-center text-lg text-nowrap whitespace-nowrap max-w-17 min-h-8 text-center">
-                          <FaCertificate size={12} /> {certificate.field}
-                        </h3>
-                        <div className="flex items-center gap-3">
-                          <p className="flex flex-row gap-2 items-center text-white/60">
-                            <FaBuilding size={12} />
+                        <div className="flex items-center gap-3 text-accent">
+                          <FaCertificate className="w-6 h-6" />
+                          <h4 className="font-medium text-lg line-clamp-2">
+                            {certificate.field}
+                          </h4>
+                        </div>
+                        <div className="flex flex-col gap-2">
+                          <p className="text-white/60 text-sm line-clamp-2">
                             {certificate.institution}
                           </p>
+                          {certificate.link && (
+                            <a
+                              href={certificate.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-sm text-accent hover:underline mt-2 inline-block"
+                            >
+                              {t("view-certificate")}
+                            </a>
+                          )}
                         </div>
-                      </li>
+                      </div>
                     ))}
-                  </ul>
+                  </div>
                 </ScrollArea>
               </div>
             </TabsContent>
