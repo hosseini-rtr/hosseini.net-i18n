@@ -2,6 +2,9 @@
   "HomePage": {
     "title": "Hello world!"
   },
+  "Blog": {
+    "title": "Hello world!"
+  },
   "Index": {
     "title": "title"
   },
@@ -20,7 +23,8 @@
     "aboutme": "about me",
     "services": "services",
     "projects": "projects",
-    "contact": "contact"
+    "contact": "contact",
+    "blog": "Blog"
   },
   "LocaleSwitcher": {
     "label": "Change language",
@@ -56,13 +60,16 @@
     "FirstName": "First Name",
     "LastName": "Last Name",
     "SelectService": "Select a Service",
-    "Send": "Send message"
+    "Send": "Send message",
+    "thank-msg": "✅ Thank You!",
+    "reach-you-msg": "I'll get back to you soon."
   },
   "Home": {
     "Services": "Services",
     "Contact": "Contact",
     "Projects": "Projects",
-    "Resume": "Resume"
+    "Resume": "Resume",
+    "Latest Blog Posts": "Latest Blog Posts"
   },
   "Resume": {
     "AboutMe": "About Me",
@@ -106,7 +113,8 @@
       "experience": "Experience",
       "education": "Educations",
       "skills": "Skills"
-    }
+    },
+    "view-certificate": "View Certificate"
   },
   "SEO": {
     "title": "Seyed Hossein Hosseini Website and portfolio",

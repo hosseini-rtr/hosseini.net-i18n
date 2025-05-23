@@ -21,7 +21,8 @@
     "aboutme": "در مورد من",
     "services": "خدمات",
     "projects": "پروژه ها",
-    "contact": "راه ارتباط"
+    "contact": "راه ارتباط",
+    "blog": "وبلاگ"
   },
   "LocaleSwitcher": {
     "label": "تغییر زبان",
@@ -54,13 +55,16 @@
     "LastName": "نام خانوادگی",
     "SelectService": "یک سرویس را انتخاب کنید",
     "TextAreaPlaceholder": "کمی در مورد کسب و کار، دامنه وب سایت یا مخزن خود و آنچه می خواهید به دست آورید، بگویید. \nهرچه جزئیات بیشتری ارائه دهید، بهتر می توانم به شما کمک کنم!",
-    "Send": "ارسال پیام"
+    "Send": "ارسال پیام",
+    "thank-msg": "✅ ممنون!",
+    "reach-you-msg": "من به زودی با شما تماس میگیرم."
   },
   "Home": {
     "Services": "خدمات",
     "Projects": "پروژه ها",
     "Contact": "راه های ارتباطی",
-    "Resume": "رزومه"
+    "Resume": "رزومه",
+    "Latest Blog Posts": "آخرین پست های وبلاگ"
   },
   "Resume": {
     "AboutMe": "درباره من",
@@ -102,7 +106,8 @@
     "certificates": {
       "description": "شرح گواهی ها",
       "title": "مدارک و گواهینامه ها"
-    }
+    },
+    "view-certificate": "مشاهده گواهی"
   },
   "SEO": {
     "breadcrumbHome": "خانه",
@@ -137,6 +142,9 @@
       "shortcut": "/favicon.svg",
       "appleTouchIcon": "/icon-256.png",
       "icon": "/favicon.svg"
+    },
+    "Blog": {
+      "title": "Hello world!"
     },
     "manifest": "/manifest.json"
   }

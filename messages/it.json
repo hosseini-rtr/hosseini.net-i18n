@@ -19,7 +19,8 @@
     "aboutme": "su di me",
     "services": "servizi",
     "projects": "progetti",
-    "contact": "contatto"
+    "contact": "contatto",
+    "blog": "Blog"
   },
   "LocaleSwitcher": {
     "label": "Cambia lingua",
@@ -53,13 +54,16 @@
     "Send message": "Invia messaggio",
     "TextAreaPlaceholder": "Raccontami qualcosa della tua attività, del dominio del tuo sito web o del repository e di cosa vorresti ottenere. \nPiù dettagli fornisci, meglio posso aiutarti!",
     "Send": "Invia messaggio",
-    "Description": "Mi piacerebbe aiutarti a dare vita alle tue idee! \nSe hai bisogno di soluzioni software ad alte prestazioni o di supporto per il tuo progetto open source, non esitare a inviare una richiesta. \nLavoriamo insieme per creare qualcosa di straordinario."
+    "Description": "Mi piacerebbe aiutarti a dare vita alle tue idee! \nSe hai bisogno di soluzioni software ad alte prestazioni o di supporto per il tuo progetto open source, non esitare a inviare una richiesta. \nLavoriamo insieme per creare qualcosa di straordinario.",
+    "thank-msg": "✅ Grazie!",
+    "reach-you-msg": "Ti ricontatterò presto."
   },
   "Home": {
     "Services": "Servizi",
     "Projects": "Progetti",
     "Contact": "Contatto",
-    "Resume": "Riprendere"
+    "Resume": "Riprendere",
+    "Latest Blog Posts": "Ultimi post sul blog"
   },
   "Resume": {
     "AboutMe": "Su di me",
@@ -101,7 +105,8 @@
     "certificates": {
       "description": "Descrizione dei certificati",
       "title": "Certificati"
-    }
+    },
+    "view-certificate": "Visualizza il certificato"
   },
   "SEO": {
     "breadcrumbHome": "Home",
@@ -135,6 +140,9 @@
       "icon": "/favicon.svg"
     },
     "manifest": "/manifest.json"
+  },
+  "Blog": {
+    "title": "Hello world!"
   },
   "worksFor": "Gruppo finanziario Farabi",
   "jobTitle": "Sviluppatore FullStack",
