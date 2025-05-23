@@ -5,16 +5,17 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function Nav() {
-  const t = useTranslations("Nav");
-  const links = [
-    { name: t("home"), path: "" },
-    { name: t("aboutme"), path: "about_me" },
-    { name: t("services"), path: "services" },
-    { name: t("projects"), path: "project" },
-    { name: t("contact"), path: "contact" },
-  ];
   const pathName = usePathname();
+  const t = useTranslations("Nav");
   const locale = useLocale();
+  const links = [
+    { name: t("home"), path: `/${locale}` },
+    { name: t("aboutme"), path: `/${locale}/about_me` },
+    { name: t("services"), path: `/${locale}/services` },
+    { name: t("projects"), path: `/${locale}/project` },
+    { name: t("blog"), path: `/${locale}/blog` },
+    { name: t("contact"), path: `/${locale}/contact` },
+  ];
 
   return (
     <nav className={`flex gap-8 ${locale}`}>
