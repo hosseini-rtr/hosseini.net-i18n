@@ -31,23 +31,6 @@ import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 export default function Projects() {
-  const [blogs, setBlogs] = useState([]);
-
-  // Fetch data client-side
-  useEffect(() => {
-    async function fetchBlogs() {
-      try {
-        const response = await fetch("http://localhost:3001/api/posts");
-        const data = await response.json();
-        setBlogs(data);
-      } catch (error) {
-        console.error("Error fetching blogs:", error);
-      }
-    }
-    fetchBlogs();
-  }, []);
-
-  console.log(blogs);
   const projects = [
     {
       num: "01",

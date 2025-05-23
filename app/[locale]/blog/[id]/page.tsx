@@ -1,43 +1,147 @@
+import Image from "next/image";
 import { notFound } from "next/navigation";
+import { Metadata } from "next";
+import ShareModal from "@/components/ShareModal";
 
-type BlogPost = {
-  id: number;
-  title: string;
-  content: string;
-  slug: string;
-  createdAt: string;
+type Post = {
+  id: number,
+  tags: string[],
+  author: string,
+  title: string,
+  content: string,
+  slug: string,
+  created_at: string,
+  update_at: string,
+  locale: string,
+  og_description: string,
+  image: string
 };
 
-async function fetchBlogPost(id: string): Promise<BlogPost | null> {
-  try {
-    const res = await fetch(`http://localhost:3001/api/posts/${id}`, {
-      cache: "force-cache",
-    });
-    if (!res.ok) {
-      return null;
-    }
-    return res.json();
-  } catch (error) {
-    console.error("Error fetching blog post:", error);
-    return null;
-  }
+export async function generateStaticParams() {
+  const staticPaths = [
+    { locale: 'fa', id: '1' },
+    { locale: 'en', id: '1' },
+    { locale: 'it', id: '1' }
+  ];
+  return staticPaths;
 }
 
-export default async function BlogPostPage({
-  params,
-}: {
-  params: { id: string };
-}) {
-  const blog = await fetchBlogPost(params.id);
 
-  if (!blog) {
-    notFound();
-  }
+export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts/${params.id}`);
+  const post = await res.json();
+
+  const baseUrl: string = process.env.NEXT_PUBLIC_BASE_URL || "";
+
+  return {
+    title: post.title,
+    description: post.og_description,
+    authors: [{ name: "Seyed Hossein Hosseini" }],
+    keywords: [...post.tags, post.title],
+    openGraph: {
+      title: post.title,
+      description: post.og_description,
+      type: "article",
+      url: `${baseUrl}/${post.locale}/blog/${post.id}`,
+      images: post.image ? [{ url: post.image, alt: post.title }] : [],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.og_description,
+      images: [post.image],
+    },
+    metadataBase: new URL(baseUrl),
+    alternates: {
+      canonical: `${baseUrl}/${post.locale}/blog/${post.slug}`,
+    },
+  };
+}
+
+
+export default async function PostPage({ params }: { params: { id: string } }) {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts/${params.id}`, {
+    cache: 'no-store',
+  });
+
+  if (!res.ok) notFound();
+
+  const post: Post = await res.json();
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-4xl font-bold mb-4">{blog.title}</h1>
-      <p>{blog.content}</p>
-    </div>
+    <article
+      className="min-h-screen bg-gradient-to-b from-gray-900 to-black"
+      itemScope
+      itemType="http://schema.org/Article"
+    >
+      <header className="relative w-full h-[60vh] overflow-hidden">
+        {post.image ? (
+          <Image
+            src={post.image}
+            alt={`Cover image for ${post.title}`}
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
+          />
+        ) : (
+          <div className="w-full h-full bg-gradient-to-r from-purple-800 to-indigo-800" />
+        )}
+        <div className="absolute inset-0 bg-black bg-opacity-50 flex items-end">
+          <div className="container mx-auto px-4 py-16">
+            <h1
+              className="text-4xl md:text-6xl font-bold text-white mb-4 max-w-4xl"
+              itemProp="headline"
+            >
+              {post.title}
+            </h1>
+            <div className="flex items-center text-gray-300 space-x-4">
+              <span itemProp="author">{post.author}</span>
+              <span>•</span>
+              <time dateTime={post.created_at} itemProp="datePublished">
+                {new Date(post.created_at).toLocaleDateString()}
+              </time>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section className="container mx-auto px-4 py-12" itemProp="articleBody">
+        <div className="max-w-4xl mx-auto">
+          {post.tags?.length > 0 && (
+            <ul className="flex flex-wrap gap-2 mb-8">
+              {post.tags.map((tag) => (
+                <li
+                  key={tag}
+                  className="px-3 py-1 bg-gray-800 text-gray-300 rounded-full text-sm"
+                >
+                  {tag}
+                </li>
+              ))}
+            </ul>
+          )}
+
+          <div
+            className="prose prose-invert prose-lg max-w-none"
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
+
+          <footer className="mt-12 pt-8 border-t border-gray-800">
+            <div className="flex items-center justify-between text-gray-400 text-sm">
+              <div>
+                Last updated:{" "}
+                <time dateTime={post.update_at} itemProp="dateModified">
+                  {new Date(post.update_at).toLocaleDateString()}
+                </time>
+              </div>
+              <ShareModal
+                url={`${process.env.NEXT_PUBLIC_BASE_URL}/${post.locale}/blog/${post.id}`}
+                title={post.title}
+              />
+            </div>
+          </footer>
+        </div>
+      </section>
+    </article>
   );
 }
