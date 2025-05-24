@@ -22,7 +22,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "framer-motion": "^11.5.4",
-    "next": "14.1.4",
+    "next": "^14.2.29",
     "next-intl": "^3.9.5",
     "next-sitemap": "^4.2.3",
     "react": "^18",
