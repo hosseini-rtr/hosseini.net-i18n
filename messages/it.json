@@ -11,8 +11,12 @@
   },
   "AboutMe": {
     "jobTitle": "Sviluppatore di software",
+    "MyName": "Seyed Hossein Hosseini",
     "introduction": "Ciao <br /> Sono <span class='text-secondary'>Seyed Hossein Hosseini</span>",
     "des_about_me": "uno sviluppatore di software appassionato con oltre cinque anni di esperienza, alimentato dalla passione per la creazione di tecnologie di grande impatto."
+  },
+  "Blog": {
+    "title": "Blog"
   },
   "Nav": {
     "home": "casa",
@@ -38,7 +42,7 @@
   "services": {
     "fullstack": "Sviluppo Full-Stack e Applicazioni Mobile",
     "FullstackDec": "Offro sviluppo completo per applicazioni web e mobile. Dal back-end con logica in Python e Django/Flask a interfacce front-end reattive utilizzando React.js, Angular o Next.js. Inoltre, sviluppo di app mobile con React Native per garantire un'esperienza fluida su entrambe le piattaforme.",
-    "AIDec": "Integrazione di modelli di intelligenza artificiale nelle tue applicazioni per migliorare l'esperienza degli utenti o automatizzare i processi. \nCiò include l’elaborazione del linguaggio naturale, la generazione di contenuti o strumenti personalizzati basati sull’intelligenza artificiale.",
+    "AIDec": "Integrazione di modelli di intelligenza artificiale nelle tue applicazioni per migliorare l'esperienza degli utenti o automatizzare i processi. \nCiò include l'elaborazione del linguaggio naturale, la generazione di contenuti o strumenti personalizzati basati sull'intelligenza artificiale.",
     "mentoring": "Mentoring per tutti",
     "mentoringDec": "Offre tutoraggio personalizzato per aspiranti sviluppatori o team che desiderano migliorare le proprie competenze nello sviluppo full-stack, nell'integrazione dell'intelligenza artificiale o nel DevOps. \nCon oltre 5 anni di esperienza nel mondo reale, posso aiutarti a guidarti attraverso le migliori pratiche di codifica, la gestione dei progetti (Agile/Scrum) e flussi di lavoro di sviluppo software efficaci.",
     "ai": "Soluzioni basate sull'intelligenza artificiale",
@@ -51,9 +55,8 @@
     "FirstName": "Nome di battesimo",
     "LastName": "Cognome",
     "SelectService": "Seleziona un servizio",
-    "Send message": "Invia messaggio",
-    "TextAreaPlaceholder": "Raccontami qualcosa della tua attività, del dominio del tuo sito web o del repository e di cosa vorresti ottenere. \nPiù dettagli fornisci, meglio posso aiutarti!",
     "Send": "Invia messaggio",
+    "TextAreaPlaceholder": "Raccontami qualcosa della tua attività, del dominio del tuo sito web o del repository e di cosa vorresti ottenere. \nPiù dettagli fornisci, meglio posso aiutarti!",
     "Description": "Mi piacerebbe aiutarti a dare vita alle tue idee! \nSe hai bisogno di soluzioni software ad alte prestazioni o di supporto per il tuo progetto open source, non esitare a inviare una richiesta. \nLavoriamo insieme per creare qualcosa di straordinario.",
     "thank-msg": "✅ Grazie!",
     "reach-you-msg": "Ti ricontatterò presto."
@@ -99,37 +102,33 @@
     "tabs": {
       "aboutme": "Su di me",
       "experience": "Esperienza",
-      "education": "Educazioni",
+      "education": "Educazione",
       "skills": "Competenze"
     },
+    "view-certificate": "Visualizza certificato",
     "certificates": {
-      "description": "Descrizione dei certificati",
-      "title": "Certificati"
-    },
-    "view-certificate": "Visualizza il certificato"
+      "title": "Certificati",
+      "description": "Descrizione dei certificati"
+    }
   },
   "SEO": {
-    "breadcrumbHome": "Home",
+    "title": "Sito web e portfolio di Seyed Hossein Hosseini",
+    "breadcrumbHome": "Casa",
     "jobTitle": "Sviluppatore Software - Sviluppatore Full Stack",
-    "ogTitle": "Seyed Hossein Hosseini | Sviluppatore Software",
-    "ogDescription": "Scopri il Website di Seyed Hossein Hosseini, uno sviluppatore software e full-stack specializzato nella creazione di applicazioni web e mobili ad alte prestazioni.",
-    "siteName": "Website di Hossein Hosseini",
-    "twitterTitle": "Seyed Hossein Hosseini | Sviluppatore Full Stack",
-    "twitterDescription": "Visita il mio Website e scopri i miei progetti, dove costruisco applicazioni web e mobili con tecnologie moderne.",
-    "title": "Seyed Hossein Hosseini | Sviluppatore Full Stack e Ingegnere del Software",
-    "description": "Scopri il Website di Seyed Hossein Hosseini, uno sviluppatore Full Stack specializzato nello sviluppo di app web e mobile. Soluzioni all'avanguardia per aziende e startup.",
+    "description": "Il sito web di Seyed Hossein Hosseini mostra competenze nello sviluppo full-stack, offrendo soluzioni innovative per aziende e startup nello sviluppo di applicazioni web e mobile.",
+    "siteName": "Sito web di Hossein Hosseini",
     "openGraph": {
-      "title": "Seyed Hossein Hosseini | Sviluppatore Full Stack e Ingegnere del Software",
-      "description": "Scopri le soluzioni innovative di sviluppo software di Seyed Hossein Hosseini, uno sviluppatore Full Stack con esperienza sia nel frontend che nel backend.",
+      "description": "Esplora il sito web di Seyed Hossein Hosseini, uno sviluppatore full-stack specializzato in soluzioni innovative per applicazioni web e mobile.",
+      "title": "Seyed Hossein Hosseini | Sviluppatore Full Stack",
       "images": "/social-image.png",
       "url": "https://hosseinhosseini.net",
       "type": "website",
-      "site_name": "Seyed Hossein Hosseini"
+      "site_name": "Sito web di Hossein Hosseini"
     },
     "twitter": {
+      "description": "Visita il mio sito web per vedere i miei progetti e come utilizzo le tecnologie moderne per costruire applicazioni web e mobile.",
       "card": "summary_large_image",
-      "title": "Seyed Hossein Hosseini | Sviluppatore Full Stack e Ingegnere del Software",
-      "description": "Il Website di Seyed Hossein Hosseini, che mostra competenze nello sviluppo full stack, nelle app mobili e nelle soluzioni basate su AI.",
+      "title": "Seyed Hossein Hosseini | Sviluppatore Full Stack",
       "image": "/social-image.png"
     },
     "themeColor": "#111111",
@@ -139,12 +138,8 @@
       "appleTouchIcon": "/icon-256.png",
       "icon": "/favicon.svg"
     },
-    "manifest": "/manifest.json"
-  },
-  "Blog": {
-    "title": "Hello world!"
-  },
-  "worksFor": "Gruppo finanziario Farabi",
-  "jobTitle": "Sviluppatore FullStack",
-  "author": "Seyed Hossein Hosseini"
+    "manifest": "/manifest.json",
+    "worksFor": "Farabi Financial Group",
+    "author": "Seyed Hossein Hosseini"
+  }
 }
