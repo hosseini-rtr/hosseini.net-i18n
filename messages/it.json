@@ -20,11 +20,13 @@
   },
   "Nav": {
     "home": "casa",
-    "aboutme": "su di me",
+    "aboutMe": "su di me",
     "services": "servizi",
     "projects": "progetti",
     "contact": "contatto",
-    "blog": "Blog"
+    "blog": "Blog",
+    "links": "Link",
+    "resume": "riprendere"
   },
   "LocaleSwitcher": {
     "label": "Cambia lingua",
@@ -66,7 +68,9 @@
     "Projects": "Progetti",
     "Contact": "Contatto",
     "Resume": "Riprendere",
-    "Latest Blog Posts": "Ultimi post sul blog"
+    "Latest Blog Posts": "Ultimi post sul blog",
+    "View All Posts": "Visualizza tutti i post",
+    "Our Groups": "I nostri gruppi"
   },
   "Resume": {
     "AboutMe": "Su di me",
@@ -93,14 +97,16 @@
       "title": "Titolo di studio",
       "description": "Descrizione dell'istruzione",
       "duration1": "Dal 2020 al 2026",
-      "degree1": "Laurea triennale in informatica"
+      "degree1": "Laurea triennale in informatica",
+      "degree2": "Ricercatore e osservatore scientifico",
+      "duration2": "From Mar 2023 To Jul 2023"
     },
     "skills": {
       "title": "Le mie abilità",
       "description": "Descrizione delle competenze"
     },
     "tabs": {
-      "aboutme": "Su di me",
+      "aboutMe": "Su di me",
       "experience": "Esperienza",
       "education": "Educazione",
       "skills": "Competenze"
@@ -121,7 +127,7 @@
       "description": "Esplora il sito web di Seyed Hossein Hosseini, uno sviluppatore full-stack specializzato in soluzioni innovative per applicazioni web e mobile.",
       "title": "Seyed Hossein Hosseini | Sviluppatore Full Stack",
       "images": "/social-image.png",
-      "url": "https://hosseinhosseini.net",
+      "url": "https://hosseini-rtr.ir",
       "type": "website",
       "site_name": "Sito web di Hossein Hosseini"
     },
@@ -141,5 +147,19 @@
     "manifest": "/manifest.json",
     "worksFor": "Farabi Financial Group",
     "author": "Seyed Hossein Hosseini"
+  },
+  "BusinessGroups": {
+    "group1": {
+      "description": "La società grafica fornisce vari servizi alle organizzazioni per identificare le minacce prima che si verifichi un attacco e gestisce gli incidenti dopo che si verificano, nonché per prevenire la diffusione della contaminazione e del furto di dati. \nQuesti servizi sono forniti specificamente per i clienti grafici e il team di gestione degli incidenti sarà nella posizione del cliente a Teheran tra meno di 1 ora. \nPer altre organizzazioni che non utilizzano prodotti grafici, questa volta sarà tra 2 e 4 ore dopo il tempo di annuncio.",
+      "title": "Soluzioni aziendali"
+    },
+    "group3": {
+      "title": "Consulenza tecnologica",
+      "description": "Il nostro team si impegna a creare sistemi robotici innovativi che migliorano la produttività e semplificano le operazioni. \nIntegrando le tecnologie avanzate, forniamo soluzioni non solo efficaci ma anche trasformative.  \nAffrontiamo le sfide più difficili in robotica e mechatronics, fornendo ai nostri clienti soluzioni innovative che portano a significativi miglioramenti nelle loro operazioni. \nLa nostra dedizione all'eccellenza garantisce di rimanere in prima linea nel settore."
+    },
+    "group2": {
+      "description": "A Neuralux, stiamo pionieristici nel futuro dell'interazione umana-macchina sfruttando le neuroscienze all'avanguardia per creare un'interfaccia rivoluzionaria del cerebrale. \nLa nostra missione è consentire agli individui di connettersi perfettamente con il mondo digitale usando il potere delle loro menti.",
+      "title": "Innovazione digitale"
+    }
   }
 }

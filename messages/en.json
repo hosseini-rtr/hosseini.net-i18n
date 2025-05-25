@@ -20,11 +20,13 @@
   },
   "Nav": {
     "home": "home",
-    "aboutme": "about me",
+    "aboutMe": "about me",
     "services": "services",
     "projects": "projects",
     "contact": "contact",
-    "blog": "Blog"
+    "blog": "Blog",
+    "links": "Links",
+    "resume": "resume"
   },
   "LocaleSwitcher": {
     "label": "Change language",
@@ -69,13 +71,15 @@
     "Contact": "Contact",
     "Projects": "Projects",
     "Resume": "Resume",
-    "Latest Blog Posts": "Latest Blog Posts"
+    "Latest Blog Posts": "Latest Blog Posts",
+    "View All Posts": "View All Posts",
+    "Our Groups": "Our Groups"
   },
   "Resume": {
     "AboutMe": "About Me",
     "about": {
       "title": "About Me",
-      "description": "About Me Description",
+      "description": "Full-stack developer with a focus on Python, AI, and emerging tech like Brain-Computer Interfaces. I build smart, scalable, and user-friendly solutions.",
       "info": {
         "name": "Name",
         "experience": "Experience",
@@ -99,17 +103,19 @@
       "description": "Certificates Description"
     },
     "education": {
-      "title": "Education and certificates",
+      "title": "Academic Education",
       "description": "Education description",
       "degree1": "Computer Science Bachelor ",
-      "duration1": "From 2020 to 2026"
+      "duration1": "From 2020 to 2026",
+      "degree2": "Scientific Researcher and Observer",
+      "duration2": "From Mar 2023 To Jul 2023"
     },
     "skills": {
       "title": "My Skills",
-      "description": "Skills Description"
+      "description": ""
     },
     "tabs": {
-      "aboutme": "About Me",
+      "aboutMe": "About Me",
       "experience": "Experience",
       "education": "Educations",
       "skills": "Skills"
@@ -126,7 +132,7 @@
       "description": "Explore the Website of Seyed Hossein Hosseini, a full-stack developer specializing in innovative web and mobile application solutions.",
       "title": "Seyed Hossein Hosseini | Full Stack Developer",
       "images": "/social-image.png",
-      "url": "https://hosseinhosseini.net",
+      "url": "https://hosseini-rtr.ir",
       "type": "website",
       "site_name": "Hossein Hosseini's Website"
     },
@@ -146,5 +152,23 @@
     "manifest": "/manifest.json",
     "worksFor": "Farabi Financial Group",
     "author": "Seyed Hossein Hosseini"
+  },
+  "BusinessGroups": {
+    "group1": {
+      "title": "Enterprise Solutions",
+      "description": "Graph Company provides various services to organizations to identify threats before an attack occurs and handle incidents after they occur, as well as to prevent the spread of contamination and data theft. These services are provided specifically for Graph customers, and the incident handling team will be at the customer's location in Tehran in less than 1 hour. For other organizations that do not use Graph products, this time will be between 2 and 4 hours after the announcement time."
+    },
+    "group2": {
+      "title": "Digital Innovation",
+      "description": "At Neerus, we are pioneering the future of human-machine interaction by leveraging cutting-edge neuroscience to create a revolutionary Brain-Computer Interface. Our mission is to empower individuals to connect seamlessly with the digital world using the power of their minds."
+    },
+    "group3": {
+      "title": "Tech Consulting",
+      "description": "Our team is committed to creating groundbreaking robotic systems that enhance productivity and streamline operations. By integrating advanced technologies, we deliver solutions that are not only effective but also transformative.  We tackle the toughest challenges in robotics and mechatronics, providing our clients with innovative solutions that lead to significant improvements in their operations. Our dedication to excellence ensures that we stay at the forefront of the industry."
+    }
+  },
+  "Links": {
+    "title": "Links | Seyed Hossein Hosseini",
+    "description": "Connect with Seyed Hossein Hosseini on various social media platforms and professional networks."
   }
 }
