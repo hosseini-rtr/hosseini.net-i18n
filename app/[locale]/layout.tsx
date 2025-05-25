@@ -7,12 +7,10 @@ import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { getLangDir } from "rtl-detect";
 import "../globals.css";
 
-// Fetch translations without using hooks
 export async function generateMetadata({ params: { locale } }: any) {
   const t = await getTranslations({ locale, namespace: "SEO" });
-  const canonicalUrl = `https://hosseinhosseini.net/${locale}`;
+  const canonicalUrl = `https://${process.env.NEXT_PUBLIC_BASE_URL}/${locale}`;
 
-  // JSON-LD structured data (BreadcrumbList and Person)
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -21,7 +19,7 @@ export async function generateMetadata({ params: { locale } }: any) {
         "@type": "ListItem",
         position: 1,
         name: t("breadcrumbHome"),
-        item: "https://hosseinhosseini.net/",
+        item: `https://${process.env.NEXT_PUBLIC_BASE_URL}/`,
       },
     ],
   };
@@ -30,10 +28,16 @@ export async function generateMetadata({ params: { locale } }: any) {
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Seyed Hossein Hosseini",
-    url: "https://hosseinhosseini.net/",
+    url: `https://${process.env.NEXT_PUBLIC_BASE_URL}/`,
     sameAs: [
       "https://www.linkedin.com/in/seyed-hossein-hosseini-rtr/",
       "https://instagram.com/hosseinhosseini_net",
+      // Add more social media profiles here:
+      "https://github.com/hosseinirtr",           // Add your GitHub
+      "https://twitter.com/hosseini_rtr",         // Add your Twitter
+      "https://medium.com/@hosseini_rtr",          // If you blog on Medium
+      "https://stackoverflow.com/users/hosseini_rtr",   // If you're active on Stack Overflow
+      "https://dev.to/hosseini_rtr",                  // If you post on Dev.to
     ],
     jobTitle: t("jobTitle"),
     worksFor: {
@@ -47,21 +51,31 @@ export async function generateMetadata({ params: { locale } }: any) {
   };
 
   const keywords = [
+    "Python Developer",
     "Full Stack Developer",
     "Software Developer",
     "Web Developer",
     "Mobile App Developer",
     "React Developer",
-    "Python Developer",
     "Next.js",
     "Freelance Developer",
     "Hossein Hosseini Portfolio",
     "AI Solutions",
     "Business Solutions",
-  ];
+    "JavaScript Developer",
+    "TypeScript Expert",
+    "Node.js Developer",
+    "Frontend Development",
+    "Backend Development",
+    "API Development",
+    "Database Design",
+    "Cloud Solutions",
+    locale === 'fa' ? 'توسعه دهنده نرم افزار' : '',
+    locale === 'it' ? 'Sviluppatore Software' : ''
+  ].filter(Boolean);
 
   return {
-    metadataBase: new URL("https://hosseinhosseini.net"), // Set metadataBase
+    metadataBase: new URL(`https://${process.env.NEXT_PUBLIC_BASE_URL}`),
     title: t("title"),
     description: t("description"),
     keywords: keywords.join(", "),
@@ -101,7 +115,7 @@ export async function generateMetadata({ params: { locale } }: any) {
       ],
     },
     alternates: {
-      canonical: canonicalUrl, // Include the canonical URL here
+      canonical: canonicalUrl,
     },
   };
 }
