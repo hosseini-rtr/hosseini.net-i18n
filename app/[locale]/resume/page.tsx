@@ -35,6 +35,7 @@ import {
   SiTypescript,
 } from "react-icons/si";
 import { getLangDir } from "rtl-detect";
+import Link from "next/link";
 
 export default function Resume() {
   const t = useTranslations("Resume");
@@ -47,7 +48,7 @@ export default function Resume() {
     info: [
       {
         fieldName: t("about.info.experience"),
-        fieldValue: t("about.info.experience_value"),
+        fieldValue: `${+new Date().getFullYear() - 2019} year`,
       },
       {
         fieldName: "Telegram",
@@ -78,22 +79,17 @@ export default function Resume() {
       {
         company: "Farabi Financial Group.",
         position: "FullStack Developer",
-        duration: "Summer 1998",
+        duration: "Dec 2023 - Sep 2024 · 10 mos",
       },
       {
         company: "Sadad Informatics co.",
         position: "FrontEnd developer",
-        duration: "Summer 1998",
+        duration: "Apr 2021 - Jul 2023 · 2 yrs 4 mos",
       },
       {
         company: "Makeen Inc.",
         position: "FullStack Developer",
-        duration: "Summer 1998",
-      },
-      {
-        company: "Mehrsana Travel",
-        position: "Intern FullStack Developer",
-        duration: "Summer 1998",
+        duration: "Jun 2020 - Jan 2021 · 8 mos",
       },
     ],
   };
@@ -107,6 +103,11 @@ export default function Resume() {
         institution: "IAU - Islamic Azad University",
         degree: t("education.degree1"),
         duration: t("education.duration1"),
+      },
+      {
+        institution: "Amirkabir University of Technology",
+        degree: t("education.degree2"),
+        duration: t("education.duration2"),
       },
     ],
   };
@@ -227,9 +228,9 @@ export default function Resume() {
                 <h3 className="text-4xl text-start font-bold">
                   {experiences.title}
                 </h3>
-                <p className="max-w-xl text-start text-white/60 mx-auto md:mx-0">
+                {/* <p className="max-w-xl text-start text-white/60 mx-auto md:mx-0">
                   {experiences.description}
-                </p>
+                </p> */}
                 <ScrollArea className="h-96">
                   <ul
                     dir={direction}
@@ -266,9 +267,9 @@ export default function Resume() {
                 <h3 className="text-4xl  text-start font-bold">
                   {educations.title}
                 </h3>
-                <p className="max-w-xl text-start text-white/60 mx-auto md:mx-0">
+                {/* <p className="max-w-xl text-start text-white/60 mx-auto md:mx-0">
                   {educations.description}
-                </p>
+                </p> */}
                 <ScrollArea className="h-96">
                   <ul
                     dir={direction}
@@ -306,13 +307,13 @@ export default function Resume() {
                 <h3 className="text-4xl text-start font-bold">
                   {certificates.title}
                 </h3>
-                <p className="max-w-xl text-start text-white/60 mx-auto md:mx-0">
+                {/* <p className="max-w-xl text-start text-white/60 mx-auto md:mx-0">
                   {certificates.description}
-                </p>
+                </p> */}
                 <ScrollArea className="h-[600px]">
                   <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
                     {certificates.items.map((certificate, index) => (
-                      <div
+                      <Link href={certificate.link || '#'}
                         key={index}
                         className="bg-gray-900 p-6 rounded-xl flex flex-col gap-4 hover:bg-gray-800 transition-colors"
                       >
@@ -326,18 +327,8 @@ export default function Resume() {
                           <p className="text-white/60 text-sm line-clamp-2">
                             {certificate.institution}
                           </p>
-                          {certificate.link && (
-                            <a
-                              href={certificate.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-sm text-accent hover:underline mt-2 inline-block"
-                            >
-                              {t("view-certificate")}
-                            </a>
-                          )}
                         </div>
-                      </div>
+                      </Link>
                     ))}
                   </div>
                 </ScrollArea>
@@ -354,9 +345,9 @@ export default function Resume() {
                   <h3 className="text-4xl text-start font-bold">
                     {skills.title}
                   </h3>
-                  <p className="max-w-xl text-start text-white/60 mx-auto md:mx-0">
+                  {/* <p className="max-w-xl text-start text-white/60 mx-auto md:mx-0">
                     {skills.description}
-                  </p>
+                  </p> */}
                 </div>
                 <ul
                   dir={direction}
