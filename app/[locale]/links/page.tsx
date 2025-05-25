@@ -1,7 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import Image from "next/image";
-import { useSocialLinks } from "@/lib/social-config";
+import { socialLinks } from "@/lib/social-config";
 
 export async function generateMetadata({ params: { locale } }: any) {
   const t = await getTranslations({ locale, namespace: "Links" });
@@ -63,8 +63,18 @@ const NewsItem = ({ href, title, date, color = "bg-gray-100 hover:bg-gray-200" }
   </Link>
 );
 
+const socialColorMap = {
+  LinkedIn: "bg-blue-50 hover:bg-blue-100",
+  Instagram: "bg-pink-50 hover:bg-pink-100",
+  "Dev.to": "bg-gray-50 hover:bg-gray-100",
+  GitHub: "bg-gray-50 hover:bg-gray-100",
+  YouTube: "bg-red-50 hover:bg-red-100",
+  Kaggle: "bg-blue-50 hover:bg-blue-100",
+  Devpost: "bg-cyan-50 hover:bg-cyan-100"
+};
+
 export default async function LinksPage() {
-  const socialLinks = useSocialLinks('links');
+  const visibleSocialLinks = socialLinks.filter(link => link.showInLinks);
 
   return (
     <main className="min-h-screen py-20 px-4">
@@ -82,25 +92,30 @@ export default async function LinksPage() {
           <p className="text-gray-600 mb-8">Full Stack Developer & AI Enthusiast</p>
         </div>
 
+
+
         <div className="flex flex-col gap-4 w-full items-center mt-8">
           <h2 className="text-xl font-semibold mb-2">Latest Updates</h2>
           {topNews.map((news, index) => (
             <NewsItem key={index} {...news} />
           ))}
         </div>
+
         <div className="flex flex-col gap-4 w-full items-center">
-          <h2 className="text-xl font-semibold mb-2">Connect With Me</h2>
-          {socialLinks.map((link, index) => (
-            <LinkItem
-              key={index}
-              href={link.link}
-              icon={<link.icon />}
-              label={link.name}
-            />
-          ))}
+          <h2 className="text-xl font-semibold mb-2">Follow Me</h2>
+          {visibleSocialLinks.map((link, index) => {
+            const IconComponent = link.icon;
+            return (
+              <LinkItem
+                key={index}
+                href={link.link}
+                icon={<IconComponent style={{ color: link.color }} />}
+                label={link.name}
+                color={socialColorMap[link.name as keyof typeof socialColorMap]}
+              />
+            );
+          })}
         </div>
-
-
       </div>
     </main>
   );

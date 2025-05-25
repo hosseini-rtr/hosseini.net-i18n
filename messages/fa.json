@@ -2,6 +2,9 @@
   "HomePage": {
     "title": "Hello world!"
   },
+  "Blog": {
+    "title": "Hello world!"
+  },
   "Index": {
     "title": "title"
   },
@@ -167,5 +170,9 @@
       "title": "مشاوره فنی",
       "description": "تیم ما متعهد به ایجاد سیستم های روباتیک پیشگامانه است که باعث افزایش بهره وری و عملیات ساده می شود. \nبا ادغام فن آوری های پیشرفته ، ما راه حل هایی را ارائه می دهیم که نه تنها مؤثر هستند بلکه تحول پذیر هستند.  \nما با سخت ترین چالش ها در روباتیک و مکاترونیک مقابله می کنیم و راه حل های نوآورانه ای را در اختیار مشتریان خود قرار می دهیم که منجر به پیشرفت های چشمگیر در عملکرد آنها می شود. \nفداکاری ما به تعالی تضمین می کند که ما در خط مقدم صنعت بمانیم."
     }
+  },
+  "Links": {
+    "title": "Links | Seyed Hossein Hosseini",
+    "description": "Connect with Seyed Hossein Hosseini on various social media platforms and professional networks."
   }
 }

@@ -1,5 +1,5 @@
 module.exports = {
-  siteUrl: `https://${process.env.NEXT_PUBLIC_BASE_URL}/`,
+  siteUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/`,
   generateRobotsTxt: true,
   sitemapSize: 7000,
   changefreq: "weekly",
@@ -7,15 +7,15 @@ module.exports = {
   exclude: ["/404"],
   alternateRefs: [
     {
-      href: `https://${process.env.NEXT_PUBLIC_BASE_URL}/en`,
+      href: `${process.env.NEXT_PUBLIC_BASE_URL}/en`,
       hreflang: 'en'
     },
     {
-      href: `https://${process.env.NEXT_PUBLIC_BASE_URL}/fa`,
+      href: `${process.env.NEXT_PUBLIC_BASE_URL}/fa`,
       hreflang: 'fa'
     },
     {
-      href: `https://${process.env.NEXT_PUBLIC_BASE_URL}/it`,
+      href: `${process.env.NEXT_PUBLIC_BASE_URL}/it`,
       hreflang: 'it'
     }
   ],
@@ -28,7 +28,7 @@ module.exports = {
       }
     ],
     additionalSitemaps: [
-      `https://${process.env.NEXT_PUBLIC_BASE_URL}/sitemap.xml`
+      `${process.env.NEXT_PUBLIC_BASE_URL}/sitemap.xml`
     ]
   }
 };

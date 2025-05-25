@@ -9,7 +9,7 @@ import "../globals.css";
 
 export async function generateMetadata({ params: { locale } }: any) {
   const t = await getTranslations({ locale, namespace: "SEO" });
-  const canonicalUrl = `https://${process.env.NEXT_PUBLIC_BASE_URL}/${locale}`;
+  const canonicalUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}`;
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -19,7 +19,7 @@ export async function generateMetadata({ params: { locale } }: any) {
         "@type": "ListItem",
         position: 1,
         name: t("breadcrumbHome"),
-        item: `https://${process.env.NEXT_PUBLIC_BASE_URL}/`,
+        item: `${process.env.NEXT_PUBLIC_BASE_URL}/`,
       },
     ],
   };
@@ -28,7 +28,7 @@ export async function generateMetadata({ params: { locale } }: any) {
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Seyed Hossein Hosseini",
-    url: `https://${process.env.NEXT_PUBLIC_BASE_URL}/`,
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}/`,
     sameAs: [
       "https://www.linkedin.com/in/seyed-hossein-hosseini-rtr/",
       "https://instagram.com/hosseinhosseini_net",
@@ -75,7 +75,7 @@ export async function generateMetadata({ params: { locale } }: any) {
   ].filter(Boolean);
 
   return {
-    metadataBase: new URL(`https://${process.env.NEXT_PUBLIC_BASE_URL}`),
+    metadataBase: new URL(`${process.env.NEXT_PUBLIC_BASE_URL}`),
     title: t("title"),
     description: t("description"),
     keywords: keywords.join(", "),

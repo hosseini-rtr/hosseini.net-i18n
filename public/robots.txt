@@ -1,9 +1,10 @@
 # *
 User-agent: *
 Allow: /
+Disallow: /404
 
 # Host
-Host: https://hosseini-rtr.ir
+Host: https://hosseini-rtr.ir/
 
 # Sitemaps
 Sitemap: https://hosseini-rtr.ir/sitemap.xml

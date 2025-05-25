@@ -6,24 +6,41 @@ import { Post } from "@/types/TPost";
 import { PostService } from "@/app/lib/services/post-service";
 
 export async function generateStaticParams() {
-  const posts = await PostService.getAllPosts();
-  const locales = ['en', 'fa', 'it'];
-  const paths = [];
-  
-  for (const post of posts) {
-    for (const locale of locales) {
-      paths.push({
-        locale,
-        id: post.id.toString()
-      });
+  try {
+    const posts = await PostService.getAllPosts();
+    const locales = ['en', 'fa', 'it'];
+    const paths = [];
+
+    for (const post of posts) {
+      // Generate paths for all locales since we want the page to be available in all languages
+      for (const locale of locales) {
+        paths.push({
+          locale,
+          id: post.id.toString()
+        });
+      }
     }
+
+    return paths;
+  } catch (error) {
+    console.error('Error generating static params:', error);
+    // Return at least the default English paths to prevent build failure
+    return [{
+      locale: 'en',
+      id: '1'
+    }];
   }
-  
-  return paths;
 }
 
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
   const post = await PostService.getPostById(params.id);
+
+  if (!post) {
+    return {
+      title: 'Post Not Found',
+      description: 'The requested post could not be found'
+    };
+  }
   const baseUrl: string = process.env.NEXT_PUBLIC_BASE_URL || "";
 
   return {
@@ -53,6 +70,10 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
 
 export default async function PostPage({ params }: { params: { id: string } }) {
   const post = await PostService.getPostById(params.id);
+
+  if (!post) {
+    notFound(); // This will show your 404 page
+  }
 
   return (
     <article

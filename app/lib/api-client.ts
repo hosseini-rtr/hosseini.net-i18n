@@ -10,27 +10,19 @@ class ApiClient {
   private constructor() {
     this.client = axios.create({
       baseURL: process.env.NEXT_PUBLIC_API_URL,
-      timeout: 10000,
+      timeout: 30000, // Increased to 30 seconds
       headers: {
         'Content-Type': 'application/json',
       },
     });
 
-    // Add request interceptor
-    this.client.interceptors.request.use(
-      (config) => {
-        // You can add auth tokens here if needed
-        return config;
-      },
-      (error) => {
-        return Promise.reject(error);
-      }
-    );
-
-    // Add response interceptor
+    // Add retry logic
     this.client.interceptors.response.use(
       (response) => response.data,
-      (error: AxiosError) => {
+      async (error: AxiosError) => {
+        const config = error.config;
+        
+
         const apiError: ApiError = {
           message: error.message || 'An error occurred',
           status: error.response?.status || 500,
