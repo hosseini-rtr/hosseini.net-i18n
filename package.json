@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build:dev": "env-cmd -f .env.development next build",
+    "build:production": "env-cmd -f .env.production next build",
     "start": "next start",
     "lint": "next lint",
     "postbuild": "next-sitemap"
@@ -21,7 +22,7 @@
     "axios": "^1.7.7",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
-    "framer-motion": "^11.5.4",
+    "framer-motion": "^11.18.2",
     "next": "^14.2.29",
     "next-intl": "^3.9.5",
     "next-sitemap": "^4.2.3",
@@ -40,6 +41,7 @@
     "@types/react-dom": "^18",
     "@types/rtl-detect": "^1.0.3",
     "autoprefixer": "^10.4.20",
+    "env-cmd": "^10.1.0",
     "eslint": "^8",
     "eslint-config-next": "14.1.4",
     "postcss": "^8.4.47",
