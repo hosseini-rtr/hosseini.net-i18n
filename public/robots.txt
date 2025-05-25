@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://hosseinhosseini.net
+Host: https://hosseini-rtr.ir
 
 # Sitemaps
-Sitemap: https://hosseinhosseini.net/sitemap.xml
+Sitemap: https://hosseini-rtr.ir/sitemap.xml
