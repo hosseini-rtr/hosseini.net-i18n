@@ -24,7 +24,7 @@ export default function AboutMe() {
             </p>
             <div className="flex flex-col md:flex-row items-center gap-8">
               <div className="mb-5 md:mb-0 items-center flex justify-center">
-                <Socials
+                <Socials location="header"
                   containerStyles={"flex gap-6"}
                   iconStyles={
                     "w-9 h-9 border border-secondary rounded-full flex justify-center items-center text-secondary text-base hover:bg-secondary hover:text-background hover:transition-all duration-500"

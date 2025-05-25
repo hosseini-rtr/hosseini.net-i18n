@@ -2,35 +2,28 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import ShareModal from "@/components/ShareModal";
-
-type Post = {
-  id: number,
-  tags: string[],
-  author: string,
-  title: string,
-  content: string,
-  slug: string,
-  created_at: string,
-  update_at: string,
-  locale: string,
-  og_description: string,
-  image: string
-};
+import { Post } from "@/types/TPost";
+import { PostService } from "@/app/lib/services/post-service";
 
 export async function generateStaticParams() {
-  const staticPaths = [
-    { locale: 'fa', id: '1' },
-    { locale: 'en', id: '1' },
-    { locale: 'it', id: '1' }
-  ];
-  return staticPaths;
+  const posts = await PostService.getAllPosts();
+  const locales = ['en', 'fa', 'it'];
+  const paths = [];
+  
+  for (const post of posts) {
+    for (const locale of locales) {
+      paths.push({
+        locale,
+        id: post.id.toString()
+      });
+    }
+  }
+  
+  return paths;
 }
 
-
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts/${params.id}`);
-  const post = await res.json();
-
+  const post = await PostService.getPostById(params.id);
   const baseUrl: string = process.env.NEXT_PUBLIC_BASE_URL || "";
 
   return {
@@ -58,15 +51,8 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
   };
 }
 
-
 export default async function PostPage({ params }: { params: { id: string } }) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts/${params.id}`, {
-    cache: 'no-store',
-  });
-
-  if (!res.ok) notFound();
-
-  const post: Post = await res.json();
+  const post = await PostService.getPostById(params.id);
 
   return (
     <article
