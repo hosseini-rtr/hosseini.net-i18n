@@ -6,7 +6,7 @@ export default function Stats() {
   const t = useTranslations("stats");
   const status = [
     {
-      num: +new Date().getFullYear() - 2019,
+      num: new Date().getFullYear() - 2019,
       text: t("experience"),
     },
     {

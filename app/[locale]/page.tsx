@@ -18,9 +18,9 @@ export default function RootPage({
 
   return (
     <>
-      <main className="flex flex-col">
-        <motion.div 
-          className="min-h-screen snap-center" 
+      <main className="flex flex-col m-4">
+        <motion.div
+          className="min-h-screen snap-center"
           id="#about-me"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -30,14 +30,14 @@ export default function RootPage({
           <AboutMe />
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="min-h-screen snap-center"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <motion.h2 
+          <motion.h2
             className="text-4xl text-center my-8"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -48,14 +48,14 @@ export default function RootPage({
           <BusinessGroups />
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="min-h-screen snap-center"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <motion.h2 
+          <motion.h2
             className="text-4xl text-center my-8"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -66,14 +66,14 @@ export default function RootPage({
           <Resume />
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="min-h-screen snap-center mt-32"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <motion.h2 
+          <motion.h2
             className="text-4xl text-center"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -84,15 +84,15 @@ export default function RootPage({
           <Services />
         </motion.div>
 
-        <motion.div 
-          className="min-h-screen snap-center" 
+        <motion.div
+          className="min-h-screen snap-center"
           id="#projects"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <motion.h2 
+          <motion.h2
             className="text-4xl text-center my-8"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -103,14 +103,14 @@ export default function RootPage({
           <Projects />
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="min-h-screen snap-center"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <motion.h2 
+          <motion.h2
             className="text-4xl text-center my-8"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -121,15 +121,15 @@ export default function RootPage({
           <LatestPosts />
         </motion.div>
 
-        <motion.div 
-          className="min-h-screen snap-center" 
+        <motion.div
+          className="min-h-screen snap-center"
           id="#contact"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <motion.h2 
+          <motion.h2
             className="text-4xl text-center my-8"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}

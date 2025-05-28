@@ -3,10 +3,10 @@ import "../globals.css";
 
 export const metadata: Metadata = {
   title: "Seyed Hossein Hosseini | Full Stack Developer & Software Engineer",
-  description: "Full Stack Developer with over 5 years of experience, passionate about creating impactful technology solutions using Django, React.js, Flask, and Node.js.",
+  description: `Full Stack Developer with over ${+new Date().getFullYear() - 2019} years of experience, passionate about creating impactful technology solutions using Django, React.js, Flask, and Node.js.`,
   openGraph: {
     title: "Seyed Hossein Hosseini | Full Stack Developer & Software Engineer",
-    description: "Full Stack Developer with over 5 years of experience, passionate about creating impactful technology solutions.",
+    description: `Full Stack Developer with over ${+new Date().getFullYear() - 2019} years of experience, passionate about creating impactful technology solutions using Django, React.js, Flask, and Node.js.`,
     url: "https://hosseini-rtr.ir",
     siteName: "Seyed Hossein Hosseini",
     images: [
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Seyed Hossein Hosseini | Full Stack Developer & Software Engineer",
-    description: "Full Stack Developer with over 5 years of experience, passionate about creating impactful technology solutions.",
+    description: `Full Stack Developer with over ${+new Date().getFullYear() - 2019} years of experience, passionate about creating impactful technology solutions using Django, React.js, Flask, and Node.js.`,
     images: ["https://hosseini-rtr.ir/social-image.png"],
   },
   alternates: {

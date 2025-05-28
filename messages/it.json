@@ -115,7 +115,8 @@
     "certificates": {
       "title": "Certificati",
       "description": "Descrizione dei certificati"
-    }
+    },
+    "year": "anno"
   },
   "SEO": {
     "title": "Sito web e portfolio di Seyed Hossein Hosseini",

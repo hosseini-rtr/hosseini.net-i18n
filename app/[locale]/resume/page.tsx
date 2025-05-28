@@ -48,7 +48,7 @@ export default function Resume() {
     info: [
       {
         fieldName: t("about.info.experience"),
-        fieldValue: `${+new Date().getFullYear() - 2019} year`,
+        fieldValue: `${+new Date().getFullYear() - 2019} ${t("year")}`,
       },
       {
         fieldName: "Telegram",

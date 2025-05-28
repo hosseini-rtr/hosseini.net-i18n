@@ -22,7 +22,7 @@ export default function MobileNav() {
         <CiMenuFries className="text-[32px] mr-6 text-accent" />
       </SheetTrigger>
       <SheetContent className="flex flex-col">
-        <div>Hossein</div>
+        {/* <div>Hossein</div> Replace With Logo! */}
         <nav className="flex flex-col justify-center items-center gap-8 mt-3">
           {mobileLinks.map((item, index) => (
             <SheetClose asChild key={index}>

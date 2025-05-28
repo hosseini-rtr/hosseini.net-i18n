@@ -14,13 +14,13 @@ export default function BusinessGroups() {
             image: "/assets/groups/hober.png",
         },
         {
-            title: "Neerus",
-            description: t("group2.description"),
+            title: "Datam Dynamics",
+            description: t("group3.description"),
             image: "/assets/groups/hober.png",
         },
         {
-            title: "Datam Dynamics",
-            description: t("group3.description"),
+            title: "Neerus",
+            description: t("group2.description"),
             image: "/assets/groups/hober.png",
         },
     ];

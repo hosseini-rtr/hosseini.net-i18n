@@ -116,7 +116,8 @@
       "description": "شرح گواهی ها",
       "title": "مدارک و گواهینامه ها"
     },
-    "view-certificate": "مشاهده گواهی"
+    "view-certificate": "مشاهده گواهی",
+    "year": "سال"
   },
   "SEO": {
     "breadcrumbHome": "خانه",

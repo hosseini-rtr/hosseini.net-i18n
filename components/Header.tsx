@@ -5,12 +5,12 @@ import Link from "next/link";
 // Component
 import LocaleSwitcherSelect from "./LocaleSwitcher";
 import MobileNav from "./MobileNav";
-import Nav from "./Nav";
+import Nav from "./DesktopNav";
 import { Button } from "./ui/button";
 
 export default function Header() {
   return (
-    <header className="py-8 xl:py-12 ">
+    <header className="py-8 xl:py-12 m-4">
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
         <Link href={"/"}>
