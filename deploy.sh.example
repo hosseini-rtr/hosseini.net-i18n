@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Setting
+USER=your_user
+HOST=your.server.ip
+REMOTE_DIR=/var/www
+
+# Build the project (optional)
+echo "📦 Building project..."
+npm run build && npm run export
+
+# Delete previous files from the server
+echo "🧹 Clearing old files on server..."
+ssh $USER@$HOST "rm -rf $REMOTE_DIR/*"
+
+# Upload new files with rsync
+echo "🚀 Uploading new files..."
+rsync -avz --delete ./out/ $USER@$HOST:$REMOTE_DIR
+
+echo "✅ Deployment complete!"
