@@ -1,6 +1,6 @@
 'use client';
 
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { FaTwitter, FaFacebook, FaLinkedin } from "react-icons/fa";
 import { useState } from "react";
@@ -33,9 +33,9 @@ export default function ShareModal({ url, title }: ShareModalProps) {
         </Button>
       </SheetTrigger>
       <SheetContent className="bg-gray-900 border-gray-800">
+        <SheetTitle className="text-xl font-semibold text-white">Share this article</SheetTitle>
         <div className="space-y-8">
-          <h2 className="text-xl font-semibold text-white">Share this article</h2>
-          
+
           <div className="flex gap-4">
             <a
               href={shareLinks.twitter}
