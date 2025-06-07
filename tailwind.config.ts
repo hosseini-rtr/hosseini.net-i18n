@@ -10,6 +10,41 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        vazirmatn: ["var(--font-vazirmatn)"],
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            "code::before": {
+              content: '""',
+            },
+            "code::after": {
+              content: '""',
+            },
+            code: {
+              color: "red",
+              backgroundColor: "rgba(63, 63, 70, 0.4)",
+              paddingLeft: "0.375rem",
+              paddingRight: "0.375rem",
+              paddingTop: "0.125rem",
+              paddingBottom: "0.125rem",
+              borderRadius: "0.375rem",
+              fontWeight: "400",
+              fontSize: "0.875em",
+              border: "1px solid blue",
+            },
+          },
+        },
+        invert: {
+          css: {
+            code: {
+              color: "#e2e8f0",
+              backgroundColor: "rgba(63, 63, 70, 0.4)",
+            },
+          },
+        },
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
@@ -59,6 +94,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 };
 export default config;

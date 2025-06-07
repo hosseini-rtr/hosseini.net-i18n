@@ -1,20 +1,69 @@
 #!/bin/bash
 
-# Setting
-USER=your_user
-HOST=your.server.ip
-REMOTE_DIR=/var/www
+# Server configuration
+SERVER_USER="user"                # SSH username
+SERVER_HOST="your-server"         # Server IP or domain
+SERVER_PORT="port"                # SSH port
+SERVER_PATH="/var/www/"  # Deployment path on the server
 
-# Build the project (optional)
-echo "📦 Building project..."
-npm run build && npm run export
+# Local output directory for Next.js
+LOCAL_OUT_DIR="out"
 
-# Delete previous files from the server
-echo "🧹 Clearing old files on server..."
-ssh $USER@$HOST "rm -rf $REMOTE_DIR/*"
+# Colors for better output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m' # No color
 
-# Upload new files with rsync
-echo "🚀 Uploading new files..."
-rsync -avz --delete ./out/ $USER@$HOST:$REMOTE_DIR
+# Function to display error and exit
+error_exit() {
+    echo -e "${RED}Error: $1${NC}" >&2
+    exit 1
+}
 
-echo "✅ Deployment complete!"
+# Check if npm is installed
+if ! command -v npm &> /dev/null; then
+    error_exit "npm is not installed. Please install Node.js and npm."
+fi
+
+# Test SSH connection
+echo "Checking SSH connection to the server..."
+ssh -q -p "$SERVER_PORT" "$SERVER_USER@$SERVER_HOST" exit || error_exit "SSH connection failed. Please check SSH settings."
+
+# Build Next.js project
+echo "Running Next.js build..."
+npm run build || error_exit "Project build failed."
+
+# Check if the 'out' directory exists
+if [ ! -d "$LOCAL_OUT_DIR" ]; then
+    error_exit "Directory $LOCAL_OUT_DIR does not exist. Ensure 'next export' has run."
+fi
+
+# Compress output files
+echo "Compressing output files..."
+tar -czf out.tar.gz -C "$LOCAL_OUT_DIR" . || error_exit "File compression failed."
+
+# Transfer compressed file to the server
+echo "Transferring files to the server..."
+scp -P "$SERVER_PORT" out.tar.gz "$SERVER_USER@$SERVER_HOST:/tmp/" || error_exit "File transfer to server failed."
+
+# Extract files on the server and set permissions
+echo "Extracting files and setting permissions on the server..."
+ssh -p "$SERVER_PORT" "$SERVER_USER@$SERVER_HOST" << 'EOF'
+    # Remove previous contents of the destination directory
+    rm -rf /var/www/hossein/portfolio/* || exit 1
+    # Extract compressed file
+    tar -xzf /tmp/out.tar.gz -C /var/www/hossein/portfolio/ || exit 1
+    # Remove temporary compressed file
+    rm /tmp/out.tar.gz || exit 1
+    # Set ownership and permissions
+    chown -R www-data:www-data /var/www/hossein/portfolio || exit 1
+    chmod -R 755 /var/www/hossein/portfolio || exit 1
+EOF
+
+[ $? -eq 0 ] || error_exit "Deployment on server failed."
+
+# Remove local compressed file
+echo "Removing local compressed file..."
+rm out.tar.gz || error_exit "Failed to remove local compressed file."
+
+echo -e "${GREEN}Deployment completed successfully!${NC}"

@@ -33,11 +33,11 @@ export async function generateMetadata({ params: { locale } }: any) {
       "https://www.linkedin.com/in/seyed-hossein-hosseini-rtr/",
       "https://instagram.com/hosseinhosseini_net",
       // Add more social media profiles here:
-      "https://github.com/hosseinirtr",           // Add your GitHub
-      "https://twitter.com/hosseini_rtr",         // Add your Twitter
-      "https://medium.com/@hosseini_rtr",          // If you blog on Medium
-      "https://stackoverflow.com/users/hosseini_rtr",   // If you're active on Stack Overflow
-      "https://dev.to/hosseini_rtr",                  // If you post on Dev.to
+      "https://github.com/hosseinirtr", // Add your GitHub
+      "https://twitter.com/hosseini_rtr", // Add your Twitter
+      "https://medium.com/@hosseini_rtr", // If you blog on Medium
+      "https://stackoverflow.com/users/hosseini_rtr", // If you're active on Stack Overflow
+      "https://dev.to/hosseini_rtr", // If you post on Dev.to
     ],
     jobTitle: t("jobTitle"),
     worksFor: {
@@ -70,8 +70,8 @@ export async function generateMetadata({ params: { locale } }: any) {
     "API Development",
     "Database Design",
     "Cloud Solutions",
-    locale === 'fa' ? 'توسعه دهنده نرم افزار' : '',
-    locale === 'it' ? 'Sviluppatore Software' : ''
+    locale === "fa" ? "توسعه دهنده نرم افزار" : "",
+    locale === "it" ? "Sviluppatore Software" : "",
   ].filter(Boolean);
 
   return {

@@ -1,12 +1,12 @@
 "use client";
+import { vazirmatn } from "@/app/fonts";
+import { PostService } from "@/app/lib/services/post-service";
+import { Post } from "@/types/TPost";
 import { motion } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
-import Link from "next/link";
-import { useState, useEffect } from "react";
-import { Post } from "@/types/TPost";
-import { PostService } from "@/app/lib/services/post-service";
 import Image from "next/image";
-
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function BlogPage() {
   const locale = useLocale();
@@ -14,6 +14,7 @@ export default function BlogPage() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const isFarsi = locale === "fa";
 
   useEffect(() => {
     async function fetchPosts() {
@@ -22,7 +23,7 @@ export default function BlogPage() {
         const data = await PostService.getAllPosts();
         setPosts(data);
       } catch (error: any) {
-        setError(error.message || 'Failed to fetch posts');
+        setError(error.message || "Failed to fetch posts");
       } finally {
         setLoading(false);
       }
@@ -32,16 +33,16 @@ export default function BlogPage() {
   }, []);
 
   if (loading) return <div>Loading...</div>;
-  if (error) return <div className="text-center m-5">
-    <p className="border rounded p-5">
-      Error: {error}
-    </p>
-  </div>;
+  if (error)
+    return (
+      <div className="text-center m-5">
+        <p className="border rounded p-5">Error: {error}</p>
+      </div>
+    );
 
   return (
     <section className="min-h-[80vh] py-12 xl:py-24">
       <div className="container mx-auto">
-
         <motion.div
           initial={{ opacity: 0 }}
           animate={{
@@ -54,7 +55,9 @@ export default function BlogPage() {
             <Link
               href={`/${locale}/blog/${post.id}`}
               key={post.id}
-              className="group flex flex-col bg-white/5 rounded-lg p-6 hover:bg-white/10 transition-all duration-300"
+              className={`group flex flex-col bg-white/5 rounded-lg p-6 hover:bg-white/10 transition-all duration-300 ${
+                isFarsi ? vazirmatn.className : ""
+              }`}
             >
               <div className="flex flex-col gap-4">
                 <div className="relative rounded h-48 w-full mb-4 overflow-hidden">
@@ -85,7 +88,7 @@ export default function BlogPage() {
                         key={idx}
                         className="text-xs bg-white/10 text-white/80 px-2 py-1 rounded"
                       >
-                       {tag}
+                        {tag}
                       </span>
                     ))}
                   </div>

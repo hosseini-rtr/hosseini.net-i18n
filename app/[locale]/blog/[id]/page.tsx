@@ -1,14 +1,14 @@
+import { vazirmatn } from "@/app/fonts";
+import { PostService } from "@/app/lib/services/post-service";
+import ShareModal from "@/components/ShareModal";
+import { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { Metadata } from "next";
-import ShareModal from "@/components/ShareModal";
-import { Post } from "@/types/TPost";
-import { PostService } from "@/app/lib/services/post-service";
 
 export async function generateStaticParams() {
   try {
     const posts = await PostService.getAllPosts();
-    const locales = ['en', 'fa', 'it'];
+    const locales = ["en", "fa", "it"];
     const paths = [];
 
     for (const post of posts) {
@@ -16,29 +16,35 @@ export async function generateStaticParams() {
       for (const locale of locales) {
         paths.push({
           locale,
-          id: post.id.toString()
+          id: post.id.toString(),
         });
       }
     }
 
     return paths;
   } catch (error) {
-    console.error('Error generating static params:', error);
+    console.error("Error generating static params:", error);
     // Return at least the default English paths to prevent build failure
-    return [{
-      locale: 'en',
-      id: '1'
-    }];
+    return [
+      {
+        locale: "en",
+        id: "1",
+      },
+    ];
   }
 }
 
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: { id: string };
+}): Promise<Metadata> {
   const post = await PostService.getPostById(params.id);
 
   if (!post) {
     return {
-      title: 'Post Not Found',
-      description: 'The requested post could not be found'
+      title: "Post Not Found",
+      description: "The requested post could not be found",
     };
   }
   const baseUrl: string = process.env.NEXT_PUBLIC_BASE_URL || "";
@@ -74,6 +80,8 @@ export default async function PostPage({ params }: { params: { id: string } }) {
   if (!post) {
     notFound(); // This will show your 404 page
   }
+
+  const isFarsi = post.locale === "fa";
 
   return (
     <article
@@ -129,7 +137,9 @@ export default async function PostPage({ params }: { params: { id: string } }) {
           )}
 
           <div
-            className="prose prose-invert prose-lg max-w-none"
+            className={`prose prose-invert prose-lg max-w-none headings:mb-6 p:mb-6 li:mb-2 ul:mb-6 ol:mb-6 blockquote:mb-6 pre:mb-6 img:mb-6 hr:mb-6 table:mb-6 code:bg-gray-800 code:px-2 code:py-1 code:rounded code:text-sm pre:bg-gray-800/50 pre:p-4 pre:rounded-lg blockquote:border-l-4 blockquote:border-accent blockquote:pl-6 blockquote:italic blockquote:text-gray-300 strong:text-white/90 em:text-white/90 ${
+              isFarsi ? vazirmatn.className : ""
+            }`}
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
 

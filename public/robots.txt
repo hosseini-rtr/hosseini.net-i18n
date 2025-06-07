@@ -2,6 +2,14 @@
 User-agent: *
 Allow: /
 Disallow: /404
+Disallow: /500
+Disallow: /_error
+Disallow: /api/*
+Disallow: /*.json$
+Disallow: /*_buildManifest.js$
+Disallow: /*_middlewareManifest.js$
+Disallow: /*_ssgManifest.js$
+Disallow: /*.js$
 
 # Host
 Host: https://hosseini-rtr.ir/
