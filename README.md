@@ -1,83 +1,144 @@
-# Next.js App Router + Static Exports(`output: "export"`) + i18n([next-intl](https://github.com/amannn/next-intl))
+# Next.js Internationalized Static Website
 
-This is an example of how to use Next.js App Router with Static Exports and i18n.
-Full static i18n website with Next.js App Router and Static Exports.
+A modern, fully static internationalized website built with Next.js App Router, featuring multiple languages and static exports. This project combines the power of Next.js 14 with internationalization support through `next-intl`.
 
+## ✨ Features
 
+- 🌐 Full internationalization support with `next-intl`
+- 📑 Static site generation with `output: "export"`
+- 🎨 Modern UI with Tailwind CSS and Radix UI components
+- 🔄 Smooth animations with Framer Motion
+- 📱 Responsive design with mobile-first approach
+- 🎯 SEO optimized with automatic sitemap generation
+- 🚀 RTL language support
+- ⚡ Performance optimized with Next.js best practices
 
-Structure:
+## 🛠️ Tech Stack
+
+- **Framework:** Next.js 14
+- **Styling:** Tailwind CSS
+- **UI Components:** Radix UI
+- **Animations:** Framer Motion
+- **Icons:** React Icons
+- **Internationalization:** next-intl
+- **Type Safety:** TypeScript
+
+## 📁 Project Structure
 
 ```text
 app/
- - [locale]
-    - page.tsx
-    - sub/
-      - page.tsx
-messages/
-  - en.json
-  - de.json
-  - ja.json
+ ├── [locale]/           # Locale-specific pages
+ │   ├── page.tsx       # Main page for each locale
+ │   └── sub/           # Subpages
+ │       └── page.tsx
+ ├── components/        # Reusable UI components
+ ├── lib/              # Utility functions and configurations
+ ├── messages/         # Translation files
+ │   ├── en.json
+ │   ├── de.json
+ │   └── ja.json
+ └── public/           # Static assets
 ```
 
-Output: `npm run build`
+## 🚀 Getting Started
 
-```text
-out/
-  - en/
-    - index.html
-    - sub/
-      - index.html
-  - de/
-    - index.html
-    - sub/
-      - index.html
-  - ja/
-    - index.html
-    - sub/
-      - index.html
-  - en.html
-  - de.html
-  - ja.html
-```
-
-As a result, user can access the page with the following URL:
-
-- `https://your-site.example/en/`
-- `https://your-site.example/de/`
-- `https://your-site.example/ja/`
-
-## Troubleshooting
-
-### `Error: Page "/[locale]/page" is missing param "/favicon.ico" in "generateStaticParams()", which is required with "output: export" config.` on `npm run dev`
-
-You need to put `favicon.ico` in `public/` directory.
-
-## Getting Started
-
-First, run the development server:
+1. **Clone the repository**
 
 ```bash
-npm ci 
+git clone <repository-url>
+cd <project-directory>
+```
+
+2. **Install dependencies**
+
+```bash
+npm install
+```
+
+3. **Set up environment variables**
+
+Create `.env.development` and `.env.production` files based on your needs.
+
+4. **Start development server**
+
+```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit [http://localhost:3000](http://localhost:3000) to see your application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🔨 Build and Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Development Build
 
-## Learn More
+```bash
+npm run build:dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Production Build
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run build
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+The static output will be generated in the `out` directory with the following structure:
 
-## Deploy on Vercel
+```text
+out/
+  ├── en/              # English pages
+  │   ├── index.html
+  │   └── sub/
+  │       └── index.html
+  ├── de/              # German pages
+  ├── ja/              # Japanese pages
+  ├── en.html          # Language selection pages
+  ├── de.html
+  └── ja.html
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📝 Available Scripts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- `npm run dev` - Start development server
+- `npm run build:dev` - Create development build
+- `npm run build` - Create production build
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+- `npm run postbuild` - Generate sitemap
+
+## 🌐 Supported Languages
+
+- English (en)
+- German (de)
+- Japanese (ja)
+
+Add more languages by:
+
+1. Creating a new translation file in `messages/`
+2. Adding the locale to the configuration in `i18n.ts`
+
+## 🔍 SEO
+
+The project includes automatic sitemap generation using `next-sitemap`. The configuration can be found in `next-sitemap.config.js`.
+
+## ⚠️ Troubleshooting
+
+### Missing Favicon Error
+
+If you encounter the following error during development:
+
+```
+Error: Page "/[locale]/page" is missing param "/favicon.ico" in "generateStaticParams()", which is required with "output: export" config.
+```
+
+**Solution:** Place a `favicon.ico` file in the `public/` directory.
+
+## 📚 Learn More
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [next-intl Documentation](https://next-intl-docs.vercel.app/)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+- [Radix UI Documentation](https://www.radix-ui.com/docs/primitives/overview/introduction)
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
