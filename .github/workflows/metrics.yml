@@ -2,7 +2,7 @@ name: PageSpeed Report for hosseini-rtr.ir
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 8 * * *" # Runs daily at 08:00 UTC
+   # - cron: "0 8 * * *" # Runs daily at 08:00 UTC
 
 jobs:
   build:
