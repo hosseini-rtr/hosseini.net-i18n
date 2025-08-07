@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { BsArrowDownRight } from "react-icons/bs";
 
-export default function Services({}) {
+export default function Services() {
   const t = useTranslations("services");
 
   const services = [

@@ -12,6 +12,9 @@ A modern, fully static internationalized website built with Next.js App Router, 
 - 🎯 SEO optimized with automatic sitemap generation
 - 🚀 RTL language support
 - ⚡ Performance optimized with Next.js best practices
+- 📝 **Safe blog content rendering with HTML parsing and structured JSON support**
+- 🎨 **Modern typography with Tailwind Typography (prose)**
+- 🌍 **Enhanced internationalization for blog content (English, Farsi, Italian)**
 
 ## 🛠️ Tech Stack
 
@@ -22,6 +25,8 @@ A modern, fully static internationalized website built with Next.js App Router, 
 - **Icons:** React Icons
 - **Internationalization:** next-intl
 - **Type Safety:** TypeScript
+- **Content Parsing:** html-react-parser
+- **Typography:** @tailwindcss/typography
 
 ## 📁 Project Structure
 
@@ -29,10 +34,17 @@ A modern, fully static internationalized website built with Next.js App Router, 
 app/
  ├── [locale]/           # Locale-specific pages
  │   ├── page.tsx       # Main page for each locale
+ │   ├── blog/          # Blog pages
+ │   │   ├── page.tsx   # Blog listing
+ │   │   └── [id]/      # Individual blog posts
+ │   │       └── page.tsx
  │   └── sub/           # Subpages
  │       └── page.tsx
  ├── components/        # Reusable UI components
+ │   ├── BlogContent.tsx    # Safe HTML content renderer
+ │   └── ContentExample.tsx # Example usage
  ├── lib/              # Utility functions and configurations
+ │   └── content-parser.ts  # Content parsing utilities
  ├── messages/         # Translation files
  │   ├── en.json
  │   ├── de.json
@@ -116,6 +128,58 @@ Add more languages by:
 1. Creating a new translation file in `messages/`
 2. Adding the locale to the configuration in `i18n.ts`
 
+## 📝 Blog Content System
+
+The project includes a sophisticated blog content rendering system that replaces `dangerouslySetInnerHTML` with safe, feature-rich content rendering.
+
+### Key Features
+
+- **Safe HTML Parsing**: Uses `html-react-parser` for secure HTML rendering
+- **Modern Typography**: Tailwind Typography (prose) with custom dark theme styling
+- **Internationalization**: Automatic RTL support for Farsi content
+- **Future-Proof**: Supports both HTML and structured JSON content blocks
+- **Custom Components**: Enhanced styling for images, code blocks, tables, and more
+
+### Usage
+
+```tsx
+import BlogContent from "@/components/BlogContent";
+
+// Basic usage
+<BlogContent content={post.content} />
+
+// With custom styling
+<BlogContent
+  content={post.content}
+  className="prose prose-lg prose-invert"
+/>
+
+// With fallback
+<BlogContent
+  content={post.content}
+  fallback={<div>Content not available</div>}
+/>
+```
+
+### Migration from dangerouslySetInnerHTML
+
+**Before:**
+
+```tsx
+<div
+  className="prose prose-invert"
+  dangerouslySetInnerHTML={{ __html: post.content }}
+/>
+```
+
+**After:**
+
+```tsx
+<BlogContent content={post.content} />
+```
+
+For detailed documentation, see [Blog Content System Documentation](docs/BLOG_CONTENT_SYSTEM.md).
+
 ## 🔍 SEO
 
 The project includes automatic sitemap generation using `next-sitemap`. The configuration can be found in `next-sitemap.config.js`.
@@ -132,12 +196,19 @@ Error: Page "/[locale]/page" is missing param "/favicon.ico" in "generateStaticP
 
 **Solution:** Place a `favicon.ico` file in the `public/` directory.
 
+### Blog Content Issues
+
+- **Content not rendering**: Check if content is a valid string or array
+- **Styling issues**: Ensure Tailwind Typography is properly configured
+- **RTL problems**: Verify Farsi content has proper RTL styling
+
 ## 📚 Learn More
 
 - [Next.js Documentation](https://nextjs.org/docs)
 - [next-intl Documentation](https://next-intl-docs.vercel.app/)
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
 - [Radix UI Documentation](https://www.radix-ui.com/docs/primitives/overview/introduction)
+- [html-react-parser Documentation](https://github.com/remarkablemark/html-react-parser)
 
 ## 📄 License
 

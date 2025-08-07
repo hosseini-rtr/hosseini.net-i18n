@@ -1,13 +1,13 @@
-import { getTranslations } from "next-intl/server";
-import Link from "next/link";
-import Image from "next/image";
 import { socialLinks } from "@/lib/social-config";
+import { getTranslations } from "next-intl/server";
+import Image from "next/image";
+import Link from "next/link";
 
 export async function generateMetadata({ params: { locale } }: any) {
   const t = await getTranslations({ locale, namespace: "Links" });
   return {
     title: t("title"),
-    description: t("description")
+    description: t("description"),
   };
 }
 
@@ -18,7 +18,12 @@ interface LinkItemProps {
   color?: string;
 }
 
-const LinkItem = ({ href, icon, label, color = "bg-gray-100 hover:bg-gray-200" }: LinkItemProps) => (
+const LinkItem = ({
+  href,
+  icon,
+  label,
+  color = "bg-gray-100 hover:bg-gray-200",
+}: Readonly<LinkItemProps>) => (
   <Link
     href={href}
     target="_blank"
@@ -35,23 +40,28 @@ const topNews = [
     href: "https://example.com/news/1",
     title: "Latest Project: AI-Powered Web Application",
     date: "2024-01",
-    color: "bg-purple-50 hover:bg-purple-100"
+    color: "bg-purple-50 hover:bg-purple-100",
   },
   {
     href: "https://example.com/news/2",
     title: "New Blog Post: Modern Web Development",
     date: "2023-12",
-    color: "bg-green-50 hover:bg-green-100"
+    color: "bg-green-50 hover:bg-green-100",
   },
   {
     href: "https://example.com/news/3",
     title: "Featured: Tech Conference Speaker",
     date: "2023-11",
-    color: "bg-yellow-50 hover:bg-yellow-100"
-  }
+    color: "bg-yellow-50 hover:bg-yellow-100",
+  },
 ];
 
-const NewsItem = ({ href, title, date, color = "bg-gray-100 hover:bg-gray-200" }: any) => (
+const NewsItem = ({
+  href,
+  title,
+  date,
+  color = "bg-gray-100 hover:bg-gray-200",
+}: any) => (
   <Link
     href={href}
     target="_blank"
@@ -70,11 +80,11 @@ const socialColorMap = {
   GitHub: "bg-gray-50 hover:bg-gray-100",
   YouTube: "bg-red-50 hover:bg-red-100",
   Kaggle: "bg-blue-50 hover:bg-blue-100",
-  Devpost: "bg-cyan-50 hover:bg-cyan-100"
+  Devpost: "bg-cyan-50 hover:bg-cyan-100",
 };
 
 export default async function LinksPage() {
-  const visibleSocialLinks = socialLinks.filter(link => link.showInLinks);
+  const visibleSocialLinks = socialLinks.filter((link) => link.showInLinks);
 
   return (
     <main className="min-h-screen py-20 px-4">
@@ -89,15 +99,15 @@ export default async function LinksPage() {
             />
           </div>
           <h1 className="text-2xl font-bold mb-2">Seyed Hossein Hosseini</h1>
-          <p className="text-gray-600 mb-8">Full Stack Developer & AI Enthusiast</p>
+          <p className="text-gray-600 mb-8">
+            Full Stack Developer & AI Enthusiast
+          </p>
         </div>
-
-
 
         <div className="flex flex-col gap-4 w-full items-center mt-8">
           <h2 className="text-xl font-semibold mb-2">Latest Updates</h2>
           {topNews.map((news, index) => (
-            <NewsItem key={index} {...news} />
+            <NewsItem key={news.title} {...news} />
           ))}
         </div>
 
@@ -107,7 +117,7 @@ export default async function LinksPage() {
             const IconComponent = link.icon;
             return (
               <LinkItem
-                key={index}
+                key={link.name}
                 href={link.link}
                 icon={<IconComponent style={{ color: link.color }} />}
                 label={link.name}

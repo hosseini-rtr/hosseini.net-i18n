@@ -10,7 +10,7 @@ import {
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   BsArrowUpRight,
   BsFillMenuButtonWideFill,
@@ -39,9 +39,9 @@ export default function Projects() {
       description:
         "Consequat id occaecat occaecat magna ullamco deserunt nulla amet mollit qui et.",
       stacks: [
-        { name: "Socket IO", icon: <SiSocketdotio /> },
-        { name: "Django Rest API", icon: <SiDjango /> },
-        { name: "ReactNative", icon: <SiReact /> },
+        { num: 1, name: "Socket IO", icon: <SiSocketdotio /> },
+        { num: 2, name: "Django Rest API", icon: <SiDjango /> },
+        { num: 3, name: "ReactNative", icon: <SiReact /> },
       ],
       image: "/assets/work/hober.png",
       github: "https://github.com/hosseinirtr/hober-chat-fullstack",
@@ -54,9 +54,10 @@ export default function Projects() {
       description:
         "Consequat id occaecat occaecat magna ullamco deserunt nulla amet mollit qui et.",
       stacks: [
-        { name: "Django Rest API", icon: <SiDjango /> },
-        { name: "React & ReactNative", icon: <SiReact /> },
+        { num: 1, name: "Django Rest API", icon: <SiDjango /> },
+        { num: 2, name: "React & ReactNative", icon: <SiReact /> },
         {
+          num: 3,
           name: "Large Language Model LLM",
           icon: <BsFillMenuButtonWideFill />,
         },
@@ -72,9 +73,9 @@ export default function Projects() {
       description:
         "Consequat id occaecat occaecat magna ullamco deserunt nulla amet mollit qui et.",
       stacks: [
-        { name: "Python", icon: <SiPythonanywhere /> },
-        { name: "Matplotlib", icon: <FcScatterPlot /> },
-        { name: "Math and Algorithm", icon: <TbMathFunctionY /> },
+        { num: 1, name: "Python", icon: <SiPythonanywhere /> },
+        { num: 2, name: "Matplotlib", icon: <FcScatterPlot /> },
+        { num: 3, name: "Math and Algorithm", icon: <TbMathFunctionY /> },
       ],
       image: "/assets/work/hober.png",
       github: "https://github.com/hosseinirtr/hober-chat-fullstack",
@@ -129,11 +130,11 @@ export default function Projects() {
               <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
                 {project.title}
               </h2>
-              <p className="text-white/70">{project.description ? "" : ""}</p>
+              <br />
               {/* Stacks */}
               <ul className="flex gap-4">
                 {project.stacks.map((item, index) => (
-                  <li key={index} className="text-xl text-accent my-2">
+                  <li key={item.name} className="text-xl text-accent my-2">
                     <TooltipProvider delayDuration={100}>
                       <Tooltip>
                         <TooltipTrigger className="m-1">

@@ -1,0 +1,13 @@
+sonar.projectKey=portfolio
+sonar.projectName=Portfolio
+sonar.projectVersion=1.0
+
+sonar.sources=.
+sonar.exclusions=**/node_modules/**,**/.next/**,**/public/**,**/*.test.ts,**/*.test.tsx,**/*.spec.ts,**/*.spec.tsx
+sonar.tests=.
+sonar.test.inclusions=**/*.test.ts,**/*.test.tsx,**/*.spec.ts,**/*.spec.tsx
+
+sonar.javascript.lcov.reportPaths=coverage/lcov.info
+sonar.sourceEncoding=UTF-8
+sonar.host.url=http://localhost:9000
+sonar.login=sqa_913b31ba8143e2b43d6bc7310dd32b7b93ad418e

@@ -1,6 +1,6 @@
-import { vazirmatn } from "@/app/fonts";
 import { PostService } from "@/app/lib/services/post-service";
 import ShareModal from "@/components/ShareModal";
+import { locales } from "@/i18n";
 import { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -8,26 +8,51 @@ import { notFound } from "next/navigation";
 export async function generateStaticParams() {
   try {
     const posts = await PostService.getAllPosts();
-    const locales = ["en", "fa", "it"];
     const paths = [];
 
+    // Generate paths for each post
     for (const post of posts) {
-      // Generate paths for all locales since we want the page to be available in all languages
-      for (const locale of locales) {
+      // If the post has a specific locale, only generate that locale
+      if (post.locale && locales.includes(post.locale)) {
         paths.push({
-          locale,
+          locale: post.locale,
           id: post.id.toString(),
         });
+      } else {
+        // If no specific locale or invalid locale, generate for all locales
+        for (const locale of locales) {
+          paths.push({
+            locale,
+            id: post.id.toString(),
+          });
+        }
       }
     }
 
+    // If no posts found, generate at least one path to prevent build failure
+    if (paths.length === 0) {
+      paths.push({
+        locale: "en",
+        id: "1",
+      });
+    }
+
+    console.log(`Generated ${paths.length} static paths for blog posts`);
     return paths;
   } catch (error) {
     console.error("Error generating static params:", error);
-    // Return at least the default English paths to prevent build failure
+    // Return at least the default paths to prevent build failure
     return [
       {
         locale: "en",
+        id: "1",
+      },
+      {
+        locale: "fa",
+        id: "1",
+      },
+      {
+        locale: "it",
         id: "1",
       },
     ];
@@ -37,7 +62,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { id: string };
+  params: { id: string; locale: string };
 }): Promise<Metadata> {
   const post = await PostService.getPostById(params.id);
 
@@ -58,7 +83,7 @@ export async function generateMetadata({
       title: post.title,
       description: post.og_description,
       type: "article",
-      url: `${baseUrl}/${post.locale}/blog/${post.id}`,
+      url: `${baseUrl}/${params.locale}/blog/${post.id}`,
       images: post.image ? [{ url: post.image, alt: post.title }] : [],
     },
     twitter: {
@@ -69,19 +94,23 @@ export async function generateMetadata({
     },
     metadataBase: new URL(baseUrl),
     alternates: {
-      canonical: `${baseUrl}/${post.locale}/blog/${post.slug}`,
+      canonical: `${baseUrl}/${params.locale}/blog/${post.id}`,
     },
   };
 }
 
-export default async function PostPage({ params }: { params: { id: string } }) {
+export default async function PostPage({
+  params,
+}: {
+  params: { id: string; locale: string };
+}) {
   const post = await PostService.getPostById(params.id);
 
   if (!post) {
     notFound(); // This will show your 404 page
   }
 
-  const isFarsi = post.locale === "fa";
+  const isFarsi = params.locale === "fa";
 
   return (
     <article
@@ -136,12 +165,7 @@ export default async function PostPage({ params }: { params: { id: string } }) {
             </ul>
           )}
 
-          <div
-            className={`prose prose-invert prose-lg max-w-none headings:mb-6 p:mb-6 li:mb-2 ul:mb-6 ol:mb-6 blockquote:mb-6 pre:mb-6 img:mb-6 hr:mb-6 table:mb-6 code:bg-gray-800 code:px-2 code:py-1 code:rounded code:text-sm pre:bg-gray-800/50 pre:p-4 pre:rounded-lg blockquote:border-l-4 blockquote:border-accent blockquote:pl-6 blockquote:italic blockquote:text-gray-300 strong:text-white/90 em:text-white/90 ${
-              isFarsi ? vazirmatn.className : ""
-            }`}
-            dangerouslySetInnerHTML={{ __html: post.content }}
-          />
+          <div dangerouslySetInnerHTML={{ __html:post.content}} ></div>
 
           <footer className="mt-12 pt-8 border-t border-gray-800">
             <div className="flex items-center justify-between text-gray-400 text-sm">
@@ -152,7 +176,7 @@ export default async function PostPage({ params }: { params: { id: string } }) {
                 </time>
               </div>
               <ShareModal
-                url={`${process.env.NEXT_PUBLIC_BASE_URL}/${post.locale}/blog/${post.id}`}
+                url={`${process.env.NEXT_PUBLIC_BASE_URL}/${params.locale}/blog/${post.id}`}
                 title={post.title}
               />
             </div>

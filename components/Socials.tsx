@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { useSocialLinks } from "@/lib/social-config";
+import Link from "next/link";
 import {
   Tooltip,
   TooltipContent,
@@ -10,10 +10,14 @@ import {
 interface SocialsProps {
   containerStyles?: string;
   iconStyles?: string;
-  location: 'header' | 'footer' | 'links';
+  location: "header" | "footer" | "links";
 }
 
-export default function Socials({ containerStyles, iconStyles, location }: SocialsProps) {
+export default function Socials({
+  containerStyles,
+  iconStyles,
+  location,
+}: Readonly<SocialsProps>) {
   const links = useSocialLinks(location);
 
   return (
@@ -30,7 +34,7 @@ export default function Socials({ containerStyles, iconStyles, location }: Socia
                   rel="noopener noreferrer"
                   className={iconStyles}
                 >
-                  <div >
+                  <div>
                     <IconComponent />
                   </div>
                 </Link>

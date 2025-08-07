@@ -1,14 +1,19 @@
-'use client';
+"use client";
 
-import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { FaTwitter, FaFacebook, FaLinkedin } from "react-icons/fa";
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { useState } from "react";
+import { FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
 
-type ShareModalProps = {
+type ShareModalProps = Readonly<{
   url: string;
   title: string;
-};
+}>;
 
 export default function ShareModal({ url, title }: ShareModalProps) {
   const [copied, setCopied] = useState(false);
@@ -20,9 +25,15 @@ export default function ShareModal({ url, title }: ShareModalProps) {
   };
 
   const shareLinks = {
-    twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`,
-    facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
-    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`
+    twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(
+      url
+    )}&text=${encodeURIComponent(title)}`,
+    facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+      url
+    )}`,
+    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+      url
+    )}`,
   };
 
   return (
@@ -33,9 +44,10 @@ export default function ShareModal({ url, title }: ShareModalProps) {
         </Button>
       </SheetTrigger>
       <SheetContent className="bg-gray-900 border-gray-800">
-        <SheetTitle className="text-xl font-semibold text-white">Share this article</SheetTitle>
+        <SheetTitle className="text-xl font-semibold text-white">
+          Share this article
+        </SheetTitle>
         <div className="space-y-8">
-
           <div className="flex gap-4">
             <a
               href={shareLinks.twitter}
@@ -71,7 +83,7 @@ export default function ShareModal({ url, title }: ShareModalProps) {
               className="w-full justify-between border-gray-700 hover:bg-gray-800"
             >
               <span className="truncate mr-2">{url}</span>
-              <span className="text-xs">{copied ? 'Copied!' : 'Copy'}</span>
+              <span className="text-xs">{copied ? "Copied!" : "Copy"}</span>
             </Button>
           </div>
         </div>

@@ -1,9 +1,9 @@
 import { ReactNode } from "react";
 
-type Props = {
+type Props = Readonly<{
   children?: ReactNode;
   title: string;
-};
+}>;
 
 export default function PageLayout({ children, title }: Props) {
   return (

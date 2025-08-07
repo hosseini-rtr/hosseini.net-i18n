@@ -7,7 +7,9 @@ interface PageTransitionProps {
   children: ReactNode;
 }
 
-export default function PageTransition({ children }: PageTransitionProps) {
+export default function PageTransition({
+  children,
+}: Readonly<PageTransitionProps>) {
   const pathName = usePathname();
   return (
     <AnimatePresence mode="wait">
