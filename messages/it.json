@@ -166,5 +166,22 @@
   "Links": {
     "title": "Links | Seyed Hossein Hosseini",
     "description": "Connect with Seyed Hossein Hosseini on various social media platforms and professional networks."
+  },
+  "Login": {
+    "title": "Accesso amministratore",
+    "username": "Nome utente",
+    "usernamePlaceholder": "Inserisci il tuo nome utente"
+  },
+  "Admin": {
+    "createPost": "Crea nuovo post sul blog",
+    "titlePlaceholder": "Inserisci il titolo del post",
+    "descriptionPlaceholder": "Immettere la descrizione del post",
+    "published": "Pubblica immediatamente",
+    "title": "Titolo",
+    "description": "Descrizione",
+    "tags": "Tag",
+    "tagsPlaceholder": "Immettere i tag separati da virgole",
+    "saving": "Risparmio...",
+    "save": "Salva post"
   }
 }

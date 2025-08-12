@@ -175,5 +175,22 @@
   "Links": {
     "title": "Links | Seyed Hossein Hosseini",
     "description": "Connect with Seyed Hossein Hosseini on various social media platforms and professional networks."
+  },
+  "Login": {
+    "title": "ورود به سیستم سرپرست",
+    "username": "نام کاربری",
+    "usernamePlaceholder": "نام کاربری خود را وارد کنید"
+  },
+  "Admin": {
+    "createPost": "ایجاد پست وبلاگ جدید",
+    "titlePlaceholder": "عنوان پست را وارد کنید",
+    "descriptionPlaceholder": "توضیحات پست را وارد کنید",
+    "published": "بلافاصله منتشر کنید",
+    "title": "عنوان",
+    "description": "شرح",
+    "tags": "برچسب ها",
+    "tagsPlaceholder": "برچسب های جدا شده توسط کاما را وارد کنید",
+    "saving": "صرفه جویی در ...",
+    "save": "ذخیره پست"
   }
 }

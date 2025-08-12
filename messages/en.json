@@ -91,37 +91,60 @@
         "languages": "Persian , English , Italian",
         "my_name": "Seyed Hossein Hosseini"
       }
-    },
-    "experience": {
-      "title": "Experience",
-      "description": "Experience Description",
-      "company1": "Farabi Financial Group.",
-      "position1": "FullStack Developer"
-    },
-    "certificates": {
-      "title": "Certificates",
-      "description": "Certificates Description"
-    },
-    "education": {
-      "title": "Academic Education",
-      "description": "Education description",
-      "degree1": "Computer Science Bachelor ",
-      "duration1": "From 2020 to 2026",
-      "degree2": "Scientific Researcher and Observer",
-      "duration2": "From Mar 2023 To Jul 2023"
-    },
-    "skills": {
-      "title": "My Skills",
-      "description": ""
-    },
-    "tabs": {
-      "aboutMe": "About Me",
-      "experience": "Experience",
-      "education": "Educations",
-      "skills": "Skills"
-    },
-    "view-certificate": "View Certificate",
-    "year": "year"
+    }
+  },
+  "Login": {
+    "title": "Admin Login",
+    "description": "Enter your credentials to access the admin panel",
+    "email": "Email",
+    "emailPlaceholder": "Enter your email",
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "login": "Login",
+    "loggingIn": "Logging in...",
+    "username": "User name",
+    "usernamePlaceholder": "Enter your username"
+  },
+  "Admin": {
+    "createPost": "Create New Blog Post",
+    "title": "Title",
+    "titlePlaceholder": "Enter post title",
+    "description": "Description",
+    "descriptionPlaceholder": "Enter post description",
+    "tags": "Tags",
+    "tagsPlaceholder": "Enter tags separated by commas",
+    "published": "Publish immediately",
+    "save": "Save Post",
+    "saving": "Saving...",
+    "posts": "Blog Posts"
+  },
+  "experience": {
+    "title": "Experience",
+    "description": "Experience Description",
+    "company1": "Farabi Financial Group.",
+    "position1": "FullStack Developer"
+  },
+  "certificates": {
+    "title": "Certificates",
+    "description": "Certificates Description"
+  },
+  "education": {
+    "title": "Academic Education",
+    "description": "Education description",
+    "degree1": "Computer Science Bachelor ",
+    "duration1": "From 2020 to 2026",
+    "degree2": "Scientific Researcher and Observer",
+    "duration2": "From Mar 2023 To Jul 2023"
+  },
+  "skills": {
+    "title": "My Skills",
+    "description": ""
+  },
+  "tabs": {
+    "aboutMe": "About Me",
+    "experience": "Experience",
+    "education": "Educations",
+    "skills": "Skills"
   },
   "SEO": {
     "title": "Seyed Hossein Hosseini Website and portfolio",
