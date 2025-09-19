@@ -7,20 +7,20 @@ export default function BusinessGroups() {
   const t = useTranslations("BusinessGroups");
 
   const groups: BusinessGroup[] = [
-    {
-      title: "Graph-inc",
-      description: t("group1.description"),
-      image: "/assets/groups/hober.png",
-    },
+    // {
+    //   title: "Graph-inc",
+    //   description: t("group1.description"),
+    //   image: "/assets/groups/hober.png",
+    // },
     {
       title: "Datam Dynamics",
       description: t("group3.description"),
-      image: "/assets/groups/hober.png",
+      image: "/assets/groups/formula-student-modern.png",
     },
     {
       title: "Neerus",
       description: t("group2.description"),
-      image: "/assets/groups/hober.png",
+      image: "/assets/groups/dry-eeg-hero-colocacion.png",
     },
   ];
 

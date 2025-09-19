@@ -1,13 +1,13 @@
 "use client";
-import { useTranslations } from "next-intl";
+import BusinessGroups from "@/components/BusinessGroups";
+import LatestPosts from "@/components/LatestPosts";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import AboutMe from "./about_me/page";
 import Contact from "./contact/page";
 import Projects from "./project/page";
 import Resume from "./resume/page";
 import Services from "./services/page";
-import LatestPosts from "@/components/LatestPosts";
-import BusinessGroups from "@/components/BusinessGroups";
 
 export default function RootPage({
   params: { locale },
@@ -28,24 +28,6 @@ export default function RootPage({
           viewport={{ once: true }}
         >
           <AboutMe />
-        </motion.div>
-
-        <motion.div
-          className="min-h-screen snap-center"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
-          <motion.h2
-            className="text-4xl text-center my-8"
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            {t("Our Groups")}
-          </motion.h2>
-          <BusinessGroups />
         </motion.div>
 
         <motion.div
@@ -101,6 +83,24 @@ export default function RootPage({
             {t("Projects")}
           </motion.h2>
           <Projects />
+        </motion.div>
+
+        <motion.div
+          className="min-h-screen snap-center"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <motion.h2
+            className="text-4xl text-center my-8"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            {t("Our Groups")}
+          </motion.h2>
+          <BusinessGroups />
         </motion.div>
 
         <motion.div
