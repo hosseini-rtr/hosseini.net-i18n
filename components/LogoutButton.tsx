@@ -2,15 +2,17 @@
 
 import { Button } from "@/components/ui/button";
 import { LogOut } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 
 export default function LogoutButton() {
   const router = useRouter();
+  const params = useParams();
+  const locale = (params.locale as string) || "en";
 
   const handleLogout = async () => {
     try {
       // Call logout endpoint to clear cookies
-      await fetch("https://api.datamdynamics.com/api/auth/logout", {
+      await fetch("/api/auth/logout", {
         method: "POST",
         credentials: "include", // Include cookies in the request
       });
@@ -18,7 +20,7 @@ export default function LogoutButton() {
       console.error("Logout error:", error);
     }
 
-    router.push("/login");
+    router.push(`/${locale}/login`);
   };
 
   return (

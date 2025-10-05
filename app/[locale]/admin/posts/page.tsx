@@ -1,5 +1,6 @@
 "use client";
 
+import { PostService } from "@/app/lib/services/post-service";
 import AuthGuard from "@/components/AuthGuard";
 import LogoutButton from "@/components/LogoutButton";
 import { Alert, AlertDescription } from "@/components/ui/alert";
@@ -11,25 +12,16 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import axios from "axios";
+import { Post } from "@/types/TPost";
 import { Edit, Eye, Loader2, Plus, Trash2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-interface BlogPost {
-  id: string;
-  title: string;
-  description: string;
-  published: boolean;
-  createdAt: string;
-  updatedAt: string;
-}
-
 function PostsPageContent() {
   const t = useTranslations("Admin");
   const router = useRouter();
-  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [posts, setPosts] = useState<Post[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -39,17 +31,10 @@ function PostsPageContent() {
 
   const fetchPosts = async () => {
     try {
-      const response = await axios.get(
-        "https://api.datamdynamics.com/api/posts",
-        {
-          withCredentials: true, // Include cookies in the request
-        }
-      );
-      setPosts(response.data);
+      const fetchedPosts = await PostService.getAllPosts();
+      setPosts(fetchedPosts);
     } catch (err: any) {
-      setError(
-        err.response?.data?.message || err.message || "Failed to fetch posts."
-      );
+      setError(err.message || "Failed to fetch posts.");
     } finally {
       setIsLoading(false);
     }
@@ -61,16 +46,16 @@ function PostsPageContent() {
     }
 
     try {
-      await axios.delete(`https://api.datamdynamics.com/api/posts/${postId}`, {
-        withCredentials: true, // Include cookies in the request
-      });
+      const success = await PostService.deletePost(postId);
 
-      // Remove the post from the list
-      setPosts(posts.filter((post) => post.id !== postId));
+      if (success) {
+        // Remove the post from the list
+        setPosts(posts.filter((post) => post.id.toString() !== postId));
+      } else {
+        setError("Failed to delete post.");
+      }
     } catch (err: any) {
-      setError(
-        err.response?.data?.message || err.message || "Failed to delete post."
-      );
+      setError(err.message || "Failed to delete post.");
     }
   };
 
@@ -136,14 +121,12 @@ function PostsPageContent() {
                     <div className="flex-1">
                       <CardTitle className="flex items-center gap-2">
                         {post.title}
-                        {post.published && (
-                          <span className="px-2 py-1 text-xs bg-green-100 text-green-800 rounded-full">
-                            Published
-                          </span>
-                        )}
+                        <span className="px-2 py-1 text-xs bg-green-100 text-green-800 rounded-full">
+                          {post.locale.toUpperCase()}
+                        </span>
                       </CardTitle>
                       <CardDescription className="mt-2">
-                        {post.description}
+                        {post.og_description || "No description available"}
                       </CardDescription>
                     </div>
                     <div className="flex gap-2">
@@ -166,7 +149,7 @@ function PostsPageContent() {
                       <Button
                         variant="outline"
                         size="sm"
-                        onClick={() => handleDelete(post.id)}
+                        onClick={() => handleDelete(post.id.toString())}
                         className="text-red-600 hover:text-red-700"
                       >
                         <Trash2 className="h-4 w-4" />
@@ -176,8 +159,8 @@ function PostsPageContent() {
                 </CardHeader>
                 <CardContent>
                   <div className="text-sm text-gray-500">
-                    <p>Created: {formatDate(post.createdAt)}</p>
-                    <p>Updated: {formatDate(post.updatedAt)}</p>
+                    <p>Created: {formatDate(post.created_at)}</p>
+                    <p>Updated: {formatDate(post.update_at)}</p>
                   </div>
                 </CardContent>
               </Card>

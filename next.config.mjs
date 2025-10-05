@@ -4,9 +4,8 @@ const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    "output": "export",
-    images: { unoptimized: true },
-    
+  // Removed "output": "export" to enable server-side features for CMS
+  images: { unoptimized: true },
 };
 
 export default withNextIntl(nextConfig);

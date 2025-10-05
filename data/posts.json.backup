@@ -1,0 +1,94 @@
+[
+  {
+    "id": 1,
+    "title": "Welcome to the New Blog System",
+    "content": "{\"time\":1633024800000,\"blocks\":[{\"type\":\"header\",\"data\":{\"text\":\"Welcome to the New Blog System\",\"level\":1}},{\"type\":\"paragraph\",\"data\":{\"text\":\"This is the first post in our new fullstack blog system. We've moved from an external Django backend to a fully integrated Next.js solution.\"}},{\"type\":\"paragraph\",\"data\":{\"text\":\"Benefits of the new system:\"}},{\"type\":\"list\",\"data\":{\"style\":\"unordered\",\"items\":[\"Real-time data updates\",\"Better performance\",\"Simplified deployment\",\"Integrated internationalization\"]}},{\"type\":\"paragraph\",\"data\":{\"text\":\"Stay tuned for more updates!\"}}],\"version\":\"2.28.2\"}",
+    "slug": "welcome-to-new-blog-system",
+    "author": "Admin",
+    "tags": [
+      "announcement",
+      "blog",
+      "fullstack"
+    ],
+    "locale": "en",
+    "og_description": "Introduction to our new fullstack blog system built with Next.js",
+    "image": "/assets/social-image.png",
+    "created_at": "2024-10-05T12:00:00.000Z",
+    "update_at": "2024-10-05T12:00:00.000Z"
+  },
+  {
+    "id": 2,
+    "title": "خوش آمدید به سیستم جدید وبلاگ",
+    "content": "{\"time\":1633024800000,\"blocks\":[{\"type\":\"header\",\"data\":{\"text\":\"خوش آمدید به سیستم جدید وبلاگ\",\"level\":1}},{\"type\":\"paragraph\",\"data\":{\"text\":\"این اولین پست در سیستم جدید وبلاگ ما است. ما از یک بک‌اند خارجی Django به یک راه‌حل Next.js کاملاً یکپارچه تغییر کرده‌ایم.\"}},{\"type\":\"paragraph\",\"data\":{\"text\":\"مزایای سیستم جدید:\"}},{\"type\":\"list\",\"data\":{\"style\":\"unordered\",\"items\":[\"به‌روزرسانی داده‌ها در زمان واقعی\",\"عملکرد بهتر\",\"استقرار ساده‌تر\",\"بین‌المللی‌سازی یکپارچه\"]}},{\"type\":\"paragraph\",\"data\":{\"text\":\"منتظر به‌روزرسانی‌های بیشتر باشید!\"}}],\"version\":\"2.28.2\"}",
+    "slug": "welcome-to-new-blog-system-fa",
+    "author": "Admin",
+    "tags": [
+      "اعلامیه",
+      "وبلاگ",
+      "فول‌استک"
+    ],
+    "locale": "fa",
+    "og_description": "معرفی سیستم جدید وبلاگ فول‌استک ما که با Next.js ساخته شده است",
+    "image": "/assets/social-image.png",
+    "created_at": "2024-10-05T12:00:00.000Z",
+    "update_at": "2024-10-05T12:00:00.000Z"
+  },
+  {
+    "id": 3,
+    "title": "Test Post from API",
+    "content": "{\"blocks\":[{\"type\":\"paragraph\",\"data\":{\"text\":\"This is a test post created via our new internal API.\"}}]}",
+    "slug": "test-post-from-api",
+    "author": "API Test",
+    "tags": [
+      "test",
+      "api",
+      "fullstack"
+    ],
+    "locale": "en",
+    "og_description": "A test post to verify our fullstack implementation",
+    "image": "",
+    "created_at": "2025-10-05T18:02:41.118Z",
+    "update_at": "2025-10-05T18:02:41.118Z"
+  },
+  {
+    "id": 4,
+    "title": "Simple Test Post",
+    "content": "{}",
+    "slug": "simple-test-post",
+    "author": "Admin",
+    "tags": [
+      "test"
+    ],
+    "locale": "en",
+    "og_description": "Test description",
+    "image": "",
+    "created_at": "2025-10-05T18:04:21.122Z",
+    "update_at": "2025-10-05T18:04:21.122Z"
+  },
+  {
+    "id": 5,
+    "title": "Debug Test Post",
+    "content": "{}",
+    "slug": "debug-test-post",
+    "author": "Admin",
+    "tags": [],
+    "locale": "en",
+    "og_description": "",
+    "image": "",
+    "created_at": "2025-10-05T18:07:20.377Z",
+    "update_at": "2025-10-05T18:07:20.377Z"
+  },
+  {
+    "id": 6,
+    "title": "Test Post After Fix",
+    "content": "{}",
+    "slug": "test-post-after-fix",
+    "author": "Admin",
+    "tags": [],
+    "locale": "en",
+    "og_description": "",
+    "image": "",
+    "created_at": "2025-10-05T18:10:08.747Z",
+    "update_at": "2025-10-05T18:10:08.747Z"
+  }
+]

@@ -1,6 +1,8 @@
 "use client";
 
+import { PostService } from "@/app/lib/services/post-service";
 import AuthGuard from "@/components/AuthGuard";
+import ErrorBoundary from "@/components/ErrorBoundary";
 import LogoutButton from "@/components/LogoutButton";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
@@ -26,96 +28,136 @@ import List from "@editorjs/list";
 import Marker from "@editorjs/marker";
 import Quote from "@editorjs/quote";
 import Table from "@editorjs/table";
-import axios from "axios";
 import { ArrowLeft, Loader2, Save } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
-interface BlogPost {
+interface BlogPostForm {
   title: string;
-  description: string;
+  og_description: string;
   content: any;
   tags: string[];
-  published: boolean;
+  slug: string;
+  image: string;
 }
 
 function CreatePostPageContent() {
   const t = useTranslations("Admin");
   const router = useRouter();
+  const params = useParams();
+  const locale = (params.locale as string) || "en";
   const editorRef = useRef<EditorJS>();
   const editorContainerRef = useRef<HTMLDivElement>(null);
 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-  const [post, setPost] = useState<BlogPost>({
+  const [post, setPost] = useState<BlogPostForm>({
     title: "",
-    description: "",
+    og_description: "",
     content: null,
     tags: [],
-    published: false,
+    slug: "",
+    image: "",
   });
 
   useEffect(() => {
     // Authentication is handled by cookies automatically
     // No need to check localStorage
 
+    // Capture the container reference early
+    const container = editorContainerRef.current;
+
     // Initialize Editor.js
-    if (editorContainerRef.current && !editorRef.current) {
-      editorRef.current = new EditorJS({
-        holder: editorContainerRef.current,
-        tools: {
-          header: Header,
-          list: List,
-          checklist: Checklist,
-          quote: Quote,
-          marker: Marker,
-          code: CodeTool,
-          delimiter: Delimiter,
-          inlineCode: InlineCode,
-          linkTool: {
-            class: LinkTool,
-            config: {
-              endpoint: "/api/fetch-link",
-            },
-          },
-          image: {
-            class: ImageTool,
-            config: {
-              endpoints: {
-                byFile: "/api/upload-image",
-                byUrl: "/api/fetch-image",
+    const initializeEditor = async () => {
+      // Add a small delay to ensure DOM is ready
+      await new Promise((resolve) => setTimeout(resolve, 100));
+
+      if (container && !editorRef.current) {
+        try {
+          // Clear the container first
+          container.innerHTML = "";
+
+          editorRef.current = new EditorJS({
+            holder: container,
+            tools: {
+              header: Header,
+              list: List,
+              checklist: Checklist,
+              quote: Quote,
+              marker: Marker,
+              code: CodeTool,
+              delimiter: Delimiter,
+              inlineCode: InlineCode,
+              linkTool: {
+                class: LinkTool,
+                config: {
+                  endpoint: "/api/fetch-link",
+                },
+              },
+              image: {
+                class: ImageTool,
+                config: {
+                  endpoints: {
+                    byFile: "/api/upload-image",
+                    byUrl: "/api/fetch-image",
+                  },
+                },
+              },
+              table: Table,
+              embed: {
+                class: Embed,
+                config: {
+                  services: {
+                    youtube: true,
+                    coub: true,
+                  },
+                },
               },
             },
-          },
-          table: Table,
-          embed: {
-            class: Embed,
-            config: {
-              services: {
-                youtube: true,
-                coub: true,
-              },
+            placeholder: "Start writing your blog post...",
+            onChange: async () => {
+              if (editorRef.current) {
+                try {
+                  const outputData = await editorRef.current.save();
+                  setPost((prev) => ({ ...prev, content: outputData }));
+                } catch (error) {
+                  console.error("Error saving editor content:", error);
+                }
+              }
             },
-          },
-        },
-        placeholder: "Let's write something amazing!",
-        onChange: async () => {
-          if (editorRef.current) {
-            const outputData = await editorRef.current.save();
-            setPost((prev) => ({ ...prev, content: outputData }));
-          }
-        },
-      });
-    }
+          });
+        } catch (error) {
+          console.error("Editor.js initialization error:", error);
+        }
+      }
+    };
+    initializeEditor();
 
     return () => {
       if (editorRef.current) {
-        editorRef.current = undefined;
+        try {
+          if (typeof editorRef.current.destroy === "function") {
+            editorRef.current.destroy();
+          }
+        } catch (error) {
+          console.error("Editor cleanup error:", error);
+        } finally {
+          editorRef.current = undefined;
+        }
+      }
+
+      // Also clear the container using the captured reference
+      if (container) {
+        try {
+          container.innerHTML = "";
+        } catch (error) {
+          console.error("Container cleanup error:", error);
+        }
       }
     };
-  }, [router]);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -125,32 +167,42 @@ function CreatePostPageContent() {
 
     try {
       // Get the content from Editor.js
+      let contentData = post.content;
       if (editorRef.current) {
-        const outputData = await editorRef.current.save();
-        setPost((prev) => ({ ...prev, content: outputData }));
+        contentData = await editorRef.current.save();
       }
 
-      const response = await axios.post(
-        "https://api.datamdynamics.com/api/posts", // Adjust this endpoint as needed
-        {
-          ...post,
-          content: JSON.stringify(post.content),
-        },
-        {
-          withCredentials: true, // Include cookies in the request
-        }
-      );
+      // Generate slug if not provided
+      const slug =
+        post.slug ||
+        post.title
+          .toLowerCase()
+          .replace(/\s+/g, "-")
+          .replace(/[^\w-]/g, "");
 
-      setSuccess("Blog post created successfully!");
-      setTimeout(() => {
-        router.push("/admin/posts");
-      }, 2000);
+      const postData = {
+        title: post.title,
+        content: JSON.stringify(contentData),
+        og_description: post.og_description,
+        tags: post.tags,
+        slug: slug,
+        image: post.image,
+        locale: locale,
+        author: "Admin",
+      };
+
+      const createdPost = await PostService.createPost(postData);
+
+      if (createdPost) {
+        setSuccess("Blog post created successfully!");
+        setTimeout(() => {
+          router.push(`/${locale}/admin/posts`);
+        }, 2000);
+      } else {
+        setError("Failed to create blog post.");
+      }
     } catch (err: any) {
-      setError(
-        err.response?.data?.message ||
-          err.message ||
-          "Failed to create blog post."
-      );
+      setError(err.message || "Failed to create blog post.");
     } finally {
       setIsLoading(false);
     }
@@ -220,24 +272,59 @@ function CreatePostPageContent() {
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="description" className="text-sm font-medium">
-                  {t("description", { defaultValue: "Description" })}
+                <label htmlFor="og_description" className="text-sm font-medium">
+                  {t("description", { defaultValue: "Meta Description" })}
                 </label>
                 <Textarea
-                  id="description"
-                  value={post.description}
+                  id="og_description"
+                  value={post.og_description}
                   onChange={(e) =>
-                    setPost((prev) => ({
+                    setPost((prev: BlogPostForm) => ({
                       ...prev,
-                      description: e.target.value,
+                      og_description: e.target.value,
                     }))
                   }
                   placeholder={t("descriptionPlaceholder", {
-                    defaultValue: "Enter post description",
+                    defaultValue: "Enter meta description for SEO",
                   })}
-                  required
                   disabled={isLoading}
                   rows={3}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label htmlFor="slug" className="text-sm font-medium">
+                  URL Slug
+                </label>
+                <Input
+                  id="slug"
+                  value={post.slug}
+                  onChange={(e) =>
+                    setPost((prev: BlogPostForm) => ({
+                      ...prev,
+                      slug: e.target.value,
+                    }))
+                  }
+                  placeholder="url-friendly-slug (optional)"
+                  disabled={isLoading}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label htmlFor="image" className="text-sm font-medium">
+                  Featured Image URL
+                </label>
+                <Input
+                  id="image"
+                  value={post.image}
+                  onChange={(e) =>
+                    setPost((prev: BlogPostForm) => ({
+                      ...prev,
+                      image: e.target.value,
+                    }))
+                  }
+                  placeholder="https://example.com/image.jpg"
+                  disabled={isLoading}
                 />
               </div>
 
@@ -254,25 +341,6 @@ function CreatePostPageContent() {
                   })}
                   disabled={isLoading}
                 />
-              </div>
-
-              <div className="flex items-center space-x-2">
-                <input
-                  type="checkbox"
-                  id="published"
-                  checked={post.published}
-                  onChange={(e) =>
-                    setPost((prev) => ({
-                      ...prev,
-                      published: e.target.checked,
-                    }))
-                  }
-                  disabled={isLoading}
-                  className="rounded"
-                />
-                <label htmlFor="published" className="text-sm font-medium">
-                  {t("published", { defaultValue: "Publish immediately" })}
-                </label>
               </div>
             </CardContent>
           </Card>
@@ -324,7 +392,9 @@ function CreatePostPageContent() {
 export default function CreatePostPage() {
   return (
     <AuthGuard>
-      <CreatePostPageContent />
+      <ErrorBoundary>
+        <CreatePostPageContent />
+      </ErrorBoundary>
     </AuthGuard>
   );
 }

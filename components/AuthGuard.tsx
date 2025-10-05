@@ -1,7 +1,7 @@
 "use client";
 
 import { Loader2 } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 interface AuthGuardProps {
@@ -10,36 +10,48 @@ interface AuthGuardProps {
 
 export default function AuthGuard({ children }: AuthGuardProps) {
   const router = useRouter();
+  const params = useParams();
+  const locale = (params.locale as string) || "en";
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
 
   useEffect(() => {
-    // Check authentication by making a request to the API
-    // Cookies are automatically sent with the request
+    let isMounted = true;
+
+    // Check authentication using our internal API
     const verifyAuth = async () => {
       try {
-        const response = await fetch(
-          "https://api.datamdynamics.com/api/auth/verify",
-          {
-            method: "GET",
-            credentials: "include", // Include cookies in the request
-          }
-        );
+        const response = await fetch("/api/auth/verify", {
+          method: "GET",
+          credentials: "include", // Include cookies in the request
+        });
 
-        if (response.ok) {
-          setIsAuthenticated(true);
-        } else {
-          setIsAuthenticated(true);
-       
-          // router.push("en/login");
+        if (response.ok && isMounted) {
+          const data = await response.json();
+          if (data.authenticated && isMounted) {
+            setIsAuthenticated(true);
+          } else if (isMounted) {
+            setIsAuthenticated(false);
+            router.push(`/${locale}/login`);
+          }
+        } else if (isMounted) {
+          setIsAuthenticated(false);
+          router.push(`/${locale}/login`);
         }
       } catch (error) {
-        setIsAuthenticated(true);
-        // router.push("en/login");
+        console.error("Auth verification error:", error);
+        if (isMounted) {
+          setIsAuthenticated(false);
+          router.push(`/${locale}/login`);
+        }
       }
     };
 
     verifyAuth();
-  }, [router]);
+
+    return () => {
+      isMounted = false;
+    };
+  }, [router, locale]);
 
   if (isAuthenticated === null) {
     return (

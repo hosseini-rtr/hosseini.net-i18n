@@ -18,128 +18,48 @@ export default function RootPage({
 
   return (
     <>
-      <main className="flex flex-col m-4">
-        <motion.div
-          className="min-h-screen snap-center"
-          id="#about-me"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
+      <motion.main
+        className="flex flex-col m-4"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <div className="min-h-screen snap-center" id="#about-me">
           <AboutMe />
-        </motion.div>
+        </div>
 
-        <motion.div
-          className="min-h-screen snap-center"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
-          <motion.h2
-            className="text-4xl text-center my-8"
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            {t("Resume")}
-          </motion.h2>
+        <div className="min-h-screen snap-center">
+          <h2 className="text-4xl text-center my-8">{t("Resume")}</h2>
           <Resume />
-        </motion.div>
+        </div>
 
-        <motion.div
-          className="min-h-screen snap-center mt-32"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
-          <motion.h2
-            className="text-4xl text-center"
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            {t("Services")}
-          </motion.h2>
+        <div className="min-h-screen snap-center mt-32">
+          <h2 className="text-4xl text-center">{t("Services")}</h2>
           <Services />
-        </motion.div>
+        </div>
 
-        <motion.div
-          className="min-h-screen snap-center"
-          id="#projects"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
-          <motion.h2
-            className="text-4xl text-center my-8"
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            {t("Projects")}
-          </motion.h2>
+        <div className="min-h-screen snap-center" id="#projects">
+          <h2 className="text-4xl text-center my-8">{t("Projects")}</h2>
           <Projects />
-        </motion.div>
+        </div>
 
-        <motion.div
-          className="min-h-screen snap-center"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
-          <motion.h2
-            className="text-4xl text-center my-8"
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            {t("Our Groups")}
-          </motion.h2>
+        <div className="min-h-screen snap-center">
+          <h2 className="text-4xl text-center my-8">{t("Our Groups")}</h2>
           <BusinessGroups />
-        </motion.div>
+        </div>
 
-        <motion.div
-          className="min-h-screen snap-center"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
-          <motion.h2
-            className="text-4xl text-center my-8"
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
+        <div className="min-h-screen snap-center">
+          <h2 className="text-4xl text-center my-8">
             {t("Latest Blog Posts")}
-          </motion.h2>
+          </h2>
           <LatestPosts />
-        </motion.div>
+        </div>
 
-        <motion.div
-          className="min-h-screen snap-center"
-          id="#contact"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
-          <motion.h2
-            className="text-4xl text-center my-8"
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            {t("Contact")}
-          </motion.h2>
+        <div className="min-h-screen snap-center" id="#contact">
+          <h2 className="text-4xl text-center my-8">{t("Contact")}</h2>
           <Contact />
-        </motion.div>
-      </main>
+        </div>
+      </motion.main>
     </>
   );
 }

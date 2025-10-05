@@ -1,18 +1,7 @@
-import localFont from "next/font/local";
+// Using web fonts instead of local files to avoid font loading issues
+// Vazirmatn is available via CDN which is more reliable
 
-export const vazirmatn = localFont({
-  src: [
-    {
-      path: "../public/static/fonts/Vazirmatn-Regular.woff2",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../public/static/fonts/Vazirmatn-Bold.woff2",
-      weight: "700",
-      style: "normal",
-    },
-  ],
+export const vazirmatn = {
   variable: "--font-vazirmatn",
-  display: "swap",
-});
+  className: "font-vazirmatn",
+};

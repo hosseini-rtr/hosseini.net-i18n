@@ -20,7 +20,7 @@ export default function BlogPage() {
     async function fetchPosts() {
       try {
         setLoading(true);
-        const data = await PostService.getAllPosts();
+        const data = await PostService.getAllPosts(locale);
         setPosts(data);
       } catch (error: any) {
         setError(error.message || "Failed to fetch posts");
@@ -30,7 +30,7 @@ export default function BlogPage() {
     }
 
     fetchPosts();
-  }, []);
+  }, [locale]);
 
   if (loading) return <div>Loading...</div>;
   if (error)

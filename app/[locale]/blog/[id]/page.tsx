@@ -5,13 +5,23 @@ import { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
+export const dynamicParams = true; // Enable ISR for dynamic params
+export const revalidate = 60; // Revalidate every 60 seconds
+
 export async function generateStaticParams() {
   try {
+    console.log("[generateStaticParams] Starting to generate static params...");
     const posts = await PostService.getAllPosts();
+    console.log(`[generateStaticParams] Found ${posts.length} posts`);
+
     const paths = [];
 
-    // Generate paths for each post
+    // Generate static paths for all posts to ensure ISR works properly
     for (const post of posts) {
+      console.log(
+        `[generateStaticParams] Processing post ID: ${post.id}, locale: ${post.locale}`
+      );
+
       // If the post has a specific locale, only generate that locale
       if (post.locale && locales.includes(post.locale)) {
         paths.push({
@@ -29,33 +39,18 @@ export async function generateStaticParams() {
       }
     }
 
-    // If no posts found, generate at least one path to prevent build failure
-    if (paths.length === 0) {
-      paths.push({
-        locale: "en",
-        id: "1",
-      });
-    }
-
-    console.log(`Generated ${paths.length} static paths for blog posts`);
+    console.log(
+      `[generateStaticParams] Generated ${paths.length} static paths for blog posts`
+    );
+    console.log("[generateStaticParams] Paths:", paths);
     return paths;
   } catch (error) {
-    console.error("Error generating static params:", error);
-    // Return at least the default paths to prevent build failure
-    return [
-      {
-        locale: "en",
-        id: "1",
-      },
-      {
-        locale: "fa",
-        id: "1",
-      },
-      {
-        locale: "it",
-        id: "1",
-      },
-    ];
+    console.error(
+      "[generateStaticParams] Error generating static params:",
+      error
+    );
+    // Return empty array to let ISR handle all routes dynamically
+    return [];
   }
 }
 
@@ -104,11 +99,21 @@ export default async function PostPage({
 }: {
   params: { id: string; locale: string };
 }) {
+  console.log(
+    `[PostPage] Attempting to load post with ID: ${params.id} for locale: ${params.locale}`
+  );
+  console.log(`[PostPage] typeof window: ${typeof window}`);
+
   const post = await PostService.getPostById(params.id);
 
   if (!post) {
+    console.log(`[PostPage] Post with ID ${params.id} not found, showing 404`);
     notFound(); // This will show your 404 page
   }
+
+  console.log(
+    `[PostPage] Successfully loaded post: ${post.title} (ID: ${post.id})`
+  );
 
   const isFarsi = params.locale === "fa";
 
@@ -165,7 +170,7 @@ export default async function PostPage({
             </ul>
           )}
 
-          <div dangerouslySetInnerHTML={{ __html:post.content}} ></div>
+          <div dangerouslySetInnerHTML={{ __html: post.content }}></div>
 
           <footer className="mt-12 pt-8 border-t border-gray-800">
             <div className="flex items-center justify-between text-gray-400 text-sm">

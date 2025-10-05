@@ -1,0 +1,54 @@
+[
+  {
+    "id": 1,
+    "title": "Test API Post",
+    "content": "This is a test post created via API",
+    "slug": "test-api-post",
+    "author": "API Tester",
+    "tags": ["test", "api"],
+    "locale": "en",
+    "og_description": "Test blog post for English locale",
+    "image": "/assets/user.jpg",
+    "created_at": "2025-10-05T20:07:25.243Z",
+    "update_at": "2025-10-05T20:07:25.243Z"
+  },
+  {
+    "id": 2,
+    "title": "پست تست فارسی",
+    "content": "این یک پست تست به زبان فارسی است که برای آزمایش بخش وبلاگ ایجاد شده است.",
+    "slug": "test-farsi-post",
+    "author": "حسین حسینی",
+    "tags": ["تست", "فارسی", "وبلاگ"],
+    "locale": "fa",
+    "og_description": "پست تست برای نمایش محتوای فارسی در بخش وبلاگ",
+    "image": "/assets/user2.jpg",
+    "created_at": "2025-10-06T08:00:00.000Z",
+    "update_at": "2025-10-06T08:00:00.000Z"
+  },
+  {
+    "id": 3,
+    "title": "معرفی تکنولوژی‌های جدید",
+    "content": "در این پست به معرفی آخرین تکنولوژی‌های وب می‌پردازیم و نحوه استفاده از آنها را بررسی می‌کنیم.",
+    "slug": "new-technologies-intro",
+    "author": "حسین حسینی",
+    "tags": ["تکنولوژی", "وب", "برنامه‌نویسی"],
+    "locale": "fa",
+    "og_description": "آشنایی با جدیدترین تکنولوژی‌های توسعه وب",
+    "image": "/assets/user.jpg",
+    "created_at": "2025-10-06T10:30:00.000Z",
+    "update_at": "2025-10-06T10:30:00.000Z"
+  },
+  {
+    "id": 4,
+    "title": "Post di test italiano",
+    "content": "Questo è un post di test in italiano per verificare il funzionamento del blog multilingue.",
+    "slug": "test-italian-post",
+    "author": "Hossein Hosseini",
+    "tags": ["test", "italiano", "blog"],
+    "locale": "it",
+    "og_description": "Post di test per la sezione blog in italiano",
+    "image": "/assets/user2.jpg",
+    "created_at": "2025-10-06T12:00:00.000Z",
+    "update_at": "2025-10-06T12:00:00.000Z"
+  }
+]
