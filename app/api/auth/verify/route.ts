@@ -1,5 +1,5 @@
+import { verifyToken } from "@/app/lib/auth";
 import { NextRequest, NextResponse } from "next/server";
-import { verifyToken } from "../login/route";
 
 // GET /api/auth/verify - Verify current authentication status
 export async function GET(request: NextRequest) {

@@ -10,6 +10,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { useLocale, useTranslations } from "next-intl"; // Assuming you use next-intl
+import Link from "next/link";
 import { BsFiletypeSql } from "react-icons/bs";
 import {
   FaBuilding,
@@ -35,7 +36,6 @@ import {
   SiTypescript,
 } from "react-icons/si";
 import { getLangDir } from "rtl-detect";
-import Link from "next/link";
 
 export default function Resume() {
   const t = useTranslations("Resume");
@@ -48,7 +48,7 @@ export default function Resume() {
     info: [
       {
         fieldName: t("about.info.experience"),
-        fieldValue: `${+new Date().getFullYear() - 2019} ${t("year")}`,
+        fieldValue: `${+new Date().getFullYear() - 2019} ${t("years")}`,
       },
       {
         fieldName: "Telegram",
@@ -118,10 +118,13 @@ export default function Resume() {
     description: t("certificates.description"),
     items: [
       {
-        institution: "MITx - (MOOC) program at Massachusetts Institute of Technology",
-        field: "6.86x: Machine Learning with Python-From Linear Models to Deep Learning",
-        link: "https://courses.edx.org/certificates/fb42b262d2fb44cd860f0bb72840140f"
-      }, {
+        institution:
+          "MITx - (MOOC) program at Massachusetts Institute of Technology",
+        field:
+          "6.86x: Machine Learning with Python-From Linear Models to Deep Learning",
+        link: "https://courses.edx.org/certificates/fb42b262d2fb44cd860f0bb72840140f",
+      },
+      {
         institution: "IBM - Coursera",
         field: "AI Engineering Professional Certificate",
       },
@@ -180,8 +183,9 @@ export default function Resume() {
       <div className="container mx-auto" dir={direction}>
         <Tabs
           defaultValue="about_me"
-          className={`${direction == "rtl" ? "md:flex-row-reverse" : "md:flex-row"
-            } flex flex-col  gap-[60px]`}
+          className={`${
+            direction == "rtl" ? "md:flex-row-reverse" : "md:flex-row"
+          } flex flex-col  gap-[60px]`}
         >
           <TabsList
             dir={direction}
@@ -201,14 +205,16 @@ export default function Resume() {
               className="w-full text-center md:text-left"
             >
               <h3
-                className={`text-4xl font-bold ${direction == "rtl" ? "text-right" : ""
-                  }`}
+                className={`text-4xl font-bold ${
+                  direction == "rtl" ? "text-right" : ""
+                }`}
               >
                 {about.title}
               </h3>
               <p
-                className={`max-w-xl text-white/60 mx-auto xl:mx-0 my-5 ${direction == "rtl" ? "text-right" : ""
-                  }`}
+                className={`max-w-xl text-white/60 mx-auto xl:mx-0 my-5 ${
+                  direction == "rtl" ? "text-right" : ""
+                }`}
               >
                 {about.description}
               </p>
@@ -295,7 +301,6 @@ export default function Resume() {
                         </div>
                       </li>
                     ))}
-
                   </ul>
                 </ScrollArea>
               </div>
@@ -313,7 +318,8 @@ export default function Resume() {
                 <ScrollArea className="h-[600px]">
                   <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
                     {certificates.items.map((certificate, index) => (
-                      <Link href={certificate.link || '#'}
+                      <Link
+                        href={certificate.link || "#"}
                         key={index}
                         className="bg-gray-900 p-6 rounded-xl flex flex-col gap-4 hover:bg-gray-800 transition-colors"
                       >

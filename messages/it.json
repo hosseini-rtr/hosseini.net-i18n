@@ -2,6 +2,7 @@
   "HomePage": {
     "title": "Hello world!"
   },
+  "years": "anni",
   "Index": {
     "title": "title"
   },
@@ -73,7 +74,8 @@
     "Our Groups": "I nostri gruppi"
   },
   "Resume": {
-    "AboutMe": "Su di me",
+    "AboutMe": "Di me",
+    "years": "anni",
     "about": {
       "title": "Su di me",
       "description": "Chi sono Descrizione",

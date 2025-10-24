@@ -2,6 +2,7 @@
   "HomePage": {
     "title": "Hello world!"
   },
+  "years": "سال",
   "Blog": {
     "title": "Hello world!"
   },
@@ -75,6 +76,7 @@
   },
   "Resume": {
     "AboutMe": "درباره من",
+    "years": "سال",
     "about": {
       "title": "درباره من",
       "description": "درباره من توضیحات",

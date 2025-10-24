@@ -1,37 +1,14 @@
+import { createToken } from "@/app/lib/auth";
 import bcrypt from "bcryptjs";
-import { SignJWT, jwtVerify } from "jose";
 import { NextRequest, NextResponse } from "next/server";
 
 // Environment variables for security
-const JWT_SECRET = new TextEncoder().encode(
-  process.env.JWT_SECRET ||
-    "your-super-secret-jwt-key-change-this-in-production"
-);
 const ADMIN_USERNAME = process.env.ADMIN_USERNAME || "admin";
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "admin123";
 
 // For demo purposes, we'll use a simple password check
 // In production, store hashed passwords in a database
 const ADMIN_PASSWORD_HASH = bcrypt.hashSync(ADMIN_PASSWORD, 10);
-
-// Create JWT token
-async function createToken(payload: any): Promise<string> {
-  return await new SignJWT(payload)
-    .setProtectedHeader({ alg: "HS256" })
-    .setIssuedAt()
-    .setExpirationTime("24h")
-    .sign(JWT_SECRET);
-}
-
-// Verify JWT token
-export async function verifyToken(token: string): Promise<any> {
-  try {
-    const { payload } = await jwtVerify(token, JWT_SECRET);
-    return payload;
-  } catch (error) {
-    return null;
-  }
-}
 
 // POST /api/auth/login
 export async function POST(request: NextRequest) {

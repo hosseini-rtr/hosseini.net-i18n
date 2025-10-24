@@ -81,7 +81,7 @@ export function migrateFromJSON() {
       // Check if we already have data in the database
       const existingPosts = db
         .prepare("SELECT COUNT(*) as count FROM posts")
-        .get();
+        .get() as { count: number };
 
       if (existingPosts.count === 0 && jsonData.length > 0) {
         console.log("Migrating data from JSON to SQLite...");
@@ -123,7 +123,7 @@ export function migrateFromJSON() {
             if (post.tags && Array.isArray(post.tags)) {
               for (const tagName of post.tags) {
                 insertTag.run(tagName);
-                const tag = getTagId.get(tagName);
+                const tag = getTagId.get(tagName) as { id: number } | undefined;
                 if (tag) {
                   insertPostTag.run(post.id, tag.id);
                 }

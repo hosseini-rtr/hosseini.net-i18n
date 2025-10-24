@@ -8,7 +8,7 @@ import parse, {
 import { useLocale } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
-import { ReactNode, useMemo } from "react";
+import { createElement, ReactNode, useMemo } from "react";
 
 interface BlogContentProps {
   content: string | ContentBlock[];
@@ -175,98 +175,74 @@ export default function BlogContent({
             case "h4":
             case "h5":
             case "h6":
-              return (
-                <Element
-                  name={name}
-                  attribs={{
-                    ...attribs,
-                    className: `text-white font-bold mb-4 mt-8 first:mt-0 ${
-                      name === "h1"
-                        ? "text-3xl"
-                        : name === "h2"
-                        ? "text-2xl"
-                        : name === "h3"
-                        ? "text-xl"
-                        : name === "h4"
-                        ? "text-lg"
-                        : name === "h5"
-                        ? "text-base"
-                        : "text-sm"
-                    }`,
-                  }}
-                >
-                  {domToReact(children as any, options)}
-                </Element>
+              return createElement(
+                name,
+                {
+                  className: `text-white font-bold mb-4 mt-8 first:mt-0 ${
+                    name === "h1"
+                      ? "text-3xl"
+                      : name === "h2"
+                      ? "text-2xl"
+                      : name === "h3"
+                      ? "text-xl"
+                      : name === "h4"
+                      ? "text-lg"
+                      : name === "h5"
+                      ? "text-base"
+                      : "text-sm"
+                  }`,
+                },
+                domToReact(children as any, options)
               );
 
             case "p":
-              return (
-                <Element
-                  name={name}
-                  attribs={{
-                    ...attribs,
-                    className: "mb-4 text-gray-200 leading-relaxed",
-                  }}
-                >
-                  {domToReact(children as any, options)}
-                </Element>
+              return createElement(
+                name,
+                {
+                  className: "mb-4 text-gray-200 leading-relaxed",
+                },
+                domToReact(children as any, options)
               );
 
             case "ul":
             case "ol":
-              return (
-                <Element
-                  name={name}
-                  attribs={{
-                    ...attribs,
-                    className: `mb-6 ${
-                      name === "ul" ? "list-disc" : "list-decimal"
-                    } list-inside space-y-2`,
-                  }}
-                >
-                  {domToReact(children as any, options)}
-                </Element>
+              return createElement(
+                name,
+                {
+                  className: `mb-6 ${
+                    name === "ul" ? "list-disc" : "list-decimal"
+                  } list-inside space-y-2`,
+                },
+                domToReact(children as any, options)
               );
 
             case "li":
-              return (
-                <Element
-                  name={name}
-                  attribs={{
-                    ...attribs,
-                    className: "text-gray-200",
-                  }}
-                >
-                  {domToReact(children as any, options)}
-                </Element>
+              return createElement(
+                name,
+                {
+                  className: "text-gray-200",
+                },
+                domToReact(children as any, options)
               );
 
             case "strong":
             case "b":
-              return (
-                <Element
-                  name="strong"
-                  attribs={{
-                    ...attribs,
-                    className: "font-bold text-white",
-                  }}
-                >
-                  {domToReact(children as any, options)}
-                </Element>
+              return createElement(
+                "strong",
+                {
+                  className: "font-bold text-white",
+                },
+                domToReact(children as any, options)
               );
 
             case "em":
             case "i":
-              return (
-                <Element
-                  name="em"
-                  attribs={{
-                    ...attribs,
-                    className: "italic text-gray-300",
-                  }}
-                >
-                  {domToReact(children as any, options)}
-                </Element>
+              return createElement(
+                "em",
+                {
+                  className: "italic text-gray-300",
+                },
+                domToReact(children as any, options)
               );
 
             case "hr":
@@ -281,7 +257,9 @@ export default function BlogContent({
   // Render content based on type
   const renderContentByType = () => {
     if (contentInfo.type === "structured") {
-      return <StructuredBlogContent blocks={contentInfo.content} />;
+      return (
+        <StructuredBlogContent blocks={contentInfo.content as ContentBlock[]} />
+      );
     }
 
     // Handle HTML content

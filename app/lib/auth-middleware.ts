@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { verifyToken } from "../api/auth/login/route";
+import { verifyToken } from "./auth";
 
 // Middleware to check authentication
 export async function requireAuth(
