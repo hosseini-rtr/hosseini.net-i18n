@@ -21,7 +21,7 @@
   "Nav": {
     "home": "casa",
     "aboutMe": "su di me",
-    "services": "servizi",
+    "cooperation": "Aree di cooperazione",
     "projects": "progetti",
     "contact": "contatto",
     "blog": "Blog",
@@ -41,7 +41,7 @@
     "awards": "Premi",
     "open-source": "progetto open source"
   },
-  "services": {
+  "cooperation": {
     "fullstack": "Sviluppo Full-Stack e Applicazioni Mobile",
     "FullstackDec": "Offro sviluppo completo per applicazioni web e mobile. Dal back-end con logica in Python e Django/Flask a interfacce front-end reattive utilizzando React.js, Angular o Next.js. Inoltre, sviluppo di app mobile con React Native per garantire un'esperienza fluida su entrambe le piattaforme.",
     "AIDec": "Integrazione di modelli di intelligenza artificiale nelle tue applicazioni per migliorare l'esperienza degli utenti o automatizzare i processi. \nCiò include l'elaborazione del linguaggio naturale, la generazione di contenuti o strumenti personalizzati basati sull'intelligenza artificiale.",
@@ -64,7 +64,7 @@
     "reach-you-msg": "Ti ricontatterò presto."
   },
   "Home": {
-    "Services": "Servizi",
+    "cooperation": "Aree di cooperazione",
     "Projects": "Progetti",
     "Contact": "Contatto",
     "Resume": "Riprendere",

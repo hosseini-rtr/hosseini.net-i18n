@@ -5,7 +5,7 @@ import Link from "next/link";
 import { BsArrowDownRight } from "react-icons/bs";
 
 export default function Services() {
-  const t = useTranslations("services");
+  const t = useTranslations("cooperation");
 
   const services = [
     {

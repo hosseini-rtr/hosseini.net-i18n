@@ -21,7 +21,7 @@
   "Nav": {
     "home": "home",
     "aboutMe": "about me",
-    "services": "services",
+    "cooperation": "Areas of cooperation",
     "projects": "projects",
     "contact": "contact",
     "blog": "Blog",
@@ -41,7 +41,7 @@
     "awards": "Awards",
     "open-source": "open source project"
   },
-  "services": {
+  "cooperation": {
     "WebDev": "Website Development",
     "WebDevDec": "Building tailored web applications using modern technologies like Django, React.js, Flask, and Node.js. Whether it's an eCommerce platform or a simple business website, I ensure efficient and scalable solutions that meet your business needs.",
     "fullstack": "Full-Stack & Mobile Application Development",
@@ -67,7 +67,7 @@
     "reach-you-msg": "I'll get back to you soon."
   },
   "Home": {
-    "Services": "Services",
+    "cooperation": "cooperation",
     "Contact": "Contact",
     "Projects": "Projects",
     "Resume": "Resume",

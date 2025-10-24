@@ -34,7 +34,7 @@ export default function RootPage({
         </div>
 
         <div className="min-h-screen snap-center mt-32">
-          <h2 className="text-4xl text-center">{t("Services")}</h2>
+          <h2 className="text-4xl text-center">{t("cooperation")}</h2>
           <Services />
         </div>
 
