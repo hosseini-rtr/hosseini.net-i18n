@@ -4,17 +4,15 @@ A modern, fully static internationalized website built with Next.js App Router, 
 
 ## ✨ Features
 
-- 🌐 Full internationalization support with `next-intl`
-- 📑 Static site generation with `output: "export"`
+- 🌐 Full internationalization support with `next-intl` (English, Persian/Farsi, Italian)
 - 🎨 Modern UI with Tailwind CSS and Radix UI components
 - 🔄 Smooth animations with Framer Motion
 - 📱 Responsive design with mobile-first approach
 - 🎯 SEO optimized with automatic sitemap generation
-- 🚀 RTL language support
-- ⚡ Performance optimized with Next.js best practices
-- 📝 **Safe blog content rendering with HTML parsing and structured JSON support**
-- 🎨 **Modern typography with Tailwind Typography (prose)**
-- 🌍 **Enhanced internationalization for blog content (English, Farsi, Italian)**
+- 🚀 RTL language support for Persian
+- ⚡ Performance optimized with Next.js
+- 📝 Blog content system with safe HTML rendering
+- � Smooth page transitions with optimized animations
 
 ## 🛠️ Tech Stack
 
@@ -58,7 +56,7 @@ app/
 
 ```bash
 git clone <repository-url>
-cd <project-directory>
+cd hosseini.net-i18n
 ```
 
 2. **Install dependencies**
@@ -67,17 +65,15 @@ cd <project-directory>
 npm install
 ```
 
-3. **Set up environment variables**
-
-Create `.env.development` and `.env.production` files based on your needs.
-
-4. **Start development server**
+3. **Start development server**
 
 ```bash
 npm run dev
 ```
 
-Visit [http://localhost:3000](http://localhost:3000) to see your application.
+4. **Access the application**
+
+- **Website:** [http://localhost:3000](http://localhost:3000)
 
 ## 🔨 Build and Deployment
 
@@ -120,15 +116,15 @@ out/
 ## 🌐 Supported Languages
 
 - English (en)
-- German (de)
-- Japanese (ja)
+- Persian/Farsi (fa) - with RTL support
+- Italian (it)
 
 Add more languages by:
 
-1. Creating a new translation file in `messages/`
+1. Creating a new translation file in `messages/[locale].json`
 2. Adding the locale to the configuration in `i18n.ts`
 
-## 📝 Blog Content System
+## Blog Content System
 
 The project includes a sophisticated blog content rendering system that replaces `dangerouslySetInnerHTML` with safe, feature-rich content rendering.
 
