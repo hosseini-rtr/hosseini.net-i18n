@@ -16,33 +16,33 @@ export const useRoutes = () => {
       name: t("home"),
       path: `/${locale}`,
       showInNav: true,
-      showInMobile: true
+      showInMobile: true,
     },
     {
       name: t("blog"),
       path: `/${locale}/blog`,
       showInNav: true,
-      showInMobile: true
+      showInMobile: true,
     },
     {
       name: t("links"),
       path: `/${locale}/links`,
       showInNav: false,
-      showInMobile: true
+      showInMobile: true,
     },
     {
       name: t("resume"),
       path: `/${locale}/resume`,
       showInNav: true,
-      showInMobile: true
+      showInMobile: true,
     },
-    // { 
-    //   name: t("services"),
+    // {
+    //   name: t("cooperation"),
     //   path: `/${locale}/services`,
     //   showInNav: true,
     //   showInMobile: true
     // },
-    // { 
+    // {
     //   name: t("projects"),
     //   path: `/${locale}/project`,
     //   showInNav: true,
@@ -53,7 +53,7 @@ export const useRoutes = () => {
       name: t("contact"),
       path: `/${locale}/contact`,
       showInNav: true,
-      showInMobile: true
+      showInMobile: true,
     },
   ];
 

@@ -19,7 +19,7 @@ export default function DebugPage() {
       </div>
 
       <div className="p-8 bg-green-500 text-white">
-        <h2>{t("Services")}</h2>
+        <h2>{t("cooperation")}</h2>
         <p>Services section content...</p>
       </div>
 

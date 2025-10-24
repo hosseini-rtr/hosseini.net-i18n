@@ -34,22 +34,23 @@ This project includes a complete admin system for managing blog posts with authe
 
 ## API Endpoints
 
-### Authentication
+### Authentication (Built-in)
 
-- `POST https://api.datamdynamics.com/api/auth/superuser` - Login
-- `GET https://api.datamdynamics.com/api/auth/verify` - Verify authentication
-- `POST https://api.datamdynamics.com/api/auth/logout` - Logout
+- `POST /api/auth/login` - Login with admin credentials
+- `GET /api/auth/verify` - Verify authentication token
+- `POST /api/auth/logout` - Logout and clear session
 
-### Blog Posts
+### Blog Posts (Built-in)
 
-- `GET https://api.datamdynamics.com/api/posts` - List posts
-- `POST https://api.datamdynamics.com/api/posts` - Create post
-- `DELETE https://api.datamdynamics.com/api/posts/{id}` - Delete post
+- `GET /api/posts` - List all posts (supports ?locale=en|fa|it parameter)
+- `POST /api/posts` - Create a new post
+- `PUT /api/posts/{id}` - Update existing post
+- `DELETE /api/posts/{id}` - Delete post
 
-### Editor.js Support
+### File Management (Built-in)
 
-- `POST /api/upload-image` - Upload images
-- `POST /api/fetch-link` - Fetch link metadata
+- `POST /api/upload-image` - Upload images for blog posts
+- `POST /api/fetch-link` - Fetch link metadata for embeds
 
 ## Routes
 
