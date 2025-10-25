@@ -1,4 +1,5 @@
 import { PostService } from "@/app/lib/services/post-service";
+import EditorJSRenderer from "@/components/EditorJSRenderer";
 import ShareModal from "@/components/ShareModal";
 import { locales } from "@/i18n";
 import { Metadata } from "next";
@@ -170,7 +171,7 @@ export default async function PostPage({
             </ul>
           )}
 
-          <div dangerouslySetInnerHTML={{ __html: post.content }}></div>
+          <EditorJSRenderer content={post.content} />
 
           <footer className="mt-12 pt-8 border-t border-gray-800">
             <div className="flex items-center justify-between text-gray-400 text-sm">
