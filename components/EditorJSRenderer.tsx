@@ -29,9 +29,53 @@ export default function EditorJSRenderer({
   const locale = useLocale();
   const isFarsi = locale === "fa";
 
-  // Parse content if it's a string
-  const editorData: EditorJSData =
-    typeof content === "string" ? JSON.parse(content) : content;
+  // Parse content if it's a string and validate it's Editor.js format
+  let editorData: EditorJSData;
+
+  try {
+    if (typeof content === "string") {
+      // Try to parse as JSON
+      const parsed = JSON.parse(content);
+
+      // Check if it's Editor.js format (has blocks array)
+      if (parsed && Array.isArray(parsed.blocks)) {
+        editorData = parsed;
+      } else {
+        // Not Editor.js format, create a simple paragraph block
+        editorData = {
+          time: Date.now(),
+          blocks: [
+            {
+              id: "legacy-content",
+              type: "paragraph",
+              data: {
+                text: content,
+              },
+            },
+          ],
+          version: "2.29.0",
+        };
+      }
+    } else {
+      editorData = content;
+    }
+  } catch (error) {
+    // If JSON parsing fails, it's plain text - wrap it in a paragraph block
+    console.warn("Content is not valid Editor.js JSON, treating as plain text");
+    editorData = {
+      time: Date.now(),
+      blocks: [
+        {
+          id: "legacy-content",
+          type: "paragraph",
+          data: {
+            text: typeof content === "string" ? content : "",
+          },
+        },
+      ],
+      version: "2.29.0",
+    };
+  }
 
   const renderBlock = (block: EditorJSBlock) => {
     const { id, type, data } = block;
