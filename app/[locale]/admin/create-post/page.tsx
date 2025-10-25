@@ -1,8 +1,5 @@
 "use client";
 
-// Disable static generation for this admin page
-export const dynamic = "force-dynamic";
-
 import { PostService } from "@/app/lib/services/post-service";
 import AuthGuard from "@/components/AuthGuard";
 import ErrorBoundary from "@/components/ErrorBoundary";

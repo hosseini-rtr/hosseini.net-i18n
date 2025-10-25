@@ -57,10 +57,11 @@ echo "🔨 Building Next.js application..."
 npm run build
 print_success "Build completed"
 
-# Step 4: Remove dev dependencies (optional - saves space)
-echo "🧹 Removing dev dependencies..."
-npm prune --production
-print_success "Dev dependencies removed"
+# Step 4: DON'T remove dev dependencies - they're needed for runtime
+# Commented out to prevent build issues
+# echo "🧹 Removing dev dependencies..."
+# npm prune --production
+# print_success "Dev dependencies removed"
 
 # Step 5: Restart PM2 app
 if command -v pm2 &> /dev/null; then
