@@ -8,7 +8,7 @@
     "tags": ["test", "api"],
     "locale": "en",
     "og_description": "Test blog post for English locale",
-    "image": "/assets/user.jpg",
+    "image": "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=1200&h=630&fit=crop",
     "created_at": "2025-10-05T20:07:25.243Z",
     "update_at": "2025-10-05T20:07:25.243Z"
   },
@@ -21,7 +21,7 @@
     "tags": ["تست", "فارسی", "وبلاگ"],
     "locale": "fa",
     "og_description": "پست تست برای نمایش محتوای فارسی در بخش وبلاگ",
-    "image": "/assets/user2.jpg",
+    "image": "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=1200&h=630&fit=crop",
     "created_at": "2025-10-06T08:00:00.000Z",
     "update_at": "2025-10-06T08:00:00.000Z"
   },
@@ -34,7 +34,7 @@
     "tags": ["تکنولوژی", "وب", "برنامه‌نویسی"],
     "locale": "fa",
     "og_description": "آشنایی با جدیدترین تکنولوژی‌های توسعه وب",
-    "image": "/assets/user.jpg",
+    "image": "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=1200&h=630&fit=crop",
     "created_at": "2025-10-06T10:30:00.000Z",
     "update_at": "2025-10-06T10:30:00.000Z"
   },
@@ -47,7 +47,7 @@
     "tags": ["test", "italiano", "blog"],
     "locale": "it",
     "og_description": "Post di test per la sezione blog in italiano",
-    "image": "/assets/user2.jpg",
+    "image": "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=1200&h=630&fit=crop",
     "created_at": "2025-10-06T12:00:00.000Z",
     "update_at": "2025-10-06T12:00:00.000Z"
   },
@@ -63,5 +63,18 @@
     "image": "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=1200&h=630&fit=crop",
     "created_at": "2025-10-25T10:12:52.312Z",
     "update_at": "2025-10-25T10:12:52.312Z"
+  },
+  {
+    "id": 6,
+    "title": "Relational vs Non-Relational Databases",
+    "content": "{\"time\":1730000000000,\"blocks\":[{\"id\":\"h1\",\"type\":\"header\",\"data\":{\"text\":\"Relational vs Non-Relational Databases\",\"level\":1}},{\"id\":\"intro\",\"type\":\"paragraph\",\"data\":{\"text\":\"Databases are the backbone of every software system. Choosing the right type—relational or non-relational—affects scalability, flexibility, and data consistency.\"}},{\"id\":\"header1\",\"type\":\"header\",\"data\":{\"text\":\"1. What is a Relational Database?\",\"level\":2}},{\"id\":\"relational\",\"type\":\"paragraph\",\"data\":{\"text\":\"A relational database stores data in structured tables (rows and columns). Each table has a predefined schema and relationships between tables are established using keys (primary and foreign).\"}},{\"id\":\"examples1\",\"type\":\"list\",\"data\":{\"style\":\"unordered\",\"items\":[\"MySQL\",\"PostgreSQL\",\"Oracle Database\",\"SQL Server\"]}},{\"id\":\"header2\",\"type\":\"header\",\"data\":{\"text\":\"2. What is a Non-Relational Database?\",\"level\":2}},{\"id\":\"nonrelational\",\"type\":\"paragraph\",\"data\":{\"text\":\"Non-relational (NoSQL) databases store data in flexible formats such as documents, key-value pairs, graphs, or columns. They do not rely on strict schemas and are optimized for scalability and performance.\"}},{\"id\":\"examples2\",\"type\":\"list\",\"data\":{\"style\":\"unordered\",\"items\":[\"MongoDB (Document)\",\"Redis (Key-Value)\",\"Neo4j (Graph)\",\"Cassandra (Wide-Column)\"]}},{\"id\":\"table1\",\"type\":\"table\",\"data\":{\"content\":[[\"Aspect\",\"Relational DB\",\"Non-Relational DB\"],[\"Structure\",\"Tables with fixed schema\",\"Flexible documents or key-value pairs\"],[\"Scalability\",\"Vertical (scale up)\",\"Horizontal (scale out)\"],[\"Query Language\",\"SQL\",\"Varies (e.g., JSON queries)\"],[\"Best For\",\"Structured data with strong relationships\",\"Unstructured or high-volume data\"]]}},{\"id\":\"header3\",\"type\":\"header\",\"data\":{\"text\":\"3. Pros and Cons\",\"level\":2}},{\"id\":\"proscons\",\"type\":\"list\",\"data\":{\"style\":\"unordered\",\"items\":[\"Relational: Strong consistency, mature tools, but less scalable.\",\"Non-Relational: Highly scalable and flexible, but weaker ACID guarantees.\"]}},{\"id\":\"image1\",\"type\":\"image\",\"data\":{\"file\":{\"url\":\"/assets/work/db-types-diagram.png\"},\"caption\":\"Visual representation of relational vs non-relational structures\",\"withBorder\":true,\"stretched\":false,\"withBackground\":false}},{\"id\":\"quote1\",\"type\":\"quote\",\"data\":{\"text\":\"Choose relational databases when consistency matters. Choose non-relational when scalability rules.\",\"caption\":\"Practical Advice\"}},{\"id\":\"header4\",\"type\":\"header\",\"data\":{\"text\":\"4. When to Use Which?\",\"level\":2}},{\"id\":\"whenuse\",\"type\":\"paragraph\",\"data\":{\"text\":\"Use relational databases for financial systems, accounting, and inventory where transactions must be accurate. Use non-relational databases for analytics, IoT, or content-heavy apps requiring fast scalability.\"}},{\"id\":\"conclusion\",\"type\":\"paragraph\",\"data\":{\"text\":\"The right choice depends on your project’s data structure and growth expectations. Modern architectures often combine both types using hybrid approaches.\"}}],\"version\":\"2.29.0\"}",
+    "slug": "relational-vs-nonrelational-db",
+    "author": "Hossein Hosseini",
+    "tags": ["database", "sql", "nosql"],
+    "locale": "en",
+    "og_description": "Learn the key differences between relational and non-relational databases, their structures, and when to use each for your project.",
+    "image": "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=1200&h=630&fit=crop",
+    "created_at": "2025-10-25T10:21:04.731Z",
+    "update_at": "2025-10-25T10:21:04.731Z"
   }
 ]
