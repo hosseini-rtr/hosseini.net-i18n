@@ -1,0 +1,23 @@
+# Local Environment Variables (Secrets)
+
+# This file is in .gitignore and should NOT be committed
+
+# Copy values from .env.local.example and update for your environment
+
+JWT_SECRET=your-super-secret-jwt-key-change-this-in-production-please
+ADMIN_USERNAME=admin
+ADMIN_PASSWORD=admin123
+
+# Revalidation Configuration
+
+REVALIDATION_SECRET=revalidate-secret-key-change-in-production
+
+# ⚠️ Security Notes:
+
+# - Change JWT_SECRET to at least 32 random characters in production
+
+# - Use a strong, unique admin username and password
+
+# - Consider using bcrypt for password hashing
+
+# - Rotate secrets regularly

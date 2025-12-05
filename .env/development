@@ -1,0 +1,12 @@
+# Development Environment Variables
+
+# Used locally with: npm run build:dev
+
+NEXT_PUBLIC_API_URL=https://api.hosseini-rtr.ir/
+NEXT_PUBLIC_BASE_URL=http://localhost:3000
+
+# Local Development - Uncomment to use local API
+
+# NEXT_PUBLIC_API_URL=http://localhost:8085
+
+# NEXT_PUBLIC_BASE_URL=http://localhost:3000

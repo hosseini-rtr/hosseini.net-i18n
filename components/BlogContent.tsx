@@ -1,9 +1,9 @@
-import { vazirmatn } from "@/app/fonts";
+import { inter, vazirmatn } from "@/app/fonts";
 import { renderContent } from "@/lib/content-parser";
 import parse, {
-  domToReact,
-  Element,
-  HTMLReactParserOptions,
+    domToReact,
+    Element,
+    HTMLReactParserOptions,
 } from "html-react-parser";
 import { useLocale } from "next-intl";
 import Image from "next/image";
@@ -100,6 +100,9 @@ export default function BlogContent({
   className = "",
   fallback = <div className="text-gray-400">Content not available</div>,
 }: Readonly<BlogContentProps>) {
+  const locale = useLocale();
+  const isFarsi = locale === "fa";
+
   // Memoize the content type detection to avoid unnecessary re-renders
   const contentInfo = useMemo(() => {
     try {
@@ -278,9 +281,9 @@ export default function BlogContent({
   return (
     <div
       className={`prose prose-invert prose-lg max-w-none ${
-        true ? vazirmatn.className : ""
+        isFarsi ? vazirmatn.className : inter.className
       } ${className}`}
-      dir={true ? "rtl" : "ltr"}
+      dir={isFarsi ? "rtl" : "ltr"}
     >
       {renderContentByType()}
     </div>

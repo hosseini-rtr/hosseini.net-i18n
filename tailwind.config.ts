@@ -17,6 +17,12 @@ const config: Config = {
           "system-ui",
           "sans-serif",
         ],
+        inter: [
+          "Inter",
+          "var(--font-inter)",
+          "system-ui",
+          "sans-serif",
+        ],
       },
       typography: {
         DEFAULT: {

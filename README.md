@@ -1,211 +1,414 @@
-# Next.js Internationalized Static Website
+# Hosseini.net - Internationalized Next.js Website
 
-A modern, fully static internationalized website built with Next.js App Router, featuring multiple languages and static exports. This project combines the power of Next.js 14 with internationalization support through `next-intl`.
+A modern, high-performance internationalized website built with **Next.js 14** and **App Router**, featuring multiple languages, static export capability, and a comprehensive blog system.
 
-## ✨ Features
+---
 
-- 🌐 Full internationalization support with `next-intl` (English, Persian/Farsi, Italian)
-- 🎨 Modern UI with Tailwind CSS and Radix UI components
-- 🔄 Smooth animations with Framer Motion
-- 📱 Responsive design with mobile-first approach
-- 🎯 SEO optimized with automatic sitemap generation
-- 🚀 RTL language support for Persian
-- ⚡ Performance optimized with Next.js
-- 📝 Blog content system with safe HTML rendering
-- � Smooth page transitions with optimized animations
+## ✨ Key Features
+
+- 🌐 **Multi-language support** - English, Farsi (Persian), and Italian with `next-intl`
+- 🎨 **Modern UI** - Built with Tailwind CSS and Radix UI components
+- 🎭 **Smooth animations** - Framer Motion for polished page transitions
+- 📱 **Fully responsive** - Mobile-first design approach
+- 🔐 **Authentication** - User login system with JWT tokens
+- 📝 **Blog system** - Rich content with EditorJS support
+- 🗺️ **Auto sitemap** - SEO-optimized sitemap generation
+- 🌍 **RTL support** - Right-to-left layout for Persian
+- ⚡ **Performance** - Static export ready with optimizations
+- � **Type safe** - Full TypeScript support
+
+---
 
 ## 🛠️ Tech Stack
 
-- **Framework:** Next.js 14
-- **Styling:** Tailwind CSS
-- **UI Components:** Radix UI
-- **Animations:** Framer Motion
-- **Icons:** React Icons
-- **Internationalization:** next-intl
-- **Type Safety:** TypeScript
-- **Content Parsing:** html-react-parser
-- **Typography:** @tailwindcss/typography
+| Category        | Technologies                    |
+| --------------- | ------------------------------- |
+| **Framework**   | Next.js 14 with App Router      |
+| **Styling**     | Tailwind CSS + Radix UI         |
+| **Animation**   | Framer Motion                   |
+| **i18n**        | next-intl                       |
+| **Language**    | TypeScript                      |
+| **Content**     | EditorJS with html-react-parser |
+| **Icons**       | React Icons, Lucide React       |
+| **Database**    | SQLite (better-sqlite3)         |
+| **Auth**        | JWT (jose), bcrypt              |
+| **Testing**     | Jest + React Testing Library    |
+| **HTTP Client** | Axios                           |
+
+---
 
 ## 📁 Project Structure
 
-```text
-app/
- ├── [locale]/           # Locale-specific pages
- │   ├── page.tsx       # Main page for each locale
- │   ├── blog/          # Blog pages
- │   │   ├── page.tsx   # Blog listing
- │   │   └── [id]/      # Individual blog posts
- │   │       └── page.tsx
- │   └── sub/           # Subpages
- │       └── page.tsx
- ├── components/        # Reusable UI components
- │   ├── BlogContent.tsx    # Safe HTML content renderer
- │   └── ContentExample.tsx # Example usage
- ├── lib/              # Utility functions and configurations
- │   └── content-parser.ts  # Content parsing utilities
- ├── messages/         # Translation files
- │   ├── en.json
- │   ├── de.json
- │   └── ja.json
- └── public/           # Static assets
 ```
+hosseini.net-i18n/
+├── app/                          # Next.js App Router
+│   ├── [locale]/                # Localized routes (en, fa, it)
+│   │   ├── page.tsx             # Main homepage
+│   │   ├── layout.tsx           # Locale layout
+│   │   ├── not-found.tsx        # 404 page
+│   │   ├── about_me/            # About page
+│   │   ├── blog/                # Blog listing & posts
+│   │   ├── admin/               # Admin dashboard
+│   │   ├── contact/             # Contact form
+│   │   ├── login/               # Authentication
+│   │   └── [other routes]/      # Additional pages
+│   ├── (root)/                  # Root layout routes
+│   ├── api/                     # API routes
+│   │   ├── auth/                # Authentication endpoints
+│   │   ├── posts/               # Blog post endpoints
+│   │   ├── health/              # Health check
+│   │   └── swagger/             # API documentation
+│   └── lib/                     # App utilities
+│
+├── components/                  # Reusable React components
+│   ├── layout/                  # Header, Footer, Navigation
+│   ├── ui/                      # Radix UI components
+│   ├── BlogContent.tsx          # Safe HTML rendering
+│   ├── EditorJSRenderer.tsx     # EditorJS content display
+│   ├── AuthGuard.tsx            # Authentication wrapper
+│   └── [other components]/      # Feature components
+│
+├── config/                      # Configuration files
+│   └── components.json          # shadcn/ui configuration
+│
+├── data/                        # Static data
+│   └── posts.json               # Blog posts data
+│
+├── deployment/                  # Deployment & DevOps
+│   ├── Dockerfile               # Container configuration
+│   ├── docker-compose.yml       # Multi-container setup
+│   ├── nginx/                   # Nginx configuration
+│   ├── *.sh                     # Deployment scripts
+│   ├── ecosystem.config.js      # PM2 configuration
+│   └── DEPLOYMENT_GUIDE.md      # Deployment instructions
+│
+├── lib/                         # Shared utilities
+│   ├── api-client.ts            # HTTP client setup
+│   ├── auth.ts                  # Authentication utilities
+│   ├── content-parser.ts        # Content parsing
+│   ├── utils.ts                 # General utilities
+│   └── services/                # API service classes
+│
+├── messages/                    # i18n translation files
+│   ├── en.json                  # English translations
+│   ├── fa.json                  # Farsi translations
+│   └── it.json                  # Italian translations
+│
+├── public/                      # Static assets
+│   ├── assets/                  # Images, fonts, media
+│   ├── static/                  # Static files
+│   └── locales/                 # Locale-specific assets
+│
+├── scripts/                     # Utility scripts
+│   └── *.sh                     # Build & helper scripts
+│
+├── types/                       # TypeScript definitions
+│   ├── editorjs.d.ts            # EditorJS types
+│   └── TPost.tsx                # Post type definitions
+│
+├── .env.example                 # Environment variables template
+├── .eslintrc.json               # ESLint configuration
+├── .gitignore                   # Git ignore rules
+├── global.d.ts                  # Global TypeScript declarations
+├── i18n.ts                      # i18n configuration
+├── jest.config.js               # Jest testing configuration
+├── middleware.ts                # Next.js middleware
+├── next.config.mjs              # Next.js configuration
+├── next-sitemap.config.js       # Sitemap generation config
+├── package.json                 # Dependencies & scripts
+├── postcss.config.js            # PostCSS configuration
+├── tailwind.config.ts           # Tailwind CSS configuration
+├── tsconfig.json                # TypeScript configuration
+└── README.md                    # This file
+```
+
+---
 
 ## 🚀 Getting Started
 
+### Prerequisites
+
+- **Node.js** 18+
+- **npm** or **yarn**
+
+### Installation
+
 1. **Clone the repository**
 
-```bash
-git clone <repository-url>
-cd hosseini.net-i18n
-```
+   ```bash
+   git clone <repository-url>
+   cd hosseini.net-i18n
+   ```
 
 2. **Install dependencies**
 
-```bash
-npm install
-```
+   ```bash
+   npm install
+   ```
 
-3. **Start development server**
+3. **Configure environment variables**
 
-```bash
-npm run dev
-```
+   ```bash
+   cp .env.example .env.local
+   # Edit .env.local with your settings
+   ```
 
-4. **Access the application**
+4. **Start development server**
 
-- **Website:** [http://localhost:3000](http://localhost:3000)
+   ```bash
+   npm run dev
+   ```
 
-## 🔨 Build and Deployment
+5. **Open in browser**
+   - Navigate to [http://localhost:3000](http://localhost:3000)
+   - Available locales: `/en`, `/fa`, `/it`
 
-### Development Build
-
-```bash
-npm run build:dev
-```
-
-### Production Build
-
-```bash
-npm run build
-```
-
-The static output will be generated in the `out` directory with the following structure:
-
-```text
-out/
-  ├── en/              # English pages
-  │   ├── index.html
-  │   └── sub/
-  │       └── index.html
-  ├── de/              # German pages
-  ├── ja/              # Japanese pages
-  ├── en.html          # Language selection pages
-  ├── de.html
-  └── ja.html
-```
+---
 
 ## 📝 Available Scripts
 
-- `npm run dev` - Start development server
-- `npm run build:dev` - Create development build
-- `npm run build` - Create production build
-- `npm run start` - Start production server
-- `npm run lint` - Run ESLint
-- `npm run postbuild` - Generate sitemap
+| Script              | Purpose                                  |
+| ------------------- | ---------------------------------------- |
+| `npm run dev`       | Start development server with hot reload |
+| `npm run build`     | Production build with sitemap generation |
+| `npm run build:dev` | Development build                        |
+| `npm run start`     | Start production server                  |
+| `npm run lint`      | Run ESLint for code quality              |
 
-## 🌐 Supported Languages
+---
 
-- English (en)
-- Persian/Farsi (fa) - with RTL support
-- Italian (it)
+## 🌐 Internationalization
 
-Add more languages by:
+The project supports **3 languages** with full i18n implementation:
 
-1. Creating a new translation file in `messages/[locale].json`
-2. Adding the locale to the configuration in `i18n.ts`
+- **English** (`en`) - Default language
+- **Farsi/Persian** (`fa`) - Right-to-left support
+- **Italian** (`it`)
 
-## Blog Content System
+### Translation Files
 
-The project includes a sophisticated blog content rendering system that replaces `dangerouslySetInnerHTML` with safe, feature-rich content rendering.
+Located in `/messages`:
 
-### Key Features
+- `en.json` - English strings
+- `fa.json` - Persian strings
+- `it.json` - Italian strings
 
-- **Safe HTML Parsing**: Uses `html-react-parser` for secure HTML rendering
-- **Modern Typography**: Tailwind Typography (prose) with custom dark theme styling
-- **Internationalization**: Automatic RTL support for Farsi content
-- **Future-Proof**: Supports both HTML and structured JSON content blocks
-- **Custom Components**: Enhanced styling for images, code blocks, tables, and more
+### Adding New Translations
 
-### Usage
+1. Add keys to all three JSON files in `/messages`
+2. Use `useTranslations()` hook in components
+3. Translations update automatically
+
+---
+
+## 📚 Blog System
+
+The blog system supports rich content with **EditorJS**:
+
+### Features
+
+- **Editor support**: Headers, images, lists, code blocks, quotes, tables, etc.
+- **Safe rendering**: HTML sanitization with `html-react-parser`
+- **Dynamic routes**: `/[locale]/blog/[id]` for individual posts
+- **Static data**: Posts stored in `/data/posts.json`
+
+### Adding Blog Posts
+
+1. Add post to `/data/posts.json` with EditorJS format
+2. Generate translations in `/messages/*.json`
+3. Rebuild or restart dev server
+
+### Blog Components
+
+- `BlogContent.tsx` - Renders safe HTML content
+- `EditorJSRenderer.tsx` - Renders EditorJS blocks
+- `LatestPosts.tsx` - Displays recent posts
+
+---
+
+## 🔐 Authentication
+
+JWT-based authentication system with the following features:
+
+### Endpoints
+
+- `POST /api/auth/login` - User login
+- `POST /api/auth/logout` - User logout
+- `GET /api/auth/verify` - Verify token
+- `GET /api/auth/profile` - Get user profile
+
+### Protected Routes
+
+Admin pages and authenticated content use `AuthGuard.tsx` component:
 
 ```tsx
-import BlogContent from "@/components/BlogContent";
-
-// Basic usage
-<BlogContent content={post.content} />
-
-// With custom styling
-<BlogContent
-  content={post.content}
-  className="prose prose-lg prose-invert"
-/>
-
-// With fallback
-<BlogContent
-  content={post.content}
-  fallback={<div>Content not available</div>}
-/>
+<AuthGuard>
+  <AdminDashboard />
+</AuthGuard>
 ```
 
-### Migration from dangerouslySetInnerHTML
+---
 
-**Before:**
+## 🎨 UI Components
 
-```tsx
-<div
-  className="prose prose-invert"
-  dangerouslySetInnerHTML={{ __html: post.content }}
-/>
+Built with **Radix UI** and **Tailwind CSS** for accessibility and consistency:
+
+### Location: `/components/ui/`
+
+- Button
+- Card
+- Input
+- Select
+- Dialog
+- Tabs
+- Separator
+- Alert
+- Badge
+- Scroll Area
+- And more...
+
+---
+
+## 🚢 Deployment
+
+### Docker Deployment
+
+```bash
+cd deployment
+docker-compose up -d
 ```
 
-**After:**
+### PM2 (Production Server)
 
-```tsx
-<BlogContent content={post.content} />
+```bash
+cd deployment
+chmod +x deploy.sh
+./deploy.sh
 ```
 
-For detailed documentation, see [Blog Content System Documentation](docs/BLOG_CONTENT_SYSTEM.md).
+### Static Export
 
-## 🔍 SEO
+Configure in `next.config.mjs` for completely static deployment.
 
-The project includes automatic sitemap generation using `next-sitemap`. The configuration can be found in `next-sitemap.config.js`.
+### Nginx Reverse Proxy
 
-## ⚠️ Troubleshooting
+Nginx configuration available in `/deployment/nginx/`
 
-### Missing Favicon Error
+See `/deployment/DEPLOYMENT_GUIDE.md` for detailed instructions.
 
-If you encounter the following error during development:
+---
 
+## 📊 API Documentation
+
+### Health Check
+
+```bash
+GET /api/health
 ```
-Error: Page "/[locale]/page" is missing param "/favicon.ico" in "generateStaticParams()", which is required with "output: export" config.
+
+### Blog Posts
+
+```bash
+GET /api/posts              # Get all posts
+GET /api/posts/[id]         # Get specific post
+POST /api/posts             # Create post (admin)
+PUT /api/posts/[id]         # Update post (admin)
+DELETE /api/posts/[id]      # Delete post (admin)
 ```
 
-**Solution:** Place a `favicon.ico` file in the `public/` directory.
+### Swagger/OpenAPI
 
-### Blog Content Issues
+Available at `/api/swagger` for interactive API documentation.
 
-- **Content not rendering**: Check if content is a valid string or array
-- **Styling issues**: Ensure Tailwind Typography is properly configured
-- **RTL problems**: Verify Farsi content has proper RTL styling
+---
 
-## 📚 Learn More
+## 🧪 Testing
 
-- [Next.js Documentation](https://nextjs.org/docs)
-- [next-intl Documentation](https://next-intl-docs.vercel.app/)
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
-- [Radix UI Documentation](https://www.radix-ui.com/docs/primitives/overview/introduction)
-- [html-react-parser Documentation](https://github.com/remarkablemark/html-react-parser)
+Run tests with Jest:
+
+```bash
+npm test
+```
+
+Tests are configured for:
+
+- Unit tests
+- Component tests
+- Integration tests
+
+---
+
+## 🔧 Configuration Files
+
+| File                 | Purpose                            |
+| -------------------- | ---------------------------------- |
+| `next.config.mjs`    | Next.js build & export settings    |
+| `tsconfig.json`      | TypeScript compilation options     |
+| `tailwind.config.ts` | Tailwind CSS customization         |
+| `postcss.config.js`  | CSS processing pipeline            |
+| `.eslintrc.json`     | Code linting rules                 |
+| `jest.config.js`     | Testing framework setup            |
+| `i18n.ts`            | Internationalization configuration |
+| `middleware.ts`      | Next.js request middleware         |
+
+---
+
+## 🌍 Environment Variables
+
+Create `.env.local` from `.env.example`:
+
+```env
+# Database
+DATABASE_URL=file:./data.db
+
+# API
+NEXT_PUBLIC_API_URL=http://localhost:3000/api
+
+# Authentication
+JWT_SECRET=your-secret-key-here
+
+# External Services
+NEXT_PUBLIC_ANALYTICS_ID=
+
+# Feature Flags
+NEXT_PUBLIC_ENABLE_ADMIN=true
+```
+
+---
+
+## 🤝 Contributing
+
+1. Create a new branch for features: `git checkout -b feature/feature-name`
+2. Commit changes: `git commit -m "feat: add feature"`
+3. Push to branch: `git push origin feature/feature-name`
+4. Open a Pull Request
+
+---
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+[Specify your license here]
+
+---
+
+## 💬 Support
+
+For issues and questions:
+
+- Check `/deployment/DEPLOYMENT_GUIDE.md` for deployment help
+- Review configuration in respective config files
+- Check API responses for error details
+
+---
+
+## 📈 Performance
+
+- ⚡ Next.js static optimization
+- 🎯 Code splitting and lazy loading
+- 🖼️ Image optimization with Next.js Image
+- 🗺️ Automatic sitemap for SEO
+- ♿ Built with accessibility in mind
+
+---
+
+**Last Updated**: October 2025

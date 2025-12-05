@@ -5,3 +5,9 @@ export const vazirmatn = {
   variable: "--font-vazirmatn",
   className: "font-vazirmatn",
 };
+
+// Inter is a great sans-serif font for English content
+export const inter = {
+  variable: "--font-inter",
+  className: "font-inter",
+};
