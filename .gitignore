@@ -56,5 +56,5 @@ test-*.json
 debug-*.tsx
 server.log
 
-/cms/.node_modules
-/cms/.env
+/cms/node_modules
+/cms/.env  
