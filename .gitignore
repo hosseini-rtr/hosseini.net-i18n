@@ -55,3 +55,6 @@ cookies-local.txt
 test-*.json
 debug-*.tsx
 server.log
+
+/cms/.node_modules
+/cms/.env
