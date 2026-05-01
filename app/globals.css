@@ -1,11 +1,6 @@
-@import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-
 
 
 
@@ -18,7 +13,10 @@
 @layer base {
   :root {
     --font-vazirmatn: 'Vazirmatn', system-ui, sans-serif;
-    --font-inter: 'Inter', system-ui, sans-serif;
+    --font-inter: 'Roboto', system-ui, sans-serif;
+    --font-roboto: 'Roboto', system-ui, sans-serif;
+    font-family: var(--font-roboto), var(--font-vazirmatn), system-ui, sans-serif;
+
     --radius: 8px;
     --background: 240, 10%, 12%;
     /* Dark Blue */

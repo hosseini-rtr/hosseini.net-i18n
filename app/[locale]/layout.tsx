@@ -4,8 +4,32 @@ import StairTransition from "@/components/StairTransition";
 import { locales } from "@/i18n";
 import { NextIntlClientProvider, useMessages } from "next-intl";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import localFont from "next/font/local";
 import { getLangDir } from "rtl-detect";
 import "../globals.css";
+
+const roboto = localFont({
+  src: [
+    {
+      path: "../public/assets/fonts/Roboto-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/assets/fonts/Roboto-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-roboto",
+  display: "swap",
+});
+
+const vazirmatn = localFont({
+  src: "../public/assets/fonts/Vazirmatn.woff2",
+  variable: "--font-vazirmatn",
+  display: "swap",
+});
 
 export async function generateMetadata({ params: { locale } }: any) {
   const t = await getTranslations({ locale, namespace: "SEO" });
@@ -136,7 +160,11 @@ export default function LocaleLayout({
   const direction = getLangDir(locale);
 
   return (
-    <html lang={locale} dir={direction}>
+    <html
+      lang={locale}
+      dir={direction}
+      className={`${vazirmatn.variable} ${roboto.variable}`}
+    >
       <body>
         <NextIntlClientProvider messages={messages}>
           <Header />

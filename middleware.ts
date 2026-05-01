@@ -1,32 +1,15 @@
-import type { NextRequest } from "next/server";
-import { NextResponse } from "next/server";
+import createMiddleware from 'next-intl/middleware';
 
-export async function middleware(request: NextRequest) {
-  try {
-    const { pathname } = request.nextUrl;
+const locales = ['en', 'fa', 'it'];
 
-    // Skip middleware for API routes, static files, and other system routes
-    if (
-      pathname.startsWith("/api/") ||
-      pathname.startsWith("/_next/") ||
-      pathname.startsWith("/favicon") ||
-      pathname.includes(".")
-    ) {
-      return NextResponse.next();
-    }
+export default createMiddleware({
+  locales: locales,
+  
+  defaultLocale: 'en',
+  
+  localeDetection: true
+});
 
-    // Allow access to all routes
-    return NextResponse.next();
-  } catch (error) {
-    console.error("Middleware error:", error);
-    return NextResponse.next();
-  }
-}
-
-// Configure which routes to run middleware on
 export const config = {
-  matcher: [
-    // Exclude static files
-    "/((?!_next/static|_next/image|favicon.ico).*)",
-  ],
+  matcher: ['/((?!api|_next|_vercel|.*\\..*).*)']
 };

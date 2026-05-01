@@ -2,7 +2,15 @@
     "workbench.colorCustomizations": {
         "activityBar.background": "#113234",
         "titleBar.activeBackground": "#184649",
-        "titleBar.activeForeground": "#F4FBFB"
+        "titleBar.activeForeground": "#F4FBFB",
+        "titleBar.inactiveBackground": "#113234",
+        "titleBar.inactiveForeground": "#F4FBFB",
+        "statusBar.background": "#113234",
+        "statusBar.foreground": "#F4FBFB",
+        "statusBar.debuggingBackground": "#113234",
+        "statusBar.debuggingForeground": "#F4FBFB",
+        "statusBar.noFolderBackground": "#113234",
+        "statusBar.noFolderForeground": "#F4FBFB"
     },
     "i18n-ally.localesPaths": [
         "messages"

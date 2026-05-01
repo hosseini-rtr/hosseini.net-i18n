@@ -11,18 +11,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        vazirmatn: [
-          "Vazirmatn",
-          "var(--font-vazirmatn)",
-          "system-ui",
-          "sans-serif",
-        ],
-        inter: [
-          "Inter",
-          "var(--font-inter)",
-          "system-ui",
-          "sans-serif",
-        ],
+        sans: ["var(--font-roboto)", "var(--font-vazirmatn)", "sans-serif"],
       },
       typography: {
         DEFAULT: {
